@@ -697,7 +697,9 @@ img {
   }
   .btn_group {
     width: 75%;
-  }
+  }body .navbar .navbar-nav .nav-item {
+    margin: 5px;
+}
 }
   
 @media (min-width: 768px) { 
@@ -712,7 +714,9 @@ img {
   }
   .btn_group {
     width: 50%;
-  }
+  }body .navbar .navbar-nav .nav-item {
+    margin: 0;
+}
 }
 .dropdown-toggle {
   border: 2px solid #fff;
@@ -765,10 +769,22 @@ img {
   margin: 0 0 0 10px;
 }
 
+.top_menu .right_menu .register li:first-child a svg {
+  color: #000!important;
+}
 .top_menu .right_menu .register li a {
   text-decoration: none;
   color: currentColor;
   font-size: 14px;
   font-weight: 400;
+  color: #fff!important;
+}
+.top_menu .right_menu .register li:last-child a,
+.top_menu .right_menu .register li:last-child svg {
+  text-decoration: none;
+  color: currentColor;
+  font-size: 14px;
+  font-weight: 400;
+  color: #2075bd!important;
 }
 /*# sourceMappingURL=main.css.map */

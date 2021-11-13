@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>title</title>
+    <title>PORT</title>
     <link type="text/css" rel="stylesheet" href="css/bootstrap.rtl.min.css">
     <link type="text/css" rel="stylesheet" href="css/hover-min.css">
     <link type="text/css" rel="stylesheet" href="scss/main.css">
@@ -48,7 +48,7 @@
                 <div class="swiper-wrapper">
                     <div class="upk-salf-item swiper-slide">
                         <div class="upk-salf-image-wrap">
-                            <img class="upk-xanc-img" src="img/pic-1.webp" />
+                            <img class="upk-xanc-img" src="img/pic-1.webp" alt="slider_img"/>
                         </div>
                         <div class="upk-salf-content-wrap">
                             <h3 class="upk-salf-title" data-swiper-parallax-y="-150" data-swiper-parallax-duration="1200">
@@ -58,7 +58,7 @@
                     </div>
                     <div class="upk-salf-item swiper-slide">
                         <div class="upk-salf-image-wrap">
-                            <img class="upk-xanc-img" src="img/pic-2.webp" />
+                            <img class="upk-xanc-img" src="img/pic-2.webp" alt="slider_img"/>
                         </div>
                         <div class="upk-salf-content-wrap">
                             <h3 class="upk-salf-title" data-swiper-parallax-y="-150" data-swiper-parallax-duration="1200">
@@ -128,9 +128,9 @@
                 </ul>
                 <ul class="box">
                     <li class="link_name">راه های ارتباط</li>
-                    <li><a href="#">+91 8879887262</a></li>
-                    <li><a href="#">+91 8879887262</a></li>
-                    <li><a href="#">contact@sitesoch.com</a></li>
+                    <li><div>+91 8879887262</div></li>
+                    <li><div>+91 8879887262</div></li>
+                    <li><div>contact@sitesoch.com</div></li>
                 </ul>
             </div>
         </div>
@@ -146,7 +146,7 @@
     </footer>
 
 
-    <script src="js/jqyry.min.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/choices.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
@@ -155,10 +155,8 @@
             parallax: true,
             speed: 1200,
             effect: 'fade',
-            direction: "horizontal",
             loop: true,
-            autoplay: false,
-            mousewheel: true,
+            autoplay: true,
             navigation: {
                 nextEl: '.upk-button-next',
                 prevEl: '.upk-button-prev',
@@ -172,95 +170,6 @@
             },
         });
     </script>
-    <script>
-        const TickerScrolling = function({
-            id = '#newsticker',
-            time = 3000,
-            typeChild = 'li'
-        } = {}) {
-            let i = 0;
-            let active;
-            let interval;
-
-            const el = () => document.querySelectorAll(id)[0];
-            const firstElement = el().querySelectorAll(typeChild)[0];
-            const addClass = (el, _class) => {
-                if (el.classList) {
-                    el.classList.add(_class);
-                } else {
-                    el.className += ' ' + _class;
-                }
-            };
-            const removeClass = (el, _class) => {
-                if (el.classList) {
-                    el.classList.remove(_class);
-                } else {
-                    el.className = el.className.replace(new RegExp('(^|\\b)' + _class.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-                }
-            };
-            const removeAdd = (el, _remove, _add) => {
-                removeClass(el, _remove);
-                addClass(el, _add);
-            };
-
-            const init = () => {
-                active = firstElement;
-                removeAdd(firstElement, 'close', 'open');
-
-                initTimeout();
-            };
-
-            const _next = () => {
-                const sibling = active.nextElementSibling;
-                if (sibling) {
-                    removeAdd(active, 'open', 'close');
-                    removeAdd(sibling, 'close', 'open');
-
-                    active = sibling;
-                } else {
-                    removeAdd(active, 'open', 'close');
-                    removeAdd(firstElement, 'close', 'open');
-
-                    active = firstElement;
-                }
-            };
-
-            const initTimeout = () => {
-                interval = setInterval(_next, time)
-            };
-
-            init();
-
-            return {
-                numberElement: function() {
-                    return el().querySelectorAll(typeChild).length;
-                },
-                stop: function() {
-                    clearInterval(interval);
-                }
-            };
-
-        };
-
-        const scroll = new TickerScrolling({
-            id: '#newsticker',
-            typeChild: 'li'
-        });
-
-        $('#stop').on('click', function() {
-            scroll.stop();
-        });
-    </script>
-    <script>
-        const clearInput = () => {
-            const input = document.getElementsByTagName("input")[0];
-            input.value = "";
-        }
-
-        const clearBtn = document.getElementById("clear-btn");
-        clearBtn.addEventListener("click", clearInput);
-    </script>
-
 </body>
 
 </html>
