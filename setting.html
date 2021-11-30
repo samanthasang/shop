@@ -70,27 +70,27 @@
             </ul>
             <div class="tab-container">
                 <div class="tab-content">
+                    <form asp-action="" class="row">
                     <article class="s_btn">
-                        <button class="btn btn-primary">ویرایش</button>
-                        <button class="btn btn-primary">ذخیره</button>
+                        <button type="submit" class="btn btn-primary save_btn" id="save_btn">ذخیره</button>
+                        <a class="btn btn-primary edit_btn" id="edit_btn">ویرایش</a>
                     </article>
-                    <form>
                         <div class="row">
-                            <div class="col-6 mb-3">
+                            <div class="col-md-6 col-12 mb-3">
                                 <label for="exampleInputConame" class="form-label">نام شرکت</label>
-                                <input type="text" class="form-control" id="exampleInputConame" placeholder="majid.ebrahimi989@gmail.com">
+                                <input id="input_1" type="text" class="form-control" id="exampleInputConame" placeholder="majid.ebrahimi989@gmail.com">
                             </div>
-                            <div class="col-6 mb-3">
+                            <div class="col-md-6 col-12 mb-3">
                                 <label for="exampleInputSize" class="form-label">اندازه شرکت</label>
-                                <input type="text" class="form-control" id="exampleInputSize" placeholder="این اولین محموله من است">
+                                <input id="input_2" type="text" class="form-control" id="exampleInputSize" placeholder="این اولین محموله من است">
                             </div>
-                            <div class="col-6 mb-3">
+                            <div class="col-md-6 col-12 mb-3">
                                 <label for="exampleInputCountry" class="form-label">کشور</label>
-                                <input type="text" class="form-control" id="exampleInputCountry" placeholder="ایران">
+                                <input id="input_3" type="text" class="form-control" id="exampleInputCountry" placeholder="ایران">
                             </div>
-                            <div class="col-6 mb-3">
+                            <div class="col-md-6 col-12 mb-3">
                                 <label for="exampleInputCity" class="form-label">شهر</label>
-                                <input type="text" class="form-control" id="exampleInputCity" placeholder="تهران">
+                                <input id="input_4" type="text" class="form-control" id="exampleInputCity" placeholder="تهران">
                             </div>
                         </div>
                     </form>
@@ -124,9 +124,38 @@
         </div>
     </div>
 
-    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
+    <script>
+        $("#input_1").prop('disabled', true);       // if disabled, enable
+        $("#input_2").prop('disabled', true);       // if disabled, enable
+        $("#input_3").prop('disabled', true);       // if disabled, enable
+        $("#input_4").prop('disabled', true);       // if disabled, enable
+        var disabled = true;
+        document.getElementById("save_btn").style.display = "none";
+        document.getElementById("edit_btn").innerHTML = "ویرایش";
+        $(document).ready(function() {
+        $('#edit_btn').click(function() {
+            if (disabled) {
+                document.getElementById("save_btn").style.display = "inline-block";
+                document.getElementById("edit_btn").innerHTML = "لغو";
+                $("#input_1").prop('disabled', false);       // if disabled, enable
+                $("#input_2").prop('disabled', false);       // if disabled, enable
+                $("#input_3").prop('disabled', false);       // if disabled, enable
+                $("#input_4").prop('disabled', false);       // if disabled, enable
+            }
+            else {
+                document.getElementById("save_btn").style.display = "none";
+                document.getElementById("edit_btn").innerHTML = "ویرایش";
+                $("#input_1").prop('disabled', true);       // if disabled, enable
+                $("#input_2").prop('disabled', true);       // if disabled, enable
+                $("#input_3").prop('disabled', true);       // if disabled, enable
+                $("#input_4").prop('disabled', true);       // if disabled, enable
+            }
+        disabled = !disabled;
+    })
+});
+</script>
 
 
 </body>

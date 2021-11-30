@@ -52,121 +52,15 @@
 
 
     <!-- MAIN SEARCH -->
+    <div class="content">
     <section class="navbar navbar-expand ">
         <!-- MAIN SELECTED LIST -->
         <ul class="navbar-nav mr-auto mb-4 mb-lg-0">
             <!-- ORIGIN -->
             <li class="nav-item dropdown dropdown-mega position-static">
-                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" id="FromTo">مبدأ</a>
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">کانتینر</a>
                 <div class="dropdown-menu shadow">
-                    <div class="mega-content px-4">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-12 py-4">
-                                    <!-- HEADER -->
-                                    <div class="row inner_title">
-                                        <h6>از کجا حمل می کنید؟</h6>
-                                    </div>
-                                    <!-- END HEADER -->
-                                    <!-- BODY -->
-                                    <div class="row">  
-                                        <div class="content">
-                                            <form  class="row">
-                    <div class="col-lg-4 col-12 form-group custom-select">
-                        <label asp-for="AddressFrom" class="control-label">نوع</label>
-                        <select name="AddressFrom">
-                            <option value="">انتخاب کنید</option>
-                            <option value=0>آدرس مسکونی</option>
-                            <option value=1>بندر/فرودگاه</option>
-                            <option value=2>کارخانه/انبار</option>
-                            <option value=3>آدرس کسب و کار</option>
-                        </select>
-                        <span asp-validation-for="AddressFrom" class="text-danger"></span>
-                    </div>
-                    <div class="col-lg-4 col-12 form-group">
-                        <label asp-for="FromCountry" class="control-label">کشور</label>
-                        <input asp-for="FromCountry" class="form-control" />
-                        <span asp-validation-for="FromCountry" class="text-danger"></span>
-                    </div>
-                    <div class="col-lg-4 col-12 form-group">
-                        <label asp-for="DescriptionFrom" class="control-label">آدرس</label>
-                        <input asp-for="DescriptionFrom" class="form-control" />
-                        <span asp-validation-for="DescriptionFrom" class="text-danger"></span>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="form-group">
-                        <input type="submit" value="ثبت و بازگشت" class="btn btn-primary btn_submit" />
-                    </div>
-                </form>
-            </div>
-                                    </div>
-                                    <!-- END BODY -->
-                                    <hr>
-                                    <!-- END FOOTER -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <!-- END ORIGIN -->
-            <!-- DESTINATION -->
-            <li class="nav-item dropdown dropdown-mega position-static">
-                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">مقصد</a>
-                <div class="dropdown-menu shadow">
-                    <div class="mega-content px-4">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-12 py-4">
-                                    <div class="row inner_title">
-                                        <h6>به کجا ارسال می کنید؟</h6>
-                                    </div>
-                                    <div class="row">
-                                        <div class="content">
-                                            <form  class="row">
-    
-                                        <div class="clearfix"></div>
-                                        <div class="col-lg-4 col-12 form-group custom-select">
-                                            <label asp-for="AddressTo" class="control-label">نوع</label>
-                                            <select name="AddressTo">
-                                                <option value="">انتخاب کنید</option>
-                                                <option value=0>آدرس مسکونی</option>
-                                                <option value=1>بندر/فرودگاه</option>
-                                                <option value=2>کارخانه/انبار</option>
-                                                <option value=3>آدرس کسب و کار</option>
-                                            </select>
-                                            <span asp-validation-for="AddressTo" class="text-danger"></span>
-                                        </div>
-                                        <div class="col-lg-4 col-12 form-group">
-                                            <label asp-for="ToCountry" class="control-label">کشور</label>
-                                            <input asp-for="ToCountry" class="form-control" />
-                                            <span asp-validation-for="ToCountry" class="text-danger"></span>
-                                        </div>
-                                        <div class="col-lg-4 col-12 form-group">
-                                            <label asp-for="DescriptionTo" class="control-label">آدرس</label>
-                                            <input asp-for="DescriptionTo" class="form-control" />
-                                            <span asp-validation-for="DescriptionTo" class="text-danger"></span>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="form-group">
-                                            <input type="submit" value="ثبت و بازگشت" class="btn btn-primary btn_submit" />
-                                        </div>
-                                    </form>
-                                </div>
-
-                                    </div>
-                                    <hr>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <!-- END DESTINATION -->
-            <!-- LOAD -->
-            <li class="nav-item dropdown dropdown-mega position-static">
-                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">بار</a>
-                <div class="dropdown-menu shadow">
+                   
                     <div class="mega-content scrollbar px-4">
                         <div class="container-fluid">
                             <div class="row">
@@ -175,27 +69,10 @@
                                     <div class="row inner_title">
                                         <h6>چه چیزی حمل می کنید؟</h6>
                                     </div>
-                                    <!-- END INNER TITLE -->
-                                    <!-- LOAD BODY -->
-                                    <div class="row load">
-                                        <div class="nav d-flex mb-4" id="pills-tab" role="tablist">
-                                            <!-- LOAD TAB BUTTON -->
-                                            <button class="btn btn_underline active" data-bs-toggle="pill" data-bs-target="#looseCargo" role="tab" aria-selected="true">
-                                                محموله
-                                            </button>
-                                            <button class="btn btn_underline" data-bs-toggle="pill" data-bs-target="#CrumbLoad" role="tab" aria-selected="false">
-                                                خرده فروشی
-                                             </button>
-                                            <button class="btn btn_underline" data-bs-toggle="pill" data-bs-target="#containers" role="tab" aria-selected="false">
-                                                کانتینر
-                                             </button>
-                                            <!-- END LOAD TAB BUTTON -->
-                                        </div>
-                                        <div class="tab-content" id="v-pills-tabContent">
-                                            <!--LOOSE CARGO TAB CONTENT -->
-                                            <div class="tab-pane fade show active" id="looseCargo" role="tabpanel">
-                                                <!-- RADIO TAB BTN --> 
-                                       
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             <div class="content">
                 <form asp-action="AddContainerLoad" class="row">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -260,6 +137,51 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="FromCountry" class="control-label">کشور مبدا</label>
+                        <input asp-for="FromCountry" class="form-control" />
+                        <span asp-validation-for="FromCountry" class="text-danger"></span>
+                    </div>
+                    <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="ToCountry" class="control-label">کشور مقصد</label>
+                        <input asp-for="ToCountry" class="form-control" />
+                        <span asp-validation-for="ToCountry" class="text-danger"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="DescriptionFrom" class="control-label">آدرس دقیق مبدا</label>
+                        <input asp-for="DescriptionFrom" class="form-control" />
+                        <span asp-validation-for="DescriptionFrom" class="text-danger"></span>
+                    </div>
+                    <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="DescriptionTo" class="control-label">آدس دقیق مقصد</label>
+                        <input asp-for="DescriptionTo" class="form-control" />
+                        <span asp-validation-for="DescriptionTo" class="text-danger"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-4 col-12 form-group custom-select">
+                        <label asp-for="AddressFrom" class="control-label">محل حمل کالا از مبدا</label>
+                        <select name="AddressFrom">
+                            <option value="">انتخاب کنید</option>
+                            <option value=0>آدرس مسکونی</option>
+                            <option value=1>بندر/فرودگاه</option>
+                            <option value=2>کارخانه/انبار</option>
+                            <option value=3>آدرس کسب و کار</option>
+                        </select>
+                        <span asp-validation-for="AddressFrom" class="text-danger"></span>
+                    </div>
+                    <div class="col-lg-4 col-12 form-group custom-select">
+                        <label asp-for="AddressTo" class="control-label">محل حمل کالا به مقصد</label>
+                        <select name="AddressTo">
+                            <option value="">انتخاب کنید</option>
+                            <option value=0>آدرس مسکونی</option>
+                            <option value=1>بندر/فرودگاه</option>
+                            <option value=2>کارخانه/انبار</option>
+                            <option value=3>آدرس کسب و کار</option>
+                        </select>
+                        <span asp-validation-for="AddressTo" class="text-danger"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-4 col-12 form-group">
                         <label asp-for="UserLIkeTime" class="control-label">زمان تحویل</label>
                         <input asp-for="UserLIkeTime" class="form-control" type="date" />
                         <span asp-validation-for="UserLIkeTime" class="text-danger"></span>
@@ -270,11 +192,26 @@
                     </div>
                 </form>
             </div>
-                                            </div>
-                                            <!-- END LOOSE CARGO TAB CONTENT -->
-                                            <!-- CONTAINERS TAB CONTENT -->
-                                            <div class="tab-pane fade" id="CrumbLoad" role="tabpanel">
-                                                
+                </div>
+            </li>
+            <!-- END ORIGIN -->
+            <!-- DESTINATION -->
+            <li class="nav-item dropdown dropdown-mega position-static">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">خرده فروشی</a>
+                <div class="dropdown-menu shadow">
+                    
+                    <div class="mega-content scrollbar px-4">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 py-4">
+                                    <!-- INNER TITLE -->
+                                    <div class="row inner_title">
+                                        <h6>چه چیزی حمل می کنید؟</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             <div class="content">
                 <form asp-action="AddCrumbLoad" class="row">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -344,6 +281,51 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="FromCountry" class="control-label">کشور مبدا</label>
+                        <input asp-for="FromCountry" class="form-control" />
+                        <span asp-validation-for="FromCountry" class="text-danger"></span>
+                    </div>
+                    <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="ToCountry" class="control-label">کشور مقصد</label>
+                        <input asp-for="ToCountry" class="form-control" />
+                        <span asp-validation-for="ToCountry" class="text-danger"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="DescriptionFrom" class="control-label">آدرس دقیق مبدا</label>
+                        <input asp-for="DescriptionFrom" class="form-control" />
+                        <span asp-validation-for="DescriptionFrom" class="text-danger"></span>
+                    </div>
+                    <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="DescriptionTo" class="control-label">آدس دقیق مقصد</label>
+                        <input asp-for="DescriptionTo" class="form-control" />
+                        <span asp-validation-for="DescriptionTo" class="text-danger"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-4 col-12 form-group custom-select">
+                        <label asp-for="AddressFrom" class="control-label">محل حمل کالا از مبدا</label>
+                        <select name="AddressFrom">
+                            <option value="">انتخاب کنید</option>
+                            <option value=0>آدرس مسکونی</option>
+                            <option value=1>بندر/فرودگاه</option>
+                            <option value=2>کارخانه/انبار</option>
+                            <option value=3>آدرس کسب و کار</option>
+                        </select>
+                        <span asp-validation-for="AddressFrom" class="text-danger"></span>
+                    </div>
+                    <div class="col-lg-4 col-12 form-group custom-select">
+                        <label asp-for="AddressTo" class="control-label">محل حمل کالا به مقصد</label>
+                        <select name="AddressTo">
+                            <option value="">انتخاب کنید</option>
+                            <option value=0>آدرس مسکونی</option>
+                            <option value=1>بندر/فرودگاه</option>
+                            <option value=2>کارخانه/انبار</option>
+                            <option value=3>آدرس کسب و کار</option>
+                        </select>
+                        <span asp-validation-for="AddressTo" class="text-danger"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-4 col-12 form-group">
                         <label asp-for="UserLIkeTime" class="control-label">زمان تحویل</label>
                         <input asp-for="UserLIkeTime" class="form-control" type="date" />
                         <span asp-validation-for="UserLIkeTime" class="text-danger"></span>
@@ -354,39 +336,72 @@
                     </div>
                 </form>
             </div>
-                                            </div>
-                                            <!-- END CONTAINER TAB CONTENT -->
-                                            <div class="tab-pane fade" id="containers" role="tabpanel">
-                                                
+                </div>
+            </li>
+            <!-- END DESTINATION -->
+            <!-- LOAD -->
+            <li class="nav-item dropdown dropdown-mega position-static">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">محموله</a>
+                <div class="dropdown-menu shadow">
+                    
+                    <div class="mega-content scrollbar px-4">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 py-4">
+                                    <!-- INNER TITLE -->
+                                    <div class="row inner_title">
+                                        <h6>چه چیزی حمل می کنید؟</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             <div class="content">
-                <form asp-action="AddContainerLoad" class="row">
+
+                <form asp-action="AddPalletLoad" class="row">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="col-lg-4 col-12 form-group custom-select">
-                        <label asp-for="Size" class="control-label">اندازه کانتینر</label>
-                        <select name="Size">
-                            <option value="">انتخاب کنید</option>
-                            <option value=0>' 20</option>
-                            <option value=1>' 40</option>
-                            <option value=2>' 40HC</option>
-                            <option value=3>' 45HC</option>
-                        </select>
-                        <span asp-validation-for="Size" class="text-danger"></span>
+                    <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="L" class="control-label">طول cm</label>
+                        <input asp-for="L" class="form-control" />
+                        <span asp-validation-for="L" class="text-danger"></span>
+                    </div>
+                    <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="H" class="control-label">عرض cm</label>
+                        <input asp-for="H" class="form-control" />
+                        <span asp-validation-for="H" class="text-danger"></span>
+                    </div>
+                    <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="W" class="control-label">ارتفاع cm</label>
+                        <input asp-for="W" class="form-control" />
+                        <span asp-validation-for="W" class="text-danger"></span>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-lg-4 col-12 form-group">
-                        <label asp-for="AddWeight" class="control-label">اضافه وزن بار</label>
-                        <input asp-for="AddWeight" class="form-control" />
-                        <span asp-validation-for="AddWeight" class="text-danger"></span>
+                        <label asp-for="Weight" class="control-label">وزن kg</label>
+                        <input asp-for="Weight" class="form-control" />
+                        <span asp-validation-for="Weight" class="text-danger"></span>
                     </div>
+                    <div class="clearfix"></div>
                     <div class="col-lg-4 col-12 form-group">
-                        <label asp-for="ContainerQuant" class="control-label">تعداد</label>
-                        <input asp-for="ContainerQuant" class="form-control" />
-                        <span asp-validation-for="ContainerQuant" class="text-danger"></span>
+                        <label asp-for="LoadQuantity" class="control-label">تعداد کالا</label>
+                        <input asp-for="LoadQuantity" class="form-control" />
+                        <span asp-validation-for="LoadQuantity" class="text-danger"></span>
                     </div>
                     <div class="col-lg-4 col-12 form-group">
                         <label asp-for="CargoType" class="control-label">نوع کالا</label>
                         <input asp-for="CargoType" class="form-control" />
                         <span asp-validation-for="CargoType" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LoadDetailsId" class="hidden"></label>
+                        <input asp-for="LoadDetailsId" class="hidden" />
+                        <span asp-validation-for="LoadDetailsId" class="text-danger"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="UserLIkeTime" class="control-label">زمان تحویل</label>
+                        <input asp-for="UserLIkeTime" class="form-control" type="date"/>
+                        <span asp-validation-for="UserLIkeTime" class="text-danger"></span>
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-lg-4 col-12 form-group">
@@ -422,9 +437,48 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-lg-4 col-12 form-group">
-                        <label asp-for="UserLIkeTime" class="control-label">زمان تحویل</label>
-                        <input asp-for="UserLIkeTime" class="form-control" type="date" />
-                        <span asp-validation-for="UserLIkeTime" class="text-danger"></span>
+                        <label asp-for="FromCountry" class="control-label">کشور مبدا</label>
+                        <input asp-for="FromCountry" class="form-control" />
+                        <span asp-validation-for="FromCountry" class="text-danger"></span>
+                    </div>
+                    <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="ToCountry" class="control-label">کشور مقصد</label>
+                        <input asp-for="ToCountry" class="form-control" />
+                        <span asp-validation-for="ToCountry" class="text-danger"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="DescriptionFrom" class="control-label">آدرس دقیق مبدا</label>
+                        <input asp-for="DescriptionFrom" class="form-control" />
+                        <span asp-validation-for="DescriptionFrom" class="text-danger"></span>
+                    </div>
+                    <div class="col-lg-4 col-12 form-group">
+                        <label asp-for="DescriptionTo" class="control-label">آدس دقیق مقصد</label>
+                        <input asp-for="DescriptionTo" class="form-control" />
+                        <span asp-validation-for="DescriptionTo" class="text-danger"></span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-4 col-12 form-group custom-select">
+                        <label asp-for="AddressFrom" class="control-label">محل حمل کالا از مبدا</label>
+                        <select name="AddressFrom">
+                            <option value="">انتخاب کنید</option>
+                            <option value=0>آدرس مسکونی</option>
+                            <option value=1>بندر/فرودگاه</option>
+                            <option value=2>کارخانه/انبار</option>
+                            <option value=3>آدرس کسب و کار</option>
+                        </select>
+                        <span asp-validation-for="AddressFrom" class="text-danger"></span>
+                    </div>
+                    <div class="col-lg-4 col-12 form-group custom-select">
+                        <label asp-for="AddressTo" class="control-label">محل حمل کالا به مقصد</label>
+                        <select name="AddressTo">
+                            <option value="">انتخاب کنید</option>
+                            <option value=0>آدرس مسکونی</option>
+                            <option value=1>بندر/فرودگاه</option>
+                            <option value=2>کارخانه/انبار</option>
+                            <option value=3>آدرس کسب و کار</option>
+                        </select>
+                        <span asp-validation-for="AddressTo" class="text-danger"></span>
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group">
@@ -432,15 +486,6 @@
                     </div>
                 </form>
             </div>
-                                            </div>
-                                            <!-- END TAB CONTENT -->
-                                        </div>
-                                    </div>
-                                    <!-- END LOAD BODY -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </li>
             <!-- ARROW SEARCH BUTTON -->
@@ -454,6 +499,7 @@
             </a>
             <!-- END LOAD -->
         </ul>
+        </div>
         <!-- MAIN SELECTED LIST -->
         <!-- ARROW SEARCH BUTTON -->
     </section>
@@ -666,19 +712,6 @@
     then close all select boxes:*/
     document.addEventListener("click", closeAllSelect);
     </script>
-    <script>
-        $(document).ready(function() {
-        $('#fromto_btn').click(function() {
-            document.getElementById("FromTo").innerHTML = document.getElementById("fromto_address").value;
-            // document.getElementById("FromTo").innerHTML = document.getElementById("fromto_address").value;
-            alert("1");
-                // document.getElementById("FromTo").innerHTML = "ویرایش";
-        })
-        });
-        </script>
-
-
-
     
 </body>
 

@@ -93,7 +93,7 @@ ul {
   color: currentColor;
   font-size: 14px;
   font-weight: 400;
-  color: #2075bd;
+  color: #2075bd!important;
 }
 /* Slider */
 .upk-salf-slider-wrapper {
@@ -573,7 +573,7 @@ form:valid a {
 .setting_header {
   width: 100vw;
   display: flex;
-  margin-top: 70px;
+  margin-top: 100px;
   padding: 0 40px 10px;
   border-bottom: 1px solid #646464;
 }
@@ -585,10 +585,24 @@ form:valid a {
 
 .s_btn {
   position: absolute;
-  top: 70px;
+  width: auto!important;
+  top: 100px;
   left: 30px;
 }
-
+form .btn:first-child {
+  background-color: #fff;
+  border-color: #fff;
+  color: #2075BD!important;
+}
+form .save_btn {
+  display: none;
+}
+form .edit_btn ,   
+form .edit_btn:focus {    
+  color: #fff;
+  background-color: #2075BD!important;
+  border-color: #2075BD!important;
+}
 .tab-list {
   margin: 0;
   padding: 0;
@@ -651,14 +665,70 @@ form:valid a {
   padding: 15px 30px;
 }
 
-table thead tr th,
+table thead tr:first-child th,
 table tbody tr {
   border: 1px solid rgb(190, 190, 190) !important;
 }
 
-
+.tab-content .table-responsive tbody tr:hover th:first-child{
+  border-right: 0.2rem solid #0d6efd;
+  padding: 0.5rem 0.4rem;
+}
 /*//////////////////////////////////*/
 
+/* my_account */
+.my_accounr_box {
+  width: 100%;
+  display: flex;
+  margin: 24px 24px 0px;
+  padding: 160px 120px;
+  flex-wrap: wrap;
+}
+.right_account_box, 
+.left_account_box {
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  padding: 8px;
+  max-height: 250px;
+  margin: 0px 16px 24px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 24px;
+  box-shadow: 0 0 10px 0 rgb(35 37 55 / 12%);
+}
+.right_account_box a, 
+.left_account_box a {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  transform: translateY(-24px);
+  margin-bottom: -24px;
+}
+.right_account_box svg, 
+.left_account_box svg {    
+  width: 160px;
+  margin-top: 25px;
+}
+.right_account_box span, 
+.left_account_box span {    
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 16px;
+  color: #000;
+}
+
+.box form .row {
+
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 24px;
+  box-shadow: 0 0 10px 0 rgb(35 37 55 / 12%);
+}
+
+
+
+/* search */
 .search_resultes {
   font-size: 10px;
   line-height: 1.4;
@@ -872,6 +942,13 @@ table tbody tr {
   .btn_group {
       width: 75%;
   }
+  .my_accounr_box {
+    padding: 80px 20px;
+    margin: 0px 0px;
+  }
+  .right_account_box, .left_account_box {
+    margin: 0px 0px;
+  }
 }
 @media screen and (max-width:480px) {
   .navbar,
@@ -984,6 +1061,13 @@ table tbody tr {
   }
   .btn_group {
       width: 50%;
+  }
+  .my_accounr_box {
+    padding: 160px 120px;
+    margin: 24px 24px 0px;
+  }
+  .right_account_box, .left_account_box {
+    margin: 0px 16px 24px;
   }
 }
 @media only screen and (max-width: 990px) {

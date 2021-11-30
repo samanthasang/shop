@@ -126,7 +126,6 @@ body .navbar .link-arrowed {
 
 body .navbar .navbar-nav .nav-item {
   width: 100%;
-  cursor: pointer;
   margin: 0px;
   border-radius: 6px;
   border-left: 1px solid #bbb;
@@ -338,8 +337,8 @@ body .navbar .navbar-nav .nav-item .dropdown-toggle::after {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   min-width: 170px;
 }
 
@@ -359,8 +358,180 @@ body .navbar .navbar-nav .nav-item .dropdown-toggle::after {
   background-color: #fff;
   width: 280px;
   -webkit-transform: scale(0);
-          transform: scale(0);
+  transform: scale(0);
   z-index: 1;
+}
+
+
+
+/* Select */
+.custom-select div {
+  position: relative;
+  color: #5e6582;
+  text-align: right;
+  font-size: 19px;
+  width: 100%;
+  height: 38px;
+}
+.custom-select div {
+  border-bottom: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+}
+.custom-select div:first-child , 
+.custom-select .select-selected {
+  border-top: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: #fff;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  font-family: 'ir_sans_b' !important;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px 0;
+  position: relative;
+  -webkit-transition: -webkit-box-shadow 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transition: -webkit-box-shadow 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transition: box-shadow 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transition: box-shadow 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67), -webkit-box-shadow 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: right;
+  text-indent: 20px;
+  font-weight: 400;
+  font-size: 1rem;
+  font-variant: all-petite-caps;
+  color: #5e6582;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  color: #5e6582;
+  font-size: 12px;
+  font-size: 1rem;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: #eee;
+}
+
+
+/* input - form */
+.hidden {
+  display: none;
+}
+.btn_submit {
+  margin: 25px 0px;
+}
+.content .form-group {
+  text-align: right;
+  padding: 0 25px;
+}
+.content .form-group .select-items {
+  top: 0;
+  right: 0;
+  border-radius: 5px;
+  width: 100%;
+}
+.content form .form-group label,
+.content .custom-select label{
+  font-size: 1rem;
+  color: #212529!important;
+  margin: 10px 0;
+}
+.content form .form-group>input {
+  border: 1px solid #cccccc;    
+  height: 38px;
+  -webkit-box-direction: normal;
+}
+.content form .form-group input:hover { 
+  border-color: #2075BD;
+}
+.content form .form-group input:focus {    
+  outline: none!important;
+  border: 1px solid #cccccc;
+  border-color: #2075bd;
+  box-shadow: 0 0 0 2px #ACE8F0;
+}
+.content form .checkbox label {  
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+}
+
+input[type=checkbox] {
+  position: relative;
+  cursor: pointer;
+  margin: 3px 3px 3px 4px;
+}
+input[type=checkbox]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  left: 0;
+  border: 2px solid #555555;
+  border-radius: 3px;
+  background-color: white;
+}
+input[type=checkbox]:checked:after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 2px;
+  left: 6px;
 }
 
 @-webkit-keyframes showit {
@@ -723,8 +894,9 @@ img {
   border-radius: 3px;
 }
 .dropdown-toggle.show {
-  border: 2px solid #0d6efd;
+  border: 1px solid #0d6efd;
   border-radius: 3px;
+  box-shadow: 0 0 0 2px #ace8f0;
 }
 .top_menu {
   display: -webkit-box;
