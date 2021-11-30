@@ -870,6 +870,10 @@ img {
     width: 75%;
   }body .navbar .navbar-nav .nav-item {
     margin: 5px;
+    border-left: none;
+}
+.content .form-group {
+  padding: 0px 30px;
 }
 }
   
@@ -885,8 +889,13 @@ img {
   }
   .btn_group {
     width: 50%;
-  }body .navbar .navbar-nav .nav-item {
+  }
+  body .navbar .navbar-nav .nav-item {
     margin: 0;
+    border-left: 1px solid #bbb;
+}
+.content .form-group {
+  padding: 0 25px;
 }
 }
 .dropdown-toggle {
