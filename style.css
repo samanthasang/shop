@@ -4079,3 +4079,18 @@ html.theme-dark .container-1PvbREMK:after {
     position: relative;
     top: -65px
 }
+
+.dropdown-toggle.show {
+    border: 1px solid #0d6efd;
+    border-radius: 3px;
+    box-shadow: 0 0 0 2px #ace8f0;
+    background-color: #0d6efd;
+    color: #fff!important;
+}
+
+body .navbar .navbar-nav .nav-item .dropdown-menu .mega-content .inner_title {
+    text-align: right !important;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
