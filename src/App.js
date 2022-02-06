@@ -1,10 +1,14 @@
+import {Button} from 'antd';
 import React from 'react';
-import { Button } from 'antd';
+// import {Link, Switch, withRouter, Route} from 'react-router-dom';
+// import {PrivateRoute} from 'helper/Routes';
 import './App.scss';
 
 const App = () => (
-  <div className="App">
-    <Button type="primary">Button</Button>
+  <div fallback={<div>Loading...</div>}>
+    <Button type="primary" onClick={() => alert('o')}>
+      Button
+    </Button>
   </div>
 );
 
