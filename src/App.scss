@@ -1,5 +1,36 @@
 @import '~antd/dist/antd.css';
+@import './lightTheme.scss';
 
-.App {
-  text-align: center;
+.ant-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.haeder {
+  height: 50px;
+  background: var(--secondary-contrast-cta-color);
+  color: var(--text-contrast-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &-logo {
+    // width: 6rem;
+    height: 40px;
+    margin-left: 1.5rem;
+    border-radius: 5px;
+  }
+  &-signup {
+    display: flex;
+    align-items: center;
+    height: 25px;
+    margin-right: 1.5rem;
+  }
+}
+.ant-modal {
+  &-header {
+    background: var(--secondary-contrast-cta-color);
+  }
+  &-body {
+    background: var(--strength-meter-very-strong);
+  }
 }
