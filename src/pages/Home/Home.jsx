@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ModalForm from './components/ModalForm';
 import MyForm from './components/MyForm';
 import { Menu, Dropdown, Row, Col, Button } from 'antd';
-import {DownOutlined} from "@ant-design/icons"
+import { DownOutlined } from "@ant-design/icons"
 import './Home.scss';
 
 const Home = () => {
@@ -30,10 +30,10 @@ const Home = () => {
     <div className="Home">
       <div className="Home-header">
         <h1>
-          FREIGHT THAT JUST WORKS
+          حمل و نقل که فقط کار می کند
             </h1>
         <h3>
-          Compare, book, and manage your freight across the world’s top logistics providers, all on one platform
+          مقایسه، رزرو و مدیریت حمل و نقل خود در میان برترین ارائه دهندگان تدارکات در جهان، همه در یک پلت فرم
             </h3>
       </div>
       <div className="Home-center">
@@ -70,31 +70,38 @@ const Home = () => {
         <div className="Home-center-descriptions">
           <div className="Home-center-descriptions-imagesPart">
             <Row>
-              <Col span={8}>
-                <img src="https://www.freightos.com/wp-content/uploads/2021/03/11-03.png" />
-                <h3>FREIGHT RESOURCES</h3>
-                <p>
-                  Everything you need to know about freight, from HS codes to Incoterms, all in one place.
-              </p>
-                <Button type="link"><span>Read More</span></Button>
+              <Col span={8} className="Home-center-descriptions-imagesPart-Box">
+                <div className="Home-center-descriptions-imagesPart-Box-img"><img src="https://www.freightos.com/wp-content/uploads/2021/03/11-03.png" className="Home-center-descriptions-imagesPart-Box-img-ThisImg" /></div>
+                <div className="Home-center-descriptions-imagesPart-Box-text">
+                  <h3>حمل و نقلی که فقط کار می کند</h3>
+                  <p>
+                    همه چیزهایی که باید در مورد حمل و نقل بدانید، از کدهای HS گرفته تا اینکوترمز، همه در یک مکان.
+                  </p>
+                  <Button type="link"><span>ادامه مطلب</span></Button>
+                </div>
               </Col>
-              <Col span={8}>
-                <img src="https://www.freightos.com/wp-content/uploads/2021/03/11-02.png" />
-                <h3>FREIGHT RESOURCES</h3>
-                <p>
-                  Everything you need to know about freight, from HS codes to Incoterms, all in one place.
-              </p>
-                <Button type="link"><span>Read More</span></Button>
+              <Col span={8} className="Home-center-descriptions-imagesPart-Box">
+                <div className="Home-center-descriptions-imagesPart-Box-img">
+                  <img src="https://www.freightos.com/wp-content/uploads/2021/03/11-02.png" className="Home-center-descriptions-imagesPart-Box-img-ThisImg" />
+                </div>
+                <div className="Home-center-descriptions-imagesPart-Box-text">
+                  <h3>حمل و نقلی که فقط کار می کند</h3>
+                  <p>
+                    همه چیزهایی که باید در مورد حمل و نقل بدانید، از کدهای HS گرفته تا اینکوترمز، همه در یک مکان.
+                  </p>
+                  <Button type="link"><span>ادامه مطلب</span></Button>
+                </div>
               </Col>
-              <Col span={8}>
-                <img src="https://www.freightos.com/wp-content/uploads/2021/03/11-01.png" />
-                <h3>FREIGHT RESOURCES</h3>
-                <p>
-                  Everything you need to know about freight, from HS codes to Incoterms, all in one place.
-              </p>
-                <Button type="link"><span>Read More</span></Button>
+              <Col span={8} className="Home-center-descriptions-imagesPart-Box">
+                <div className="Home-center-descriptions-imagesPart-Box-img"><img src="https://www.freightos.com/wp-content/uploads/2021/03/11-01.png" className="Home-center-descriptions-imagesPart-Box-img-ThisImg" /></div>
+                <div className="Home-center-descriptions-imagesPart-Box-text">
+                  <h3>حمل و نقلی که فقط کار می کند</h3>
+                  <p>
+                    همه چیزهایی که باید در مورد حمل و نقل بدانید، از کدهای HS گرفته تا اینکوترمز، همه در یک مکان.
+                  </p>
+                  <Button type="link"><span>ادامه مطلب</span></Button>
+                </div>
               </Col>
-
             </Row>
           </div>
         </div>

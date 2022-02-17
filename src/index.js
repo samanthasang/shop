@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./index.css";
+import './fonts/Vazir.ttf';
 // import 'react-simple-keyboard/build/css/index.css';
 // import 'rc-color-picker/assets/index.css';
 import 'antd/dist/antd.css';
