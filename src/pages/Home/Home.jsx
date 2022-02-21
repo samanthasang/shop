@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import ModalForm from './components/ModalForm';
 import MyForm from './components/MyForm';
-import { Menu, Dropdown, Row, Col, Button } from 'antd';
-import { DownOutlined } from "@ant-design/icons"
+import { Menu, Dropdown, Row, Col, Button, Divider } from 'antd';
+import Icon from "@ant-design/icons"
+import { DownOutlined, ExclamationCircleOutlined, ArrowLeftOutlined } from "@ant-design/icons"
 import './Home.scss';
-
 const Home = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -40,29 +40,33 @@ const Home = () => {
         <div className="Home-center-Forms">
           <div className="Home-center-Forms-details">
             <Row>
-              <Col span={7}>
+              <Col span={7} className="big-col">
                 <Dropdown overlay={FormMenu} trigger={['click']}>
                   <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                    Click me <DownOutlined />
+                    <span> <h5 style={{ color: "red" }}>اصلی</h5><span style={{ color: "red" }}> <ExclamationCircleOutlined /></span></span>
+                    <p style={{ color: "gray" }}>کارخانه/ انبار</p>
                   </a>
                 </Dropdown>
               </Col>
-              <span>|</span>
-              <Col span={7}>
+              <Divider type="vertical" style={{ margin: "1.4% 0", height: "4vh" }} />
+              <Col span={7} className="big-col">
                 <Dropdown overlay={FormMenu} trigger={['click']}>
                   <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                    Click me <DownOutlined />
-                  </a>
+                    <span> <h5>مقصد</h5></span>
+                    <p style={{ color: "gray" }}>به کجا حمل می کنید؟</p></a>
                 </Dropdown></Col>
-              <span>|</span>
-              <Col span={7}>
+              <Divider type="vertical" style={{ margin: "1.4% 0", height: "4vh" }} />
+              <Col span={7} className="big-col">
                 <Dropdown overlay={FormMenu} trigger={['click']}>
                   <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                    Click me <DownOutlined />
+                    <span> <h5>بار</h5></span>
+                    <p style={{ color: "gray" }}>چه چیزی ارسال می کنید؟</p>
                   </a>
                 </Dropdown></Col>
-              <span>|</span>
-              <Col span={3}></Col>
+              <Divider type="vertical" style={{ margin: "1.4% 0", height: "4vh" }} />
+              <Col span={3}>
+                <ArrowLeftOutlined/>
+              </Col>
 
             </Row>
           </div>
