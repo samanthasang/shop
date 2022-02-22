@@ -1,24 +1,27 @@
 import React, { useState } from 'react';
 import ModalForm from './components/ModalForm';
 import MyForm from './components/MyForm';
+import OriginForm from "./components/OriginForm";
+import DestinationFrom from "./components/DestinationFrom";
+import LoadForm from "./components/LoadForm";
+import GoodsForm from "./components/GoodsForm";
 import { Menu, Dropdown, Row, Col, Button, Divider } from 'antd';
-import Icon from "@ant-design/icons"
-import { DownOutlined, ExclamationCircleOutlined, ArrowLeftOutlined } from "@ant-design/icons"
+import {  ExclamationCircleOutlined, ArrowLeftOutlined } from "@ant-design/icons"
 import './Home.scss';
 const Home = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
-  const FormMenu = (
-    <Menu>
-      <Menu.Item key="0">
-        <a href="https://www.antgroup.com">1st menu item</a>
-      </Menu.Item>
-      <Menu.Item key="1">
-        <a href="https://www.aliyun.com">2nd menu item</a>
-      </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item key="3">3rd menu item</Menu.Item>
-    </Menu>
+  const originform = (
+    <OriginForm/>
+  );
+  const destinationform = (
+    <DestinationFrom/>
+  );
+  const loadform = (
+    <LoadForm/>
+  );
+  const goodsform = (
+    <GoodsForm/>
   );
   const handleOpenModal = () => {
     setModalVisible(true);
@@ -40,8 +43,8 @@ const Home = () => {
         <div className="Home-center-Forms">
           <div className="Home-center-Forms-details">
             <Row>
-              <Col span={7} className="big-col">
-                <Dropdown overlay={FormMenu} trigger={['click']}>
+              <Col span={5} className="big-col">
+                <Dropdown overlay={originform} trigger={['click']}>
                   <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                     <span> <h5 style={{ color: "red" }}>اصلی</h5><span style={{ color: "red" }}> <ExclamationCircleOutlined /></span></span>
                     <p style={{ color: "gray" }}>کارخانه/ انبار</p>
@@ -49,23 +52,39 @@ const Home = () => {
                 </Dropdown>
               </Col>
               <Divider type="vertical" style={{ margin: "1.4% 0", height: "4vh" }} />
-              <Col span={7} className="big-col">
-                <Dropdown overlay={FormMenu} trigger={['click']}>
+              <Col span={5} className="big-col">
+                <Dropdown overlay={destinationform} trigger={['click']}>
                   <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                     <span> <h5>مقصد</h5></span>
                     <p style={{ color: "gray" }}>به کجا حمل می کنید؟</p></a>
-                </Dropdown></Col>
+                </Dropdown>
+                </Col>
               <Divider type="vertical" style={{ margin: "1.4% 0", height: "4vh" }} />
-              <Col span={7} className="big-col">
-                <Dropdown overlay={FormMenu} trigger={['click']}>
+              <Col span={5} className="big-col">
+                <Dropdown overlay={loadform} trigger={['click']}>
                   <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                     <span> <h5>بار</h5></span>
                     <p style={{ color: "gray" }}>چه چیزی ارسال می کنید؟</p>
                   </a>
-                </Dropdown></Col>
+                </Dropdown>
+                </Col>
               <Divider type="vertical" style={{ margin: "1.4% 0", height: "4vh" }} />
-              <Col span={3}>
-                <ArrowLeftOutlined/>
+                <Col span={5} className="big-col">
+                <Dropdown overlay={goodsform} trigger={['click']}>
+                  <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                    <span> <h5>کالاها و خدمات</h5></span>
+                    <p style={{ color: "gray" }}>از اجناس خود به ما بگویید</p>
+                  </a>
+                </Dropdown>
+                </Col>
+              <Divider type="vertical" style={{ margin: "1.4% 0", height: "4vh" }} />
+              <Col span={2} >
+                <div id="small-col-div">
+                  <a>
+                    <ArrowLeftOutlined  />
+                  </a>
+                </div>
+
               </Col>
 
             </Row>

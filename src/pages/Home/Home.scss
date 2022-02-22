@@ -96,3 +96,20 @@
     display: inline;
   }
 }
+#small-col-div{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.Form_Style{
+  width:900px;
+  height:100px;
+  background-color: white;
+  border: 1px #bdbebd solid;
+  border-radius: 5px 5px 5px 5px;
+  padding:5px 5px;
+}
