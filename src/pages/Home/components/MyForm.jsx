@@ -161,6 +161,8 @@ const MyForm = ({ visible, onCancel }) => {
                   label="Flight Number"
                 >
                   <Input
+                placeholder="asd"
+
                   //   disabled={data}
                   // onChange={onChangeFlightNumber}
                   />

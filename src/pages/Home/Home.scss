@@ -105,11 +105,39 @@
   align-items: center;
 }
 
-.Form_Style{
+.Original_Form_Style{
+  width:900px;
+  height:140px !important;
+  background-color: white;
+  border: 1px #bdbebd solid;
+  border-radius: 5px 5px 5px 5px;
+  padding:5px 10px !important;
+}
+.Destination_Form_Style{
+  width:900px;
+  height:140px !important;
+  background-color: white;
+  border: 1px #bdbebd solid;
+  border-radius: 5px 5px 5px 5px;
+  padding:5px 10px !important;
+}
+.Load_Form_Style{
   width:900px;
   height:100px;
   background-color: white;
   border: 1px #bdbebd solid;
   border-radius: 5px 5px 5px 5px;
   padding:5px 5px;
+}.Goods_Form_Style{
+  width:900px;
+  height:100px;
+  background-color: white;
+  border: 1px #bdbebd solid;
+  border-radius: 5px 5px 5px 5px;
+  padding:5px 5px;
+}
+.option_img{
+  height:24px;
+  width:24px;
+  border-radius:15px 15px 15px 15px;
 }

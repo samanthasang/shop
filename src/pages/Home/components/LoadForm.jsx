@@ -53,7 +53,7 @@ const LoadForm = ({ visible, onCancel }) => {
     return (
         <Form
             // style={{ width: "800px", height: "100px", backgroundColor: "white",border:"1px solid gray" }}
-            className="Form_Style"
+            className="Load_Form_Style"
             id="addFlight"
             onFinish={onFinish}
             // form={form}
