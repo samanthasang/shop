@@ -12,6 +12,7 @@ import {
     Col,
     TimePicker,
     Button,
+    Divider
 } from 'antd';
 import { DatePicker as DatePickerJalali } from 'antd-jalali';
 import fa_IR from 'antd/lib/locale/fa_IR';
@@ -68,9 +69,9 @@ const OriginForm = ({ visible, onCancel }) => {
                     <Row>
                         <Col xs={8}>
                             <Form.Item
-                             name="directionType"
-                            style={{margin:"0 0 0 8px"}}
-                             >
+                                name="directionType"
+                                style={{ margin: "0 0 0 8px" }}
+                            >
                                 <div style={{ marginBottom: "10px" }}><label title="نوع">
                                     نوع
                                 </label></div>
@@ -105,9 +106,9 @@ const OriginForm = ({ visible, onCancel }) => {
                             </Form.Item>
                         </Col>
                         <Col xs={8}>
-                            <Form.Item 
-                            name="directionType"
-                            style={{margin:"0 0 0 8px"}}
+                            <Form.Item
+                                name="directionType"
+                                style={{ margin: "0 0 0 8px" }}
                             >
                                 <div style={{ marginBottom: "10px" }}><label title="کشور">
                                     کشور
@@ -169,6 +170,8 @@ const OriginForm = ({ visible, onCancel }) => {
                             </Form.Item>
                         </Col>
                     </Row>
+                    <Divider />
+                    <Button type="primary" size="middle" disabled>تایید</Button>
                 </div>
 
             </Space>

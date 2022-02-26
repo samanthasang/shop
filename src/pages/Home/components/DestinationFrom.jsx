@@ -12,6 +12,7 @@ import {
     Col,
     TimePicker,
     Button,
+    Divider
 } from 'antd';
 import { DatePicker as DatePickerJalali } from 'antd-jalali';
 import fa_IR from 'antd/lib/locale/fa_IR';
@@ -169,6 +170,8 @@ const DestinationForm = ({ visible, onCancel }) => {
                             </Form.Item>
                         </Col>
                     </Row>
+                    <Divider />
+                    <Button type="primary" size="middle" disabled>تایید</Button>
                 </div>
 
             </Space>
