@@ -14,8 +14,11 @@ import {
     Button,
     Divider,
     Tabs,
-    Radio
+    Radio,
+    Alert,
+    Checkbox
 } from 'antd';
+import {PlusOutlined} from "@ant-design/icons"
 import { DatePicker as DatePickerJalali } from 'antd-jalali';
 import fa_IR from 'antd/lib/locale/fa_IR';
 import dayjs from 'dayjs';
@@ -95,7 +98,7 @@ const LoadForm = ({ visible, onCancel }) => {
                                     <div style={{ width: "70%" }}>
                                         <h5 style={{ margin: "10px 0" }}>انواع دسته بندی</h5>
 
-                                        <Radio.Group defaultValue="a" buttonStyle="solid">
+                                        <Radio.Group defaultValue="a" >
                                             <Radio.Button value="a" style={{ marginLeft: "3px" }}>پالت ها</Radio.Button>
                                             <Radio.Button value="b">جعبه ها/ محفظه ها</Radio.Button>
                                         </Radio.Group>
@@ -131,78 +134,78 @@ const LoadForm = ({ visible, onCancel }) => {
                                         <Option value="2">"60 * "60</Option>
                                     </Select>
                                 </div>
-                                <div style={{ width: "100%",display:"flex",flexDirection:"row" }}>
+                                <div style={{ width: "100%", display: "flex", flexDirection: "row" }}>
                                     <div style={{ width: "70%" }}>
                                         <h5 style={{ margin: "10px 0" }}>ابعاد</h5>
 
                                         <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
-                                                <Input
-                                                    placeholder="L"
-                                                    style={{ width: "20%", marginLeft: "1px" }}
-                                                    type="number"
-                                                
-                                                />
-                                                <Input
-                                                    placeholder="W"
-                                                    style={{ width: "20%", marginLeft: "1px" }}
-                                                    type="number"
-                                                   
-                                                />
-                                                <Input
-                                                    placeholder="H"
+                                            <Input
+                                                placeholder="L"
+                                                style={{ width: "20%", marginLeft: "1px" }}
+                                                type="number"
 
-                                                    style={{ width: "20%", marginLeft: "1px" }}
-                                                    type="number"
-                                                  
-                                                />
-                                                <Select
-                                                    style={{ width: "25%" }}
-                                                    defaultValue="EUR"
-                                                    rules={[
-                                                        {
-                                                            required: true,
-                                                            message: 'directionType is required',
-                                                        },
-                                                    ]}
-                                                    optionFilterProp="children"
-                                                    filterOption={(input, option) =>
-                                                        option.children
-                                                            .toLowerCase()
-                                                            .indexOf(input.toLowerCase()) >= 0
-                                                    }
-                                                >
-                                                    <Option value="CM">CM</Option>
-                                                    <Option value="IN">IN</Option>
-                                                </Select>
+                                            />
+                                            <Input
+                                                placeholder="W"
+                                                style={{ width: "20%", marginLeft: "1px" }}
+                                                type="number"
+
+                                            />
+                                            <Input
+                                                placeholder="H"
+
+                                                style={{ width: "20%", marginLeft: "1px" }}
+                                                type="number"
+
+                                            />
+                                            <Select
+                                                style={{ width: "25%" }}
+                                                defaultValue="EUR"
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'directionType is required',
+                                                    },
+                                                ]}
+                                                optionFilterProp="children"
+                                                filterOption={(input, option) =>
+                                                    option.children
+                                                        .toLowerCase()
+                                                        .indexOf(input.toLowerCase()) >= 0
+                                                }
+                                            >
+                                                <Option value="CM">CM</Option>
+                                                <Option value="IN">IN</Option>
+                                            </Select>
                                         </div>
                                     </div>
-                                    <div style={{width:"30%"}}>
-                                    <h5 style={{ margin: "10px 0" }}>وزن</h5>
-                                    <Input
+                                    <div style={{ width: "30%" }}>
+                                        <h5 style={{ margin: "10px 0" }}>وزن</h5>
+                                        <Input
 
-                                    style={{ width: "40%", marginLeft: "1px" }}
-                                    type="number"
-                                
-                                />
-                                <Select
-                                    style={{ width: "45%" }}
-                                    defaultValue="KG"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'directionType is required',
-                                        },
-                                    ]}
-                                    optionFilterProp="children"
-                                    filterOption={(input, option) =>
-                                        option.children
-                                            .toLowerCase()
-                                            .indexOf(input.toLowerCase()) >= 0
-                                    }
-                                >
-                                    <Option value="KG">KG</Option>
-                                    <Option value="LB">LB</Option>
-                                </Select>
+                                            style={{ width: "40%", marginLeft: "1px" }}
+                                            type="number"
+
+                                        />
+                                        <Select
+                                            style={{ width: "45%" }}
+                                            defaultValue="KG"
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message: 'directionType is required',
+                                                },
+                                            ]}
+                                            optionFilterProp="children"
+                                            filterOption={(input, option) =>
+                                                option.children
+                                                    .toLowerCase()
+                                                    .indexOf(input.toLowerCase()) >= 0
+                                            }
+                                        >
+                                            <Option value="KG">KG</Option>
+                                            <Option value="LB">LB</Option>
+                                        </Select>
                                     </div>
                                 </div>
                                 <Divider />
@@ -218,8 +221,43 @@ const LoadForm = ({ visible, onCancel }) => {
                                 }
                                 key="2"
                             >
+                                <div style={{ width: "100%", display: "flex", justifyContent: "center", alignContent: "center", alignItems: "center", marginBottom: "7px" }}>
+                                    <Alert
+                                        className="container_alert_icon"
+                                        description="کانتینرها را می توان به یا از یک آدرس تجاری ارسال کرد فقط در صورتی که اسکله بارگیری وجود داشته باشد."
+                                        type="info"
+                                        showIcon
+                                    />
+                                </div>
+                                <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
+                                    <div style={{ width: "40%" }}>
+                                        <h5 style={{ margin: "10px 0" }}># از واحد</h5>
+
+                                        <Input
+                                            style={{ width: "95%" }}
+                                            defaultValue="1"
+                                            type="number"
+                                        />
+                                    </div>
+                                    <div style={{ width: "60%" }}>
+                                        <h5 style={{ margin: "10px 0" }}>نوع کانتینر</h5>
+
+                                        <Radio.Group defaultValue="a" style={{ width: "100%" }}>
+                                            <Radio.Button value="a">'20</Radio.Button>
+                                            <Radio.Button value="b">'40</Radio.Button>
+                                            <Radio.Button value="c">40' HC</Radio.Button>
+                                            <Radio.Button value="d">45' HC</Radio.Button>
+                                        </Radio.Group>
+                                    </div>
 
 
+
+                                </div>
+                                <Checkbox style={{ marginTop: "10px" }}>اضافه وزن</Checkbox>
+
+                                <Divider />
+                                <Button type="primary" size="middle" style={{marginLeft:"4px"}} >تایید</Button>
+                                <Button icon={<PlusOutlined />}><span style={{marginRight:"5px"}}>یک بار دیگر اضافه کنید </span></Button>
                             </TabPane>
                             <Col xs={8}></Col>
                         </Tabs>
@@ -232,3 +270,90 @@ const LoadForm = ({ visible, onCancel }) => {
     )
 }
 export default LoadForm;
+
+//radio button in بار آزاد قسمت دومش
+
+// <div style={{ width: "100%", display: "flex", justifyContent: "center", alignContent: "center", alignItems: "center", marginBottom: "7px" }}>
+// <Alert
+//     className="container_alert_icon"
+//     description="
+// محاسبه بر اساس کل محموله دقت کمتری دارد و بنابراین احتمال بیشتری دارد که برای ابعاد نادرست یا بزرگ‌تر هزینه اضافی متحمل شود.
+// "
+//     type="info"
+//     showIcon
+// />
+// </div>
+// <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
+// <div style={{ width: "33%" }}>
+//     <h5 style={{ margin: "10px 0" }}># از واحد</h5>
+
+//     <Input
+//     style={{width:"95%"}}
+//         defaultValue="1"
+//         type="number"
+//     />
+// </div>
+
+// <div style={{ width: "33%" }}>
+//     <h5 style={{ margin: "10px 0" }}>کل حجم</h5>
+//     <Input
+//         placeholder="0"
+//         style={{ width: "48%", marginLeft: "1px" }}
+//         type="number"
+
+//     />
+//     <Select
+//         style={{ width: "46%" }}
+//         defaultValue="CBM"
+//         rules={[
+//             {
+//                 required: true,
+//                 message: 'directionType is required',
+//             },
+//         ]}
+//         optionFilterProp="children"
+//         filterOption={(input, option) =>
+//             option.children
+//                 .toLowerCase()
+//                 .indexOf(input.toLowerCase()) >= 0
+//         }
+//     >
+//         <Option value="CNM">CBM</Option>
+//         <Option value="CFT">CFT</Option>
+//     </Select>
+// </div>
+
+// <div style={{ width: "33%" }}>
+//     <h5 style={{ margin: "10px 0" }}>کل وزن</h5>
+//     <Input
+//         placeholder="0"
+
+//         style={{ width: "50%", marginLeft: "1px" }}
+//         type="number"
+
+//     />
+//     <Select
+//         style={{ width: "40%" }}
+//         defaultValue="KG"
+//         rules={[
+//             {
+//                 required: true,
+//                 message: 'directionType is required',
+//             },
+//         ]}
+//         optionFilterProp="children"
+//         filterOption={(input, option) =>
+//             option.children
+//                 .toLowerCase()
+//                 .indexOf(input.toLowerCase()) >= 0
+//         }
+//     >
+//         <Option value="KG">KG</Option>
+//         <Option value="LB">LB</Option>
+//     </Select>
+// </div>
+
+// </div>
+// <Divider />
+// <Button type="primary" size="middle" disabled>تایید</Button>
+
