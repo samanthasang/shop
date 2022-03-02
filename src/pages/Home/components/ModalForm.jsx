@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
   Form,
   Input,
@@ -13,15 +13,18 @@ import {
   TimePicker,
   Button,
 } from 'antd';
-import {DatePicker as DatePickerJalali} from 'antd-jalali';
+import { DatePicker as DatePickerJalali } from 'antd-jalali';
 import fa_IR from 'antd/lib/locale/fa_IR';
 import dayjs from 'dayjs';
 
 dayjs.calendar('jalali');
-const ModalForm = ({visible, onCancel}) => {
+
+const ModalForm = ({ visible, onCancel }) => {
+
+
   const [form] = Form.useForm();
-  const {Title} = Typography;
-  const {Option} = Select;
+  const { Title } = Typography;
+  const { Option } = Select;
 
   useEffect(() => {
     if (!visible) {
@@ -43,6 +46,8 @@ const ModalForm = ({visible, onCancel}) => {
     // values is data in form
     alert('Submit');
   };
+
+
   return (
     <Modal
       visible={visible}
@@ -53,10 +58,10 @@ const ModalForm = ({visible, onCancel}) => {
       cancelText={'Cancellllll'}
       okText={'OKKkk'}
       confirmLoading={false}
-      style={{top: 5}}
+      style={{ top: 5 }}
       centered
       width={'95%'}
-      cancelButtonProps={{type: 'danger'}}
+      cancelButtonProps={{ type: 'danger' }}
       footer={[
         <Button key="cancel" type="primary" danger>
           Cancel
@@ -81,16 +86,16 @@ const ModalForm = ({visible, onCancel}) => {
         colon={false}
         onFieldsChange={handleWatchForm}
       >
-        <Space direction="vertical" size="small" style={{width: '100%'}}>
+        <Space direction="vertical" size="small" style={{ width: '100%' }}>
           <Row>
-            <Col style={{border: '1px solid black'}} xs={4}>
+            <Col style={{ border: '1px solid black' }} xs={4}>
               <Title level={5} className="center-label">
                 Flight key:
               </Title>
             </Col>
-            <Col style={{paddingLeft: '1rem'}} xs={20}>
-              <div style={{border: '1px solid black', padding: '5px'}}>
-                <Space style={{width: '100%'}}>
+            <Col style={{ paddingLeft: '1rem' }} xs={20}>
+              <div style={{ border: '1px solid black', padding: '5px' }}>
+                <Space style={{ width: '100%' }}>
                   <Form.Item name="directionType" label="A/D">
                     <Select
                       //   disabled={data}
@@ -158,13 +163,13 @@ const ModalForm = ({visible, onCancel}) => {
                       },
                     ]}
                     name="stm"
-                    style={{width: '100px'}}
+                    style={{ width: '100px' }}
                   >
                     <TimePicker
                       minuteStep={5}
                       //   disabled={data ? stmActive : false}
                       placeholder="STM"
-                      style={{width: '100px'}}
+                      style={{ width: '100px' }}
                       format="HH:mm"
                     />
                   </Form.Item>
@@ -188,7 +193,7 @@ const ModalForm = ({visible, onCancel}) => {
                     />
                   </Form.Item>
                   <Form.Item name="id" label="ID">
-                    <Input style={{width: '100px'}} />
+                    <Input style={{ width: '100px' }} />
                   </Form.Item>{' '}
                   <Form.Item name="countersOn" valuePropName="checked">
                     <Switch />
