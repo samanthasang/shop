@@ -1,29 +1,14 @@
-import React, {useState} from 'react';
-import ModalForm from './components/ModalForm';
-import MyForm from './components/MyForm';
+import React from 'react';
+// import ModalForm from './components/ModalForm';
+// import MyForm from './components/MyForm';
 import OriginForm from './components/OriginForm';
-import DestinationFrom from './components/DestinationFrom';
+// import DestinationFrom from './components/DestinationFrom';
 import LoadForm from './components/LoadForm';
 import GoodsForm from './components/GoodsForm';
-import {Menu, Dropdown, Row, Col, Button, Divider} from 'antd';
+import {Row, Col, Button, Divider, Popover} from 'antd';
 import {ExclamationCircleOutlined, ArrowLeftOutlined} from '@ant-design/icons';
 import './Home.scss';
 const Home = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const originform = (
-    <OriginForm />
-    // <MyForm/>
-  );
-  const destinationform = <DestinationFrom />;
-  const loadform = <LoadForm />;
-  const goodsform = <GoodsForm />;
-  const handleOpenModal = () => {
-    setModalVisible(true);
-  };
-  const onCancelModal = () => {
-    setModalVisible(false);
-  };
   return (
     <section>
       <div className="Home">
@@ -37,88 +22,76 @@ const Home = () => {
         <div className="Home-center">
           <div className="Home-center-Forms">
             <div className="Home-center-Forms-details">
-              <Row>
-                <Col span={5} className="big-col">
-                  <Dropdown overlay={originform} trigger={['click']}>
-                    <a
-                      className="ant-dropdown-link Category__CategoryWrapper"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <span>
-                        {' '}
+              <Row className="centerMenu">
+                <Col span={5}>
+                  <Popover
+                    content={<OriginForm origin={true} />}
+                    placement="bottomRight"
+                    trigger={'click'}
+                  >
+                    <div className="centerMenu_origin">
+                      <div className="centerMenu_origin_top">
                         <h5 style={{color: 'red'}}>اصلی</h5>
-                        <span style={{color: 'red'}}>
-                          {' '}
-                          <ExclamationCircleOutlined />
-                        </span>
-                      </span>
+                        <ExclamationCircleOutlined />
+                      </div>
+                      <span style={{color: 'red'}}></span>
                       <p style={{color: 'gray'}}>کارخانه/ انبار</p>
-                    </a>
-                  </Dropdown>
+                    </div>
+                  </Popover>
                 </Col>
-                <Divider
-                  type="vertical"
-                  style={{margin: '1.4% 0', height: '4vh'}}
-                />
-                <Col span={5} className="big-col">
-                  <Dropdown overlay={destinationform} trigger={['click']}>
-                    <a
-                      className="ant-dropdown-link Category__CategoryWrapper"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <span>
-                        {' '}
+                <Divider type="vertical" />
+                <Col span={5}>
+                  <Popover
+                    content={<OriginForm origin={false} />}
+                    placement="bottomRight"
+                    trigger={'click'}
+                  >
+                    <div className="centerMenu_origin">
+                      <div className="centerMenu_origin_top">
                         <h5>مقصد</h5>
-                      </span>
+                      </div>
+                      <span style={{color: 'red'}}></span>
                       <p style={{color: 'gray'}}>به کجا حمل می کنید؟</p>
-                    </a>
-                  </Dropdown>
+                    </div>
+                  </Popover>
                 </Col>
-                <Divider
-                  type="vertical"
-                  style={{margin: '1.4% 0', height: '4vh'}}
-                />
-                <Col span={5} className="big-col">
-                  <Dropdown overlay={loadform} trigger={['click']}>
-                    <a
-                      className="ant-dropdown-link Category__CategoryWrapper"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <span>
-                        {' '}
+                <Divider type="vertical" />
+                <Col span={5}>
+                  <Popover
+                    content={<LoadForm />}
+                    placement="bottomRight"
+                    trigger={'click'}
+                  >
+                    <div className="centerMenu_origin">
+                      <div className="centerMenu_origin_top">
                         <h5>بار</h5>
-                      </span>
+                      </div>
+                      <span style={{color: 'red'}}></span>
                       <p style={{color: 'gray'}}>چه چیزی ارسال می کنید؟</p>
-                    </a>
-                  </Dropdown>
+                    </div>
+                  </Popover>
                 </Col>
-                <Divider
-                  type="vertical"
-                  style={{margin: '1.4% 0', height: '4vh'}}
-                />
-                <Col span={5} className="big-col">
-                  <Dropdown overlay={goodsform} trigger={['click']}>
-                    <a
-                      className="ant-dropdown-link Category__CategoryWrapper"
-                      onClick={e => e.preventDefault()}
-                    >
-                      <span>
-                        {' '}
+
+                <Divider type="vertical" />
+                <Col span={5}>
+                  <Popover
+                    content={<GoodsForm />}
+                    placement="bottomLeft"
+                    trigger={'click'}
+                  >
+                    <div className="centerMenu_origin">
+                      <div className="centerMenu_origin_top">
                         <h5>کالاها و خدمات</h5>
-                      </span>
+                      </div>
+                      <span style={{color: 'red'}}></span>
                       <p style={{color: 'gray'}}>از اجناس خود به ما بگویید</p>
-                    </a>
-                  </Dropdown>
+                    </div>
+                  </Popover>
                 </Col>
-                <Divider
-                  type="vertical"
-                  style={{margin: '1.4% 0', height: '4vh'}}
-                />
+                <Divider type="vertical" />
                 <Col span={2}>
                   <div id="small-col-div">
-                    <a>
-                      <ArrowLeftOutlined />
-                    </a>
+                    <ArrowLeftOutlined />
                   </div>
                 </Col>
               </Row>
@@ -135,6 +108,7 @@ const Home = () => {
                     <img
                       src="https://www.freightos.com/wp-content/uploads/2021/03/11-03.png"
                       className="Home-center-descriptions-imagesPart-Box-img-ThisImg"
+                      alt=""
                     />
                   </div>
                   <div className="Home-center-descriptions-imagesPart-Box-text">
@@ -156,6 +130,7 @@ const Home = () => {
                     <img
                       src="https://www.freightos.com/wp-content/uploads/2021/03/11-02.png"
                       className="Home-center-descriptions-imagesPart-Box-img-ThisImg"
+                      alt=""
                     />
                   </div>
                   <div className="Home-center-descriptions-imagesPart-Box-text">
@@ -177,6 +152,7 @@ const Home = () => {
                     <img
                       src="https://www.freightos.com/wp-content/uploads/2021/03/11-01.png"
                       className="Home-center-descriptions-imagesPart-Box-img-ThisImg"
+                      alt=""
                     />
                   </div>
                   <div className="Home-center-descriptions-imagesPart-Box-text">

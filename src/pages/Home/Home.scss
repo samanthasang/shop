@@ -41,7 +41,6 @@
         height: 80%;
         flex-direction: row;
       }
-
     }
 
     &-descriptions {
@@ -69,12 +68,10 @@
             width: 100%;
             padding: 3%;
 
-
             &-ThisImg {
-              max-height: 100%;
               max-width: 80%;
+              max-height: 150px;
             }
-
           }
 
           &-text {
@@ -82,21 +79,43 @@
             width: 100%;
           }
         }
-
       }
     }
   }
 }
-.big-col{
-  margin: 0.5% 1% 0.5% 0 ;
-  h5{
-    display: inline;
-  }
-  span{
-    display: inline;
+.centerMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 59px;
+  &_origin {
+    height: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    cursor: pointer;
+    &_top {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      span {
+        margin-right: 5px;
+      }
+      h5 {
+        margin: 0 5px 0 0;
+      }
+    }
+    p {
+      margin: 0 11px;
+    }
   }
 }
-#small-col-div{
+.ant-divider-vertical {
+  background: rgb(198, 199, 199);
+  height: 40% !important;
+}
+#small-col-div {
   height: 100%;
   width: 100%;
   display: flex;
@@ -105,58 +124,102 @@
   align-items: center;
 }
 
-.Original_Form_Style{
-  width:900px;
-  height:230px !important;
+.originalForm {
+  width: 550px;
+  height: 200px !important;
   background-color: white;
   border: 1px #bdbebd solid;
   border-radius: 5px 5px 5px 5px;
-  padding:5px 10px !important;
+  padding: 5px 10px !important;
+  position: relative;
+  &-title {
+    text-align: right;
+  }
+  &-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 60px;
+    label {
+      margin-right: 7px;
+    }
+    input {
+      height: 32px;
+      font-size: 14px;
+      &::placeholder {
+        font-size: 10px;
+      }
+    }
+  }
+  &-divider {
+    margin: 0 !important;
+    position: absolute;
+    bottom: 43px;
+    left: 0;
+    right: auto;
+    background: rgb(198, 199, 199);
+  }
+  &-submit {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+  }
 }
-.Destination_Form_Style{
-  width:900px;
-  height:230px !important;
+// .Destination_Form_Style {
+//   width: 550px;
+//   height: 230px !important;
+//   background-color: white;
+//   border: 1px #bdbebd solid;
+//   border-radius: 5px 5px 5px 5px;
+//   padding: 5px 10px !important;
+// }
+.LoadForm {
+  width: 550px;
+  height: 280px;
   background-color: white;
   border: 1px #bdbebd solid;
   border-radius: 5px 5px 5px 5px;
-  padding:5px 10px !important;
+  padding: 5px 10px !important;
+  overflow: auto;
+  h3 {
+    text-align: right;
+  }
 }
-.Load_Form_Style{
-  width:500px;
-  height:400px;
+.goodsForm {
+  width: 500px;
+  height: 280px;
   background-color: white;
   border: 1px #bdbebd solid;
   border-radius: 5px 5px 5px 5px;
-  padding:5px 10px !important;
-  overflow:auto
-}.Goods_Form_Style{
-  width:310px;
-  height:370px;
-  background-color: white;
-  border: 1px #bdbebd solid;
-  border-radius: 5px 5px 5px 5px;
-  padding:5px 10px !important;
+  padding: 5px 10px !important;
+  position: relative;
+  &-submit {
+    position: absolute;
+    left: 10px;
+    bottom: 7px;
+  }
 }
-.option_img{
-  height:24px;
-  width:24px;
-  border-radius:15px 15px 15px 15px;
+.option_img {
+  height: 24px;
+  width: 24px;
+  border-radius: 15px 15px 15px 15px;
 }
-.tab_img{
-  height:24px;
-  width:24px;
-  border-radius:15px 15px 15px 15px;
+.tab_img {
+  height: 24px;
+  width: 24px;
+  border-radius: 15px 15px 15px 15px;
   margin-left: 2px;
 }
-.container_alert_icon{
+.container_alert_icon {
   width: 95%;
   background-color: white !important;
-  border-color: #3a64d8  !important;
+  border-color: #3a64d8 !important;
   border-width: 0 5px 0 0 !important;
-  box-shadow: -4px 2px 10px 1px rgba(0, 0, 0,0.1) !important;
+  box-shadow: -4px 2px 10px 1px rgba(0, 0, 0, 0.1) !important;
   border-radius: 8px 8px 8px 8px;
 }
-.ant-alert-description{
+.ant-alert-description {
   margin-right: 3px;
   width: 100%;
 }
