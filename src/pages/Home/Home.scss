@@ -1,5 +1,8 @@
 // for styles
-
+* {
+  direction: rtl !important;
+  text-align: right;
+}
 .Home {
   height: 100%;
   display: flex;
@@ -128,13 +131,10 @@
   width: 550px;
   height: 200px !important;
   background-color: white;
-  border: 1px #bdbebd solid;
+  // border: 1px #bdbebd solid;
   border-radius: 5px 5px 5px 5px;
   padding: 5px 10px !important;
   position: relative;
-  &-title {
-    text-align: right;
-  }
   &-item {
     display: flex;
     flex-direction: column;
@@ -178,19 +178,109 @@
   width: 550px;
   height: 280px;
   background-color: white;
-  border: 1px #bdbebd solid;
+  // border: 1px #bdbebd solid;
   border-radius: 5px 5px 5px 5px;
   padding: 5px 10px !important;
   overflow: auto;
-  h3 {
-    text-align: right;
+  padding-bottom: 80px !important;
+  // position: relative;
+  &-header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: -5px;
+    background: #fdfdfd;
+    z-index: 9999;
+  }
+  &-content {
+    .ant-tabs-tab {
+      margin-right: 12px !important;
+    }
+    .ant-radio-group {
+      float: right;
+    }
+    &-tabFreeBar {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      margin-bottom: 7px;
+      &-type {
+        &-title {
+          float: right;
+          margin-bottom: 10px;
+        }
+      }
+      &-units {
+        .ant-radio-group {
+          float: right !important;
+        }
+        &-title {
+          float: right;
+          margin-bottom: 10px;
+        }
+      }
+    }
+    &-polletsUnits {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &-pollets {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-grow: 1;
+        .ant-radio-button-wrapper {
+          padding: 0 2rem;
+        }
+        &-type {
+          margin-top: 1rem;
+          flex-direction: column;
+          // &-title {
+          //   float: right;
+          //   margin-bottom: 10px;
+          // }
+        }
+      }
+      &-units {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        .ant-form-item {
+          margin: 0;
+        }
+      }
+    }
+  }
+  &-divider {
+    bottom: 40px;
+  }
+  &-submit {
+    width: 94.5%;
+    height: 40px;
+    position: absolute;
+    direction: rtl;
+    background: #fdfdfd;
+    bottom: 10px;
+    right: 0;
+    z-index: 99;
+    flex-direction: row-reverse !important;
+    &-buttons {
+      margin: 0.5rem;
+    }
+  }
+
+  .titleOfInputs {
+    float: right;
+    margin-bottom: 10px;
   }
 }
 .goodsForm {
   width: 500px;
   height: 280px;
   background-color: white;
-  border: 1px #bdbebd solid;
+  // border: 1px #bdbebd solid;
   border-radius: 5px 5px 5px 5px;
   padding: 5px 10px !important;
   position: relative;
@@ -211,8 +301,10 @@
   border-radius: 15px 15px 15px 15px;
   margin-left: 2px;
 }
+.ant-alert-description {
+  text-align: justify;
+}
 .container_alert_icon {
-  width: 95%;
   background-color: white !important;
   border-color: #3a64d8 !important;
   border-width: 0 5px 0 0 !important;

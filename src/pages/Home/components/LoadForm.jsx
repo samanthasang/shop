@@ -4,7 +4,7 @@ import {
   Input,
   Row,
   Select,
-  Space,
+  // Space,
   Col,
   Button,
   Divider,
@@ -12,360 +12,348 @@ import {
   Radio,
   Alert,
   Checkbox,
+  Typography,
 } from 'antd';
 import {PlusOutlined} from '@ant-design/icons';
 import '../Home.scss';
 
-const LoadForm = ({visible}) => {
+const Loader = ({visible}) => {
   //   const [form] = Form.useForm();
   const {Option} = Select;
+  const {Title, Text} = Typography;
 
   const {TabPane} = Tabs;
-  const [RadioButtonvalue, setRadioButton] = useState(1);
-  const RadioButtonOnChange = e => {
+  const [RadioButtonvalue, setRadioButton] = useState(0);
+
+  const handleChangeFromRadio = e => {
+    console.log(e);
     setRadioButton(e.target.value);
   };
 
-  //   useEffect(() => {
-  //     if (!visible) {
-  //       form.resetFields();
-  //     }
-  //     if ((visible, form)) {
-  //       form.setFieldsValue({
-  //         // here for object data
-  //       });
-  //     }
-  //   }, [visible]);
-
-  const handleWatchForm = () => {
-    //  final check form data for submit
-    // example for get data=>consr formData =  form.getFieldsValue();
-  };
-  const onFinish = values => {
-    //  send data
-    // values is data in form
-    alert('Submit');
-  };
-
   return (
-    <Form
-      className="LoadForm"
-      onFinish={onFinish}
-      name="addFlight"
-      layout="horizontal"
-      colon={false}
-      onFieldsChange={handleWatchForm}
-    >
-      <Space direction="vertical" size="small" style={{width: '100%'}}>
-        <h3>چه چیزی حمل می کنید؟</h3>
-        <div style={{display: 'flex', flexDirection: 'column'}}>
-          <Row>
-            <Tabs defaultActiveKey="2">
-              <Col xs={8}></Col>
-              <TabPane
-                tab={
-                  <span>
-                    <img
-                      src="https://i.pinimg.com/originals/99/91/a4/9991a4b887eeee54f30b282f222a42a8.png"
-                      className="tab_img"
-                      alt=""
-                    />
-                    بار آزاد
-                  </span>
-                }
-                key="1"
-              >
+    <div className="LoadForm">
+      <Row className="LoadForm-header">
+        <Title level={5}>چه چیزی حمل می کنید؟</Title>
+      </Row>
+      <Row className="LoadForm-content">
+        <Tabs defaultActiveKey="1">
+          <TabPane
+            tab={
+              <>
+                <Text>بار آزاد</Text>
+                <img
+                  src="https://i.pinimg.com/originals/99/91/a4/9991a4b887eeee54f30b282f222a42a8.png"
+                  className="tab_img"
+                  alt=""
+                />
+              </>
+            }
+            key="1"
+          >
+            <Form>
+              <Row>
                 <Radio.Group
-                  onChange={RadioButtonOnChange}
+                  onChange={handleChangeFromRadio}
                   value={RadioButtonvalue}
                 >
-                  <Radio value={1}>محاسبه بر اساس نوع واحد</Radio>
-                  <Radio value={2}>محاسبه بر اساس کل حمل و نقد</Radio>
+                  <Radio value={0}>
+                    <Text> محاسبه بر اساس نوع واحد</Text>
+                  </Radio>
+                  <Radio value={1}>
+                    <Text>محاسبه بر اساس کل حمل و نقد</Text>
+                  </Radio>
                 </Radio.Group>
-                <div
-                  style={{width: '100%', display: 'flex', flexDirection: 'row'}}
-                >
-                  <div style={{width: '70%'}}>
-                    <h5 style={{margin: '10px 0'}}>انواع دسته بندی</h5>
-
-                    <Radio.Group defaultValue="a">
-                      <Radio.Button value="a" style={{marginLeft: '3px'}}>
-                        پالت ها
-                      </Radio.Button>
-                      <Radio.Button value="b">جعبه ها/ محفظه ها</Radio.Button>
-                    </Radio.Group>
-                  </div>
-                  <div style={{width: '30%'}}>
-                    <h5 style={{margin: '10px 0'}}># از واحد</h5>
-
-                    <Input defaultValue="1" type="number" />
-                  </div>
-                </div>
-                <div>
-                  <h5 style={{margin: '10px 0'}}>نوع پالت</h5>
-                  <Select
-                    style={{width: '100%'}}
-                    placeholder="پالت ها (اندازه نامشخص)"
-                    rules={[
-                      {
-                        required: true,
-                        message: 'directionType is required',
-                      },
-                    ]}
-                    optionFilterProp="children"
-                    filterOption={(input, option) =>
-                      option.children
-                        .toLowerCase()
-                        .indexOf(input.toLowerCase()) >= 0
-                    }
-                  >
-                    <Option value="1">"40 * "40</Option>
-                    <Option value="2">"60 * "60</Option>
-                  </Select>
-                </div>
-                <div
-                  style={{width: '100%', display: 'flex', flexDirection: 'row'}}
-                >
-                  <div style={{width: '70%'}}>
-                    <h5 style={{margin: '10px 0'}}>ابعاد</h5>
-
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        width: '100%',
-                      }}
-                    >
-                      <Input
-                        placeholder="L"
-                        style={{width: '20%', marginLeft: '1px'}}
-                        type="number"
-                      />
-                      <Input
-                        placeholder="W"
-                        style={{width: '20%', marginLeft: '1px'}}
-                        type="number"
-                      />
-                      <Input
-                        placeholder="H"
-                        style={{width: '20%', marginLeft: '1px'}}
-                        type="number"
-                      />
-                      <Select
-                        style={{width: '25%'}}
-                        defaultValue="EUR"
-                        rules={[
-                          {
-                            required: true,
-                            message: 'directionType is required',
-                          },
-                        ]}
-                        optionFilterProp="children"
-                        filterOption={(input, option) =>
-                          option.children
-                            .toLowerCase()
-                            .indexOf(input.toLowerCase()) >= 0
-                        }
+              </Row>
+              {RadioButtonvalue ? (
+                <Row justify="center">
+                  <Col span={22}>
+                    <Alert
+                      style={{marginTop: '10px '}}
+                      className="container_alert_icon"
+                      description="محاسبه بر اساس کل محموله دقت کمتری دارد و بنابراین احتمال بیشتری دارد که برای ابعاد نادرست یا بزرگ‌تر هزینه اضافی متحمل شود."
+                      type="info"
+                      showIcon
+                    />
+                    <Row justify="space-between" style={{marginTop: '1rem'}}>
+                      <Col
+                        span={7}
+                        className="LoadForm-content-polletsUnits-units"
                       >
-                        <Option value="CM">CM</Option>
-                        <Option value="IN">IN</Option>
-                      </Select>
-                    </div>
-                  </div>
-                  <div style={{width: '30%'}}>
-                    <h5 style={{margin: '10px 0'}}>وزن</h5>
-                    <Input
-                      style={{width: '40%', marginLeft: '1px'}}
-                      type="number"
-                    />
-                    <Select
-                      style={{width: '45%'}}
-                      defaultValue="KG"
-                      rules={[
-                        {
-                          required: true,
-                          message: 'directionType is required',
-                        },
-                      ]}
-                      optionFilterProp="children"
-                      filterOption={(input, option) =>
-                        option.children
-                          .toLowerCase()
-                          .indexOf(input.toLowerCase()) >= 0
-                      }
-                    >
-                      <Option value="KG">KG</Option>
-                      <Option value="LB">LB</Option>
-                    </Select>
-                  </div>
-                </div>
-                <Divider />
-                <Button type="primary" size="middle" disabled>
-                  تایید
-                </Button>
-              </TabPane>
-              <Col xs={8}></Col>
-              <TabPane
-                tab={
-                  <span>
-                    <img
-                      src="https://static.thenounproject.com/png/1675892-200.png"
-                      className="tab_img"
-                      alt=""
-                    />
-                    کانتینرها
-                  </span>
-                }
-                key="2"
-              >
-                <div
-                  style={{
-                    width: '100%',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignContent: 'center',
-                    alignItems: 'center',
-                    marginBottom: '7px',
-                  }}
-                >
-                  <Alert
-                    className="container_alert_icon"
-                    description="کانتینرها را می توان به یا از یک آدرس تجاری ارسال کرد فقط در صورتی که اسکله بارگیری وجود داشته باشد."
-                    type="info"
-                    showIcon
-                  />
-                </div>
-                <div
-                  style={{display: 'flex', flexDirection: 'row', width: '100%'}}
-                >
-                  <div style={{width: '40%'}}>
-                    <h5 style={{margin: '10px 0'}}># از واحد</h5>
-
-                    <Input
-                      style={{width: '95%'}}
-                      defaultValue="1"
-                      type="number"
-                    />
-                  </div>
-                  <div style={{width: '60%'}}>
-                    <h5 style={{margin: '10px 0'}}>نوع کانتینر</h5>
-
-                    <Radio.Group defaultValue="a" style={{width: '100%'}}>
-                      <Radio.Button value="a">'20</Radio.Button>
-                      <Radio.Button value="b">'40</Radio.Button>
-                      <Radio.Button value="c">40' HC</Radio.Button>
-                      <Radio.Button value="d">45' HC</Radio.Button>
-                    </Radio.Group>
-                  </div>
-                </div>
-                <Checkbox style={{marginTop: '10px'}}>اضافه وزن</Checkbox>
-
-                <Divider />
-                <Button
-                  type="primary"
-                  size="middle"
-                  style={{marginLeft: '4px'}}
-                >
-                  تایید
-                </Button>
-                <Button icon={<PlusOutlined />}>
-                  <span style={{marginRight: '5px'}}>
-                    یک بار دیگر اضافه کنید{' '}
-                  </span>
-                </Button>
-              </TabPane>
-              <Col xs={8}></Col>
-            </Tabs>
-          </Row>
-        </div>
-      </Space>
-    </Form>
+                        <Row style={{marginBottom: '10px'}}>
+                          <Text># از واحد</Text>
+                        </Row>
+                        <Form.Item name="numberPollets">
+                          <Input defaultValue="1" type="number" />
+                        </Form.Item>
+                      </Col>
+                      <Col span={8}>
+                        <Row>
+                          <Col span={24} style={{marginBottom: '10px'}}>
+                            <Text>حجم کل</Text>
+                          </Col>
+                          <Col span={13}>
+                            <Input type="number" />
+                          </Col>
+                          <Col span={11}>
+                            <Select
+                              defaultValue="CBM"
+                              style={{width: '100%'}}
+                              rules={[
+                                {
+                                  required: true,
+                                  message: 'directionType is required',
+                                },
+                              ]}
+                              optionFilterProp="children"
+                              filterOption={(input, option) =>
+                                option.children
+                                  .toLowerCase()
+                                  .indexOf(input.toLowerCase()) >= 0
+                              }
+                            >
+                              <Option value="CFT">CBM</Option>
+                              <Option value="CFT">CFT</Option>
+                            </Select>
+                          </Col>
+                        </Row>
+                      </Col>
+                      <Col span={8}>
+                        <Row>
+                          <Col span={24} style={{marginBottom: '10px'}}>
+                            <Text>مجموع وزن</Text>
+                          </Col>
+                          <Col span={14}>
+                            <Input type="number" />
+                          </Col>
+                          <Col span={10}>
+                            <Select
+                              defaultValue="KG"
+                              style={{width: '100%'}}
+                              rules={[
+                                {
+                                  required: true,
+                                  message: 'directionType is required',
+                                },
+                              ]}
+                              optionFilterProp="children"
+                              filterOption={(input, option) =>
+                                option.children
+                                  .toLowerCase()
+                                  .indexOf(input.toLowerCase()) >= 0
+                              }
+                            >
+                              <Option value="KG">KG</Option>
+                              <Option value="LB">LB</Option>
+                            </Select>
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              ) : (
+                <>
+                  <Row className="LoadForm-content-polletsUnits">
+                    <Col className="LoadForm-content-polletsUnits-pollets">
+                      <Text style={{margin: '10px 0'}}>انواع دسته بندی</Text>
+                      <Radio.Group defaultValue="a">
+                        <Radio.Button value="a">پالت ها</Radio.Button>
+                        <Radio.Button value="b">جعبه ها/ محفظه ها</Radio.Button>
+                      </Radio.Group>
+                    </Col>
+                    <Col className="LoadForm-content-polletsUnits-units">
+                      <Text style={{margin: '10px 0'}}># از واحد</Text>
+                      <Form.Item name="numberPollets">
+                        <Input defaultValue="1" type="number" />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                  <Row className="LoadForm-content-polletsUnits-pollets-type">
+                    <Col span={24}>
+                      <Text className="titleOfInputs">نوع پالت</Text>
+                    </Col>
+                    <Col span={24}>
+                      <Form.Item
+                        name="numberPollets"
+                        className="LoadForm-content-polletsUnits-pollets-type-item"
+                      >
+                        <Select
+                          style={{width: '100%'}}
+                          placeholder="پالت ها (اندازه نامشخص)"
+                          rules={[
+                            {
+                              required: true,
+                              message: 'directionType is required',
+                            },
+                          ]}
+                          optionFilterProp="children"
+                          filterOption={(input, option) =>
+                            option.children
+                              .toLowerCase()
+                              .indexOf(input.toLowerCase()) >= 0
+                          }
+                        >
+                          <Option value="1">"40 * "40</Option>
+                          <Option value="2">"60 * "60</Option>
+                        </Select>
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                  <Row className="LoadForm-content-weightDimensions">
+                    <Col span={16}>
+                      <Row className="LoadForm-content-weightDimensions-Dimensions">
+                        <Col span={24}>
+                          <Text className="titleOfInputs">ابعاد</Text>
+                        </Col>
+                        <Col span={24}>
+                          <Row>
+                            <Input
+                              placeholder="L"
+                              style={{width: '20%', marginLeft: '1px'}}
+                              type="number"
+                            />
+                            <Input
+                              placeholder="W"
+                              style={{width: '20%', marginLeft: '1px'}}
+                              type="number"
+                            />
+                            <Input
+                              placeholder="H"
+                              style={{width: '20%', marginLeft: '1px'}}
+                              type="number"
+                            />
+                            <Select
+                              style={{width: '25%'}}
+                              defaultValue="EUR"
+                              rules={[
+                                {
+                                  required: true,
+                                  message: 'directionType is required',
+                                },
+                              ]}
+                              optionFilterProp="children"
+                              filterOption={(input, option) =>
+                                option.children
+                                  .toLowerCase()
+                                  .indexOf(input.toLowerCase()) >= 0
+                              }
+                            >
+                              <Option value="CM">CM</Option>
+                              <Option value="IN">IN</Option>
+                            </Select>
+                          </Row>
+                        </Col>
+                      </Row>
+                    </Col>
+                    <Col span={8}>
+                      <Row className="LoadForm-content-weightDimensions-weight">
+                        <Col span={24}>
+                          <Text className="titleOfInputs">وزن</Text>
+                        </Col>
+                        <Row>
+                          <Col span={12}>
+                            <Input type="number" />
+                          </Col>
+                          <Col span={12}>
+                            <Select
+                              defaultValue="KG"
+                              style={{width: '100%'}}
+                              rules={[
+                                {
+                                  required: true,
+                                  message: 'directionType is required',
+                                },
+                              ]}
+                              optionFilterProp="children"
+                              filterOption={(input, option) =>
+                                option.children
+                                  .toLowerCase()
+                                  .indexOf(input.toLowerCase()) >= 0
+                              }
+                            >
+                              <Option value="KG">KG</Option>
+                              <Option value="LB">LB</Option>
+                            </Select>
+                          </Col>
+                        </Row>
+                      </Row>
+                    </Col>
+                  </Row>
+                </>
+              )}
+            </Form>
+          </TabPane>
+          <TabPane
+            tab={
+              <Row className="LoadForm-content-tabTitle">
+                <Text>کانتینرها</Text>
+                <img
+                  src="https://static.thenounproject.com/png/1675892-200.png"
+                  className="tab_img"
+                  alt=""
+                />
+              </Row>
+            }
+            key="2"
+          >
+            <Row className="LoadForm-content-tabFreeBar">
+              <Col span={24}>
+                <Alert
+                  className="container_alert_icon"
+                  description="کانتینرها را می توان به یا از یک آدرس تجاری ارسال کرد فقط در صورتی که اسکله بارگیری وجود داشته باشد."
+                  type="info"
+                  showIcon
+                />
+              </Col>
+            </Row>
+            <Row justify="space-between">
+              <Col span={6}>
+                <Row>
+                  <Col span={24}>
+                    <Text className="LoadForm-content-tabFreeBar-units-title">
+                      # از واحد
+                    </Text>
+                  </Col>
+                  <Col span={24}>
+                    <Form.Item name="numberOfunits" className="">
+                      <Input defaultValue="1" type="number" />
+                    </Form.Item>
+                  </Col>
+                </Row>
+              </Col>
+              <Col span={14}>
+                <Text className="LoadForm-content-tabFreeBar-type-title">
+                  نوع کانتینر
+                </Text>
+                <Radio.Group defaultValue="a" style={{direction: 'rtl'}}>
+                  <Radio.Button value="a">'20</Radio.Button>
+                  <Radio.Button value="b">'40</Radio.Button>
+                  <Radio.Button value="c">40' HC</Radio.Button>
+                  <Radio.Button value="d">45' HC</Radio.Button>
+                </Radio.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Checkbox style={{marginRight: '1.5rem'}}>اضافه وزن</Checkbox>
+            </Row>
+          </TabPane>
+        </Tabs>
+      </Row>
+      <Row className="LoadForm-submit">
+        <Divider
+          className="originalForm-divider LoadForm-divider"
+          orientation="right"
+        />
+        <Row className="LoadForm-submit-buttons">
+          <Button icon={<PlusOutlined />} style={{marginLeft: '1rem'}}>
+            <Text style={{marginRight: '5px'}}>یک بار دیگر اضافه کنید </Text>
+          </Button>
+          <Button type="primary" size="middle">
+            تایید
+          </Button>
+        </Row>
+      </Row>
+    </div>
   );
 };
-export default LoadForm;
-
-//radio button in بار آزاد قسمت دومش
-
-// <div style={{ width: "100%", display: "flex", justifyContent: "center", alignContent: "center", alignItems: "center", marginBottom: "7px" }}>
-// <Alert
-//     className="container_alert_icon"
-//     description="
-// محاسبه بر اساس کل محموله دقت کمتری دارد و بنابراین احتمال بیشتری دارد که برای ابعاد نادرست یا بزرگ‌تر هزینه اضافی متحمل شود.
-// "
-//     type="info"
-//     showIcon
-// />
-// </div>
-// <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
-// <div style={{ width: "33%" }}>
-//     <h5 style={{ margin: "10px 0" }}># از واحد</h5>
-
-//     <Input
-//     style={{width:"95%"}}
-//         defaultValue="1"
-//         type="number"
-//     />
-// </div>
-
-// <div style={{ width: "33%" }}>
-//     <h5 style={{ margin: "10px 0" }}>کل حجم</h5>
-//     <Input
-//         placeholder="0"
-//         style={{ width: "48%", marginLeft: "1px" }}
-//         type="number"
-
-//     />
-//     <Select
-//         style={{ width: "46%" }}
-//         defaultValue="CBM"
-//         rules={[
-//             {
-//                 required: true,
-//                 message: 'directionType is required',
-//             },
-//         ]}
-//         optionFilterProp="children"
-//         filterOption={(input, option) =>
-//             option.children
-//                 .toLowerCase()
-//                 .indexOf(input.toLowerCase()) >= 0
-//         }
-//     >
-//         <Option value="CNM">CBM</Option>
-//         <Option value="CFT">CFT</Option>
-//     </Select>
-// </div>
-
-// <div style={{ width: "33%" }}>
-//     <h5 style={{ margin: "10px 0" }}>کل وزن</h5>
-//     <Input
-//         placeholder="0"
-
-//         style={{ width: "50%", marginLeft: "1px" }}
-//         type="number"
-
-//     />
-//     <Select
-//         style={{ width: "40%" }}
-//         defaultValue="KG"
-//         rules={[
-//             {
-//                 required: true,
-//                 message: 'directionType is required',
-//             },
-//         ]}
-//         optionFilterProp="children"
-//         filterOption={(input, option) =>
-//             option.children
-//                 .toLowerCase()
-//                 .indexOf(input.toLowerCase()) >= 0
-//         }
-//     >
-//         <Option value="KG">KG</Option>
-//         <Option value="LB">LB</Option>
-//     </Select>
-// </div>
-
-// </div>
-// <Divider />
-// <Button type="primary" size="middle" disabled>تایید</Button>
+export default Loader;
