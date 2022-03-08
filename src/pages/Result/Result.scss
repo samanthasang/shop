@@ -1,0 +1,36 @@
+.Result {
+  &-Header {
+    margin-top: 1rem;
+  }
+  &-layout {
+    &-header {
+      &-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+          :first-child {
+            font-size: 14px;
+          }
+          &:last-child {
+            font-size: 10px;
+          }
+        }
+      }
+      &-right {
+        height: 40px;
+        margin: 10px;
+        .firstItem {
+          border-radius: 0 15px 15px 0 !important;
+        }
+        .lastItem {
+          border-radius: 15px 0 0 15px;
+        }
+        &-item {
+          background: blue;
+          height: 40px;
+        }
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@ import Layout from './Layouts/Layout';
 import {Switch, Route, Redirect} from 'react-router-dom';
 // Components
 import Home from './pages/Home/Home';
+import Result from './pages/Result/Result';
 
 // style
 import './App.scss';
@@ -19,11 +20,11 @@ const App = () => (
       <Route exact path="/">
         <Redirect to="/Home" />
       </Route>
-      <Route exact path="/Home">
+      <Route exact path="/home">
         <Home />
       </Route>
-      <Route path="/about">
-        <About />
+      <Route path="/result">
+        <Result />
       </Route>
       <Route path="/dashboard">
         <Dashboard />

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 // import ModalForm from './components/ModalForm';
 // import MyForm from './components/MyForm';
 import OriginForm from './components/OriginForm';
@@ -91,7 +92,9 @@ const Home = () => {
                 <Divider type="vertical" />
                 <Col span={2}>
                   <div id="small-col-div">
-                    <ArrowLeftOutlined />
+                    <Link to="/result">
+                      <ArrowLeftOutlined />
+                    </Link>
                   </div>
                 </Col>
               </Row>
