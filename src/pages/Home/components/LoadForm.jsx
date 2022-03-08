@@ -13,6 +13,7 @@ import {
   Alert,
   Checkbox,
   Typography,
+  Collapse,
 } from 'antd';
 import {PlusOutlined} from '@ant-design/icons';
 import '../Home.scss';
@@ -21,7 +22,7 @@ const Loader = ({visible}) => {
   //   const [form] = Form.useForm();
   const {Option} = Select;
   const {Title, Text} = Typography;
-
+  const {Panel} = Collapse;
   const {TabPane} = Tabs;
   const [RadioButtonvalue, setRadioButton] = useState(0);
 
