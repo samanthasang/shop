@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {
   Row,
   Col,
-  //   Button,
+  Steps,
   Divider,
   Popover,
   Layout,
@@ -14,106 +14,126 @@ import {
   Select,
   Slider,
   Checkbox,
+  Space,
+  Card,
+  Button,
 } from 'antd';
 import OriginForm from '../Home/components/OriginForm';
 import GoodsForm from '../Home/components/GoodsForm';
 import LoadForm from '../Home/components/LoadForm';
 import {ExclamationCircleOutlined, ArrowLeftOutlined} from '@ant-design/icons';
+import ShipIcon from '../../assets/Icons/ShipIcon';
 import '../Home/Home.scss';
 import './Result.scss';
 
 const Result = () => {
   const {Header, Footer, Sider, Content} = Layout;
-  const {Paragraph, Text} = Typography;
+  const {Text} = Typography;
   const {Panel} = Collapse;
   const {Option} = Select;
+  const {Step} = Steps;
   const [priceRange, setPriceRange] = useState([12, 80]);
   const [dateRange, setDateRange] = useState([12, 80]);
+
   return (
     <ConfigProvider direction="rtl">
       <Row>
         <Col span={24}>
-          <Row className="result-Header">
-            <div className="Home-center-Forms">
-              <div className="Home-center-Forms-details">
-                <Row className="centerMenu">
-                  <Col span={5}>
-                    <Popover
-                      content={<OriginForm origin={true} />}
-                      placement="bottomRight"
-                      trigger={'click'}
-                    >
-                      <div className="centerMenu_origin">
-                        <div className="centerMenu_origin_top">
-                          <h5 style={{color: 'red'}}>اصلی</h5>
-                          <ExclamationCircleOutlined />
+          <Space direction="vertical" style={{width: '100%'}}>
+            <Row justify="center" className="">
+              <Col span={14}>
+                <Steps size="small" current={1}>
+                  <Step title="جستجو" />
+                  <Step title="نتیجه" />
+                  <Step title="رزرو" />
+                  <Step title="تایید نهایی" />
+                </Steps>
+              </Col>
+            </Row>
+            <Row className="result-Header">
+              <div className="Home-center-Forms">
+                <div className="Home-center-Forms-details">
+                  <Row className="centerMenu">
+                    <Col span={5}>
+                      <Popover
+                        content={<OriginForm origin={true} />}
+                        placement="bottomRight"
+                        trigger={'click'}
+                      >
+                        <div className="centerMenu_origin">
+                          <div className="centerMenu_origin_top">
+                            <h5 style={{color: 'red'}}>اصلی</h5>
+                            <ExclamationCircleOutlined />
+                          </div>
+                          <span style={{color: 'red'}}></span>
+                          <p style={{color: 'gray'}}>کارخانه/ انبار</p>
                         </div>
-                        <span style={{color: 'red'}}></span>
-                        <p style={{color: 'gray'}}>کارخانه/ انبار</p>
-                      </div>
-                    </Popover>
-                  </Col>
-                  <Divider type="vertical" />
-                  <Col span={5}>
-                    <Popover
-                      content={<OriginForm origin={false} />}
-                      placement="bottomRight"
-                      trigger={'click'}
-                    >
-                      <div className="centerMenu_origin">
-                        <div className="centerMenu_origin_top">
-                          <h5>مقصد</h5>
+                      </Popover>
+                    </Col>
+                    <Divider type="vertical" />
+                    <Col span={5}>
+                      <Popover
+                        content={<OriginForm origin={false} />}
+                        placement="bottomRight"
+                        trigger={'click'}
+                      >
+                        <div className="centerMenu_origin">
+                          <div className="centerMenu_origin_top">
+                            <h5>مقصد</h5>
+                          </div>
+                          <span style={{color: 'red'}}></span>
+                          <p style={{color: 'gray'}}>به کجا حمل می کنید؟</p>
                         </div>
-                        <span style={{color: 'red'}}></span>
-                        <p style={{color: 'gray'}}>به کجا حمل می کنید؟</p>
-                      </div>
-                    </Popover>
-                  </Col>
-                  <Divider type="vertical" />
-                  <Col span={5}>
-                    <Popover
-                      content={<LoadForm />}
-                      placement="bottomRight"
-                      trigger={'click'}
-                    >
-                      <div className="centerMenu_origin">
-                        <div className="centerMenu_origin_top">
-                          <h5>بار</h5>
+                      </Popover>
+                    </Col>
+                    <Divider type="vertical" />
+                    <Col span={5}>
+                      <Popover
+                        content={<LoadForm />}
+                        placement="bottomRight"
+                        trigger={'click'}
+                      >
+                        <div className="centerMenu_origin">
+                          <div className="centerMenu_origin_top">
+                            <h5>بار</h5>
+                          </div>
+                          <span style={{color: 'red'}}></span>
+                          <p style={{color: 'gray'}}>چه چیزی ارسال می کنید؟</p>
                         </div>
-                        <span style={{color: 'red'}}></span>
-                        <p style={{color: 'gray'}}>چه چیزی ارسال می کنید؟</p>
-                      </div>
-                    </Popover>
-                  </Col>
+                      </Popover>
+                    </Col>
 
-                  <Divider type="vertical" />
-                  <Col span={5}>
-                    <Popover
-                      content={<GoodsForm />}
-                      placement="bottomLeft"
-                      trigger={'click'}
-                    >
-                      <div className="centerMenu_origin">
-                        <div className="centerMenu_origin_top">
-                          <h5>کالاها و خدمات</h5>
+                    <Divider type="vertical" />
+                    <Col span={5}>
+                      <Popover
+                        content={<GoodsForm />}
+                        placement="bottomLeft"
+                        trigger={'click'}
+                      >
+                        <div className="centerMenu_origin">
+                          <div className="centerMenu_origin_top">
+                            <h5>کالاها و خدمات</h5>
+                          </div>
+                          <span style={{color: 'red'}}></span>
+                          <p style={{color: 'gray'}}>
+                            از اجناس خود به ما بگویید
+                          </p>
                         </div>
-                        <span style={{color: 'red'}}></span>
-                        <p style={{color: 'gray'}}>از اجناس خود به ما بگویید</p>
+                      </Popover>
+                    </Col>
+                    <Divider type="vertical" />
+                    <Col span={2}>
+                      <div id="small-col-div">
+                        <Link to="/home">
+                          <ArrowLeftOutlined />
+                        </Link>
                       </div>
-                    </Popover>
-                  </Col>
-                  <Divider type="vertical" />
-                  <Col span={2}>
-                    <div id="small-col-div">
-                      <Link to="/home">
-                        <ArrowLeftOutlined />
-                      </Link>
-                    </div>
-                  </Col>
-                </Row>
+                    </Col>
+                  </Row>
+                </div>
               </div>
-            </div>
-          </Row>
+            </Row>
+          </Space>
         </Col>
         <Col span={24}>
           <Layout>
@@ -189,7 +209,7 @@ const Result = () => {
                     <Panel header="تاریخ انقضا" key="2">
                       <Row justify="center">
                         <Text>
-                          {priceRange[0]}-{priceRange[1]}
+                          {dateRange[0]}-{dateRange[1]}
                         </Text>
                         <Col span={24}>
                           <Slider
@@ -260,7 +280,88 @@ const Result = () => {
                   </Collapse>
                 </Row>
               </Sider>
-              <Content>Content</Content>
+              <Content>
+                <Row>
+                  <Collapse
+                    defaultActiveKey={['1']}
+                    className="result-layout-content-item"
+                  >
+                    <Panel
+                      className="result-layout-content-item-panel"
+                      header={
+                        <Card
+                        // title="Default size card"
+                        // extra={<a href="#">More</a>}
+                        >
+                          <Row justify="space-between">
+                            <Col span={18}>
+                              <Row>
+                                <Tooltip title="">
+                                  <span
+                                    // type="primary"
+                                    className="result-layout-content-item-option bestValue"
+                                  >
+                                    بهترین ارزش
+                                  </span>
+                                </Tooltip>
+                                <Tooltip title="ظرفیت محدود به این معنی است که تعداد بیشتری از محموله‌ها لغو می‌شوند. فروشندگان قهرمان FCL ما محموله های بیشتری را در راه خود دریافت می کنند.">
+                                  <span className="result-layout-content-item-option cancellation">
+                                    FCL Hero - لغو کم
+                                  </span>
+                                </Tooltip>
+                                <Tooltip title="این ارائه دهنده تدارکات بر اساس قابلیت اطمینان، پاسخگویی و تحویل به موقع امتیاز بالایی می دهد">
+                                  <span className="result-layout-content-item-option provider">
+                                    ارائه دهنده برتر لجستیک
+                                  </span>
+                                </Tooltip>
+                              </Row>
+                              <Row
+                                justify="start"
+                                className="result-layout-content-item-body"
+                              >
+                                <Col>
+                                  <ShipIcon />
+                                </Col>
+                                <Col>
+                                  <Text>دریا</Text>
+                                </Col>
+                                <Col>
+                                  <Divider type="vertical" />
+                                </Col>
+                                <Col span={7}>
+                                  <Row
+                                    justify="space-between"
+                                    className="result-layout-content-item-body-est"
+                                  >
+                                    <Text>برآورد</Text>
+                                    <Text>22-27 روز</Text>
+                                    <Text>(12-18 روز بندر به بندر)</Text>
+                                  </Row>
+                                </Col>
+                              </Row>
+                            </Col>
+                            <Col
+                              span={5}
+                              className="result-layout-content-item-choose"
+                            >
+                              <Row justify="center">
+                                <Text>40,315 تومان</Text>
+                              </Row>
+                              <Row justify="center">
+                                <Text>40,315 تومان</Text>
+                              </Row>
+                              <Row justify="center">
+                                <Button type="primary">انتخاب</Button>
+                              </Row>
+                            </Col>
+                          </Row>
+                        </Card>
+                      }
+                      key="1"
+                    ></Panel>
+                  </Collapse>
+                </Row>
+              </Content>
             </Layout>
             <Footer>footer</Footer>
           </Layout>

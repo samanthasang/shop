@@ -47,7 +47,7 @@
       }
     }
     &-sidebarFilter {
-      background: #fdfd !important;
+      background: #fdfdfd !important;
       &-title {
         height: 40px;
       }
@@ -67,5 +67,57 @@
         }
       }
     }
+    &-content {
+      &-item {
+        width: 100%;
+        display: flex;
+        &-panel {
+          width: 100%;
+          height: 168px;
+        }
+        &-option {
+          border-radius: 15px;
+          padding: 0 1rem 3px 1rem;
+          cursor: pointer;
+          font-size: 13px;
+          display: flex;
+          align-items: center;
+          box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.1);
+        }
+        .bestValue {
+          color: #715397;
+          background: #decafa;
+        }
+        .cancellation {
+          color: #237957;
+          background: #b8f5bd;
+          margin-right: 0.5rem;
+        }
+        .provider {
+          color: #125c9b;
+          background: #d3f1f7;
+          margin-right: 0.5rem;
+        }
+        &-body {
+          margin-top: 1rem;
+          &-est {
+            font-size: 13px;
+          }
+        }
+        &-choose {
+          height: 100%;
+          padding: 1rem;
+          border-right: 1px solid #70707036;
+        }
+      }
+    }
   }
+  &-divider {
+    width: 2px;
+    z-index: 9999;
+    background: red;
+  }
+}
+.ant-card {
+  width: 100%;
 }
