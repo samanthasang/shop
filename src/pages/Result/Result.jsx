@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Row,
   Col,
@@ -21,17 +21,17 @@ import {
 import OriginForm from '../Home/components/OriginForm';
 import GoodsForm from '../Home/components/GoodsForm';
 import LoadForm from '../Home/components/LoadForm';
-import {ExclamationCircleOutlined, ArrowLeftOutlined} from '@ant-design/icons';
+import { ExclamationCircleOutlined, ArrowLeftOutlined, EnvironmentOutlined, LineOutlined } from '@ant-design/icons';
 import ShipIcon from '../../assets/Icons/ShipIcon';
 import '../Home/Home.scss';
 import './Result.scss';
 
 const Result = () => {
-  const {Header, Footer, Sider, Content} = Layout;
-  const {Text} = Typography;
-  const {Panel} = Collapse;
-  const {Option} = Select;
-  const {Step} = Steps;
+  const { Header, Footer, Sider, Content } = Layout;
+  const { Text } = Typography;
+  const { Panel } = Collapse;
+  const { Option } = Select;
+  const { Step } = Steps;
   const [priceRange, setPriceRange] = useState([12, 80]);
   const [dateRange, setDateRange] = useState([12, 80]);
 
@@ -39,7 +39,7 @@ const Result = () => {
     <ConfigProvider direction="rtl">
       <Row>
         <Col span={24}>
-          <Space direction="vertical" style={{width: '100%'}}>
+          <Space direction="vertical" style={{ width: '100%' }}>
             <Row justify="center" className="">
               <Col span={14}>
                 <Steps size="small" current={1}>
@@ -62,11 +62,11 @@ const Result = () => {
                       >
                         <div className="centerMenu_origin">
                           <div className="centerMenu_origin_top">
-                            <h5 style={{color: 'red'}}>اصلی</h5>
+                            <h5 style={{ color: 'red' }}>اصلی</h5>
                             <ExclamationCircleOutlined />
                           </div>
-                          <span style={{color: 'red'}}></span>
-                          <p style={{color: 'gray'}}>کارخانه/ انبار</p>
+                          <span style={{ color: 'red' }}></span>
+                          <p style={{ color: 'gray' }}>کارخانه/ انبار</p>
                         </div>
                       </Popover>
                     </Col>
@@ -81,8 +81,8 @@ const Result = () => {
                           <div className="centerMenu_origin_top">
                             <h5>مقصد</h5>
                           </div>
-                          <span style={{color: 'red'}}></span>
-                          <p style={{color: 'gray'}}>به کجا حمل می کنید؟</p>
+                          <span style={{ color: 'red' }}></span>
+                          <p style={{ color: 'gray' }}>به کجا حمل می کنید؟</p>
                         </div>
                       </Popover>
                     </Col>
@@ -97,8 +97,8 @@ const Result = () => {
                           <div className="centerMenu_origin_top">
                             <h5>بار</h5>
                           </div>
-                          <span style={{color: 'red'}}></span>
-                          <p style={{color: 'gray'}}>چه چیزی ارسال می کنید؟</p>
+                          <span style={{ color: 'red' }}></span>
+                          <p style={{ color: 'gray' }}>چه چیزی ارسال می کنید؟</p>
                         </div>
                       </Popover>
                     </Col>
@@ -114,8 +114,8 @@ const Result = () => {
                           <div className="centerMenu_origin_top">
                             <h5>کالاها و خدمات</h5>
                           </div>
-                          <span style={{color: 'red'}}></span>
-                          <p style={{color: 'gray'}}>
+                          <span style={{ color: 'red' }}></span>
+                          <p style={{ color: 'gray' }}>
                             از اجناس خود به ما بگویید
                           </p>
                         </div>
@@ -198,7 +198,7 @@ const Result = () => {
                         <ConfigProvider direction="ltr">
                           <Col span={24}>
                             <Slider
-                              range={{draggableTrack: true}}
+                              range={{ draggableTrack: true }}
                               defaultValue={priceRange}
                               onChange={e => setPriceRange(e)}
                             />
@@ -213,7 +213,7 @@ const Result = () => {
                         </Text>
                         <Col span={24}>
                           <Slider
-                            range={{draggableTrack: true}}
+                            range={{ draggableTrack: true }}
                             defaultValue={[20, 50]}
                             onChange={e => setDateRange(e)}
                           />
@@ -290,6 +290,7 @@ const Result = () => {
                       className="result-layout-content-item-panel"
                       header={
                         <Card
+                          className="result-layout-content-item-panel-header"
                         // title="Default size card"
                         // extra={<a href="#">More</a>}
                         >
@@ -337,6 +338,87 @@ const Result = () => {
                                     <Text>22-27 روز</Text>
                                     <Text>(12-18 روز بندر به بندر)</Text>
                                   </Row>
+                                </Col>
+                              </Row>
+                            </Col>
+                            <Col
+                              span={5}
+                              className="result-layout-content-item-choose"
+                            >
+                              <Row justify="center">
+                                <Text>40,315 تومان</Text>
+                              </Row>
+                              <Row justify="center">
+                                <Text>40,315 تومان</Text>
+                              </Row>
+                              <Row justify="center">
+                                <Button type="primary">انتخاب</Button>
+                              </Row>
+                            </Col>
+                          </Row>
+                        </Card>
+                      }
+                      key="1"
+                    ></Panel>
+                  </Collapse>
+                </Row>
+                <Row>
+                  <Collapse
+                    defaultActiveKey={['1']}
+                    className="result-layout-content-item"
+                  >
+                    <Panel
+                      className="result-layout-content-item-panel"
+                      header={
+                        <Card
+                          className="result-layout-content-item-panel-header"
+                        // title="Default size card"
+                        // extra={<a href="#">More</a>}
+                        >
+                          <Row justify="space-between">
+                            <Col span={18}>
+                              <Row
+                                justify="start"
+                                className="result-layout-content-item-body"
+                              >
+                                <Col>
+                                  <ShipIcon />
+                                </Col>
+                                <Col>
+                                  <Text>دریا</Text>
+                                </Col>
+                                <Col>
+                                  <Divider type="vertical" />
+                                </Col>
+                                <Col span={7}>
+                                  <Row
+                                    justify="space-between"
+                                    className="result-layout-content-item-body-est"
+                                  >
+                                    <Text>برآورد</Text>
+                                    <Text>22-27 روز</Text>
+                                    <Text>(12-18 روز بندر به بندر)</Text>
+                                  </Row>
+                                </Col>
+                              </Row>
+                              <Row
+                                justify="start"
+                                className="result-layout-content-item-body"
+                              >
+                               <Col>
+                               <EnvironmentOutlined />
+                               </Col>
+                               <Col span={7}>
+                                <Row justify="space-between">
+                                <Text>
+                                </Text>
+                                  <Text>18000$, شنژن</Text>
+                                  <Text>
+                                    <LineOutlined />
+                                  </Text>
+                                
+
+                                </Row>
                                 </Col>
                               </Row>
                             </Col>
