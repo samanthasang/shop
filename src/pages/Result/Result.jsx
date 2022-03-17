@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {Link} from 'react-router-dom';
 import {
   Row,
@@ -40,7 +40,27 @@ const Result = () => {
   const {Step} = Steps;
   const [priceRange, setPriceRange] = useState([12, 80]);
   const [dateRange, setDateRange] = useState([12, 80]);
+  const [stateFilter, setStateFilter] = useState(1);
 
+  const handleShowSortItems = e => {
+    const itemCaseID = e.currentTarget.id;
+    if (itemCaseID === 'greenest') {
+      setStateFilter(1);
+      return;
+    }
+    if (itemCaseID === 'chipest') {
+      setStateFilter(2);
+      return;
+    }
+    if (itemCaseID === 'quickest') {
+      setStateFilter(3);
+      return;
+    }
+    if (itemCaseID === 'best') {
+      setStateFilter(4);
+      return;
+    }
+  };
   return (
     <ConfigProvider direction="rtl">
       <Row justify={'center'}>
@@ -145,12 +165,16 @@ const Result = () => {
           <Layout>
             <Header>
               <Row>
-                <Col className="result-layout-header-left">
-                  <Text strong={true}>3 تا از بهترین ها </Text>
-                  <Text>(18 تا در کل)</Text>
-                  <Tooltip title="این نتایج منعکس کننده تعادل بین هزینه و زمان حمل و نقل از هر ارائه دهنده در خط شما است.">
-                    <ExclamationCircleOutlined />
-                  </Tooltip>
+                <Col span={5} className="result-layout-header-left">
+                  <Row align="middle" justify="center">
+                    <Space>
+                      <Text strong={true}>3 تا از بهترین ها </Text>
+                      <Text>(18 تا در کل)</Text>
+                    </Space>
+                    <Tooltip title="این نتایج منعکس کننده تعادل بین هزینه و زمان حمل و نقل از هر ارائه دهنده در خط شما است.">
+                      <ExclamationCircleOutlined />
+                    </Tooltip>
+                  </Row>
                 </Col>
                 <Col span={19}>
                   {/* <div className="result-layout-header-right"> */}
@@ -158,24 +182,48 @@ const Result = () => {
                     className="result-layout-header-right"
                     justify={'center'}
                   >
-                    <Col>
-                      <div className="result-layout-header-right-item firstItem">
+                    <Col span={6}>
+                      <div
+                        id="greenest"
+                        className={`result-layout-header-right-item firstItem ${
+                          stateFilter === 1 && 'active'
+                        }`}
+                        onClick={handleShowSortItems}
+                      >
                         <Text>سبزترین · </Text>
                         <Text> 25-30 روز · </Text> <Text> 37912 دلار </Text>{' '}
                       </div>
                     </Col>
-                    <Col>
-                      <div className="result-layout-header-right-item">
+                    <Col span={6}>
+                      <div
+                        id="chipest"
+                        className={`result-layout-header-right-item  ${
+                          stateFilter === 2 && 'active'
+                        }`}
+                        onClick={handleShowSortItems}
+                      >
                         <Text>ارزان ترین · 25-30 روز · 37912 دلار</Text>
                       </div>
                     </Col>
-                    <Col>
-                      <div className="result-layout-header-right-item">
+                    <Col span={6}>
+                      <div
+                        id="quickest"
+                        className={`result-layout-header-right-item  ${
+                          stateFilter === 3 && 'active'
+                        }`}
+                        onClick={handleShowSortItems}
+                      >
                         <Text>سریعترین · 22-27 روز · 38062 دلار</Text>
                       </div>
                     </Col>
-                    <Col>
-                      <div className="result-layout-header-right-item lastItem active">
+                    <Col span={6}>
+                      <div
+                        id="best"
+                        className={`result-layout-header-right-item lastItem ${
+                          stateFilter === 4 && 'active'
+                        }`}
+                        onClick={handleShowSortItems}
+                      >
                         <Text>بهترین ارزش · 22-27 روز · 38062 دلار</Text>
                       </div>
                     </Col>

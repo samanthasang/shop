@@ -5,10 +5,6 @@
   &-layout {
     &-header {
       &-left {
-        width: 238px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         span {
           :first-child {
             font-size: 14px;
@@ -19,26 +15,32 @@
         }
       }
       &-right {
+        width: 98%;
         height: 25px;
         margin: 20px auto;
         display: flex;
         justify-content: center;
         align-items: center;
         &-item {
-          width: 237px;
+          width: 100%;
+          padding: 0 7px;
           height: 25px;
           display: flex;
           justify-content: center;
           align-items: center;
-          border: 1px solid #707070;
+          border: 1px solid rgb(229, 230, 230);
+          cursor: pointer;
           span {
             color: #707070;
+            font-size: 13px;
+            font-weight: 500;
           }
         }
         .active {
-          background-color: aqua;
+          background-color: #49a7fa60;
+          border: 1px solid #05387d;
           span {
-            color: rgb(22, 37, 37);
+            color: #05387d;
           }
         }
         .firstItem {
