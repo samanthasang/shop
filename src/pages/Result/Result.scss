@@ -5,6 +5,7 @@
   &-layout {
     &-header {
       &-left {
+        width: 238px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -19,10 +20,12 @@
       }
       &-right {
         height: 25px;
-        margin: 20px;
+        margin: 20px auto;
         display: flex;
+        justify-content: center;
         align-items: center;
         &-item {
+          width: 237px;
           height: 25px;
           display: flex;
           justify-content: center;
@@ -69,20 +72,44 @@
     }
     &-content {
       &-item {
+        margin: 1rem 1rem 0 0 !important;
         width: 100%;
         display: flex;
+        justify-content: center;
+        background: none !important;
+        &-parent {
+          height: 50px;
+          margin-right: 5px;
+          align-items: center;
+        }
+
+        &-header {
+          width: 100%;
+          height: 190px;
+          background: #fdfdfd !important;
+          border-radius: 5px;
+          &:hover {
+            transition: 0.3s;
+            box-shadow: 0 0 10px 7px rgba(11, 11, 48, 0.342);
+            // border: 1px solid rgb(122, 183, 194) !important;
+          }
+        }
         &-panel {
           width: 100%;
-          height: 168px;
+          height: 267px;
+          border: none !important;
+          .ant-collapse-header {
+            padding: 0 !important;
+          }
         }
         &-option {
-          border-radius: 15px;
           padding: 0 1rem 3px 1rem;
           cursor: pointer;
           font-size: 13px;
           display: flex;
           align-items: center;
-          box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 8px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 15px;
         }
         .bestValue {
           color: #715397;
@@ -98,16 +125,92 @@
           background: #d3f1f7;
           margin-right: 0.5rem;
         }
+        .first_body {
+          padding: 0.7rem 0;
+          margin-bottom: 1rem;
+        }
         &-body {
-          margin-top: 1rem;
+          margin: 0.5rem 1rem 0 0;
+          height: 30px;
+          &-text {
+            font-size: 13px;
+            color: #707070 !important;
+          }
+          &-lastOption {
+            &-rate {
+              margin-right: 1rem !important;
+              svg {
+                width: 11px;
+              }
+
+              .ant-rate-star-full {
+                svg {
+                  transition: 0.4s;
+                  fill: rgb(65, 136, 177);
+                }
+              }
+            }
+          }
           &-est {
             font-size: 13px;
           }
+          &-city {
+            .worldWide {
+              margin-right: 7px;
+            }
+          }
+          &-truck {
+            width: 50px;
+            margin: 0 1rem !important;
+            svg {
+              color: #707070;
+            }
+          }
         }
         &-choose {
-          height: 100%;
+          height: 80%;
           padding: 1rem;
           border-right: 1px solid #70707036;
+          align-self: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          span {
+            font-size: 15px;
+            font-weight: 500;
+          }
+          &-cost {
+            color: #707070 !important;
+            position: relative;
+            font-size: 13px !important;
+            &-off {
+              position: absolute;
+              top: 12px;
+              width: 100%;
+              height: 1px;
+              background: red;
+              transform: rotate(170deg);
+            }
+          }
+          &-button {
+            margin-top: 1rem;
+          }
+          &-calendar {
+            margin-top: 0.5rem;
+            svg {
+              width: 12px;
+            }
+            &-text {
+              font-size: 10px !important;
+            }
+          }
+        }
+        .ant-collapse-arrow {
+          left: 7rem !important;
+          top: 148px !important;
+          svg {
+            margin-top: 3.5rem;
+          }
         }
       }
     }
@@ -118,6 +221,6 @@
     background: red;
   }
 }
-.ant-card {
-  width: 100%;
+.ant-collapse {
+  border: none !important;
 }
