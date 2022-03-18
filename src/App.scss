@@ -49,10 +49,24 @@
       height: 60px;
     }
   }
+  &-ul {
+    display: flex;
+    align-items: center;
+  }
 }
 .clean-header-row {
   display: flex;
   justify-content: space-between;
+}
+.clean-header-row ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  margin-top: 1em;
+}
+.clean-header-row ul li {
+  margin-right: 1em;
 }
 .logo-wrapper {
   display: flex;

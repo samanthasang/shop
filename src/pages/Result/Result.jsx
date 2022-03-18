@@ -17,6 +17,8 @@ import {
   Space,
   Rate,
   Button,
+  Table, 
+  Tag,
 } from 'antd';
 import OriginForm from '../Home/components/OriginForm';
 import GoodsForm from '../Home/components/GoodsForm';
@@ -41,6 +43,60 @@ const Result = () => {
   const [priceRange, setPriceRange] = useState([12, 80]);
   const [dateRange, setDateRange] = useState([12, 80]);
 
+  const columns = [
+    {
+      title: 'کد هزینه',
+      dataIndex: 'feeCode',
+      key: 'feeCode',
+      render: text => <a>{text}</a>,
+    },
+    {
+      title: 'نام هزینه',
+      dataIndex: 'feeName',
+      key: 'feeName',
+    },
+    {
+      title: 'توضیحات',
+      dataIndex: 'comment',
+      key: 'comment',
+    },
+    {
+      title: 'واحد',
+      dataIndex: 'units',
+      key: 'units',
+    },
+    {
+      title: 'قیمت واحد',
+      dataIndex: 'unitPrice',
+      key: 'unitPrice',
+    },
+    {
+      title: 'میزان',
+      dataIndex: 'amount',
+      key: 'amount',
+    },
+  ];
+  
+  const data = [
+    {
+      key: '1',
+      feeCode: 'Freight - Truck',
+      feeName: 'Freight - Truck',
+      comment: '-',
+      units: 1,
+      unitPrice: '$124.71 USD',
+      amount: '$124.71',
+    },
+    {
+      key: '2',
+      feeCode: 'D-LIFT',
+      feeName: 'Lift Gate Transfer at Delivery',
+      comment: '-',
+      units: 1,
+      unitPrice: '$70.00 USD',
+      amount: '$70.00',
+    },
+  ];
   return (
     <ConfigProvider direction="rtl">
       <Row justify={'center'}>
@@ -493,7 +549,17 @@ const Result = () => {
                         </Row>
                       }
                       key="1"
-                    ></Panel>
+                    >
+
+                    <Col>
+                      <ShipIcon />
+                      <Text className="result-layout-content-item-body-text">
+                        دریا
+                      </Text>
+                    </Col>
+
+                    <Table columns={columns} dataSource={data} />
+                    </Panel>
                   </Collapse>
                 </Row>
               </Content>

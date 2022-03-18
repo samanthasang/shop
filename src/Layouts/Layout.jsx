@@ -1,5 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {Button, Layout as LayoutAnt} from 'antd';
+import { Link } from 'react-router-dom';
+
+
+import ShipIcon from '../assets/Icons/ShipIcon';
+import TruckIcon from '../assets/Icons/TruckIcon';
+
+
 // import Toolbar from 'components/ui/Toolbar/index';
 // import {connect} from 'react-redux';
 // import {logo} from 'assets/images';
@@ -45,6 +52,20 @@ const Layout = ({children}) => {
               <Button className="ant-btn ant-btn-primary ant-btn-sm haeder-signup" type="primary">
                 <span>SignUp</span>
               </Button>
+        <Fragment>
+        <ul>
+            <li>
+                <Link to='/home'>
+                  <ShipIcon />
+                </Link>
+            </li>
+            <li>
+                <Link to='/result'>
+                  <TruckIcon />
+                </Link>
+            </li>
+        </ul>
+        </Fragment>
             </div>
           </div>
         </div>
