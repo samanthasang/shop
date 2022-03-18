@@ -14,6 +14,9 @@
   height: 60px;
   line-height: 60px;
 }
+.ant-layout-content {
+  height: 1500px !important;
+}
 .haeder {
   background: var(--header-background-color);
   color: var(--text-contrast-color);
@@ -52,6 +55,50 @@
   &-ul {
     display: flex;
     align-items: center;
+  }
+}
+.expand {
+  &-table {
+    th,
+    td {
+      font-size: 13px;
+      padding: 12px !important;
+    }
+    &-title {
+      padding: 1rem 0;
+      h1 {
+        font-size: 17px !important;
+        margin: 0 10px 0 0 !important;
+      }
+    }
+    &-footer {
+      margin: 1rem;
+    }
+  }
+  &-footer {
+    &-alert {
+      width: 97%;
+      margin: auto;
+      .ant-alert-message {
+        font-weight: 500;
+      }
+    }
+    &-comment {
+      width: 96%;
+      height: 130px;
+      overflow-y: scroll;
+      margin: 1rem auto;
+      .ant-divider {
+        margin: 10px 0;
+      }
+      &-paragraph {
+        font-size: 13px;
+        padding-bottom: 1rem;
+        &-text {
+          margin: 0 0 1rem 0;
+        }
+      }
+    }
   }
 }
 .clean-header-row {

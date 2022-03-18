@@ -17,8 +17,8 @@ import {
   Space,
   Rate,
   Button,
-  Table, 
-  Tag,
+  Table,
+  Alert,
 } from 'antd';
 import OriginForm from '../Home/components/OriginForm';
 import GoodsForm from '../Home/components/GoodsForm';
@@ -33,10 +33,12 @@ import ShipIcon from '../../assets/Icons/ShipIcon';
 import TruckIcon from '../../assets/Icons/TruckIcon';
 import '../Home/Home.scss';
 import './Result.scss';
+import Title from 'antd/lib/skeleton/Title';
+import Paragraph from 'antd/lib/skeleton/Paragraph';
 
 const Result = () => {
   const {Header, Footer, Sider, Content} = Layout;
-  const {Text} = Typography;
+  const {Text, Title, Paragraph} = Typography;
   const {Panel} = Collapse;
   const {Option} = Select;
   const {Step} = Steps;
@@ -77,7 +79,7 @@ const Result = () => {
       key: 'amount',
     },
   ];
-  
+
   const data = [
     {
       key: '1',
@@ -598,21 +600,112 @@ const Result = () => {
                       }
                       key="1"
                     >
+                      <Row>
+                        <Col span={24}>
+                          <Row className="expand-table-title">
+                            <Title>هزینه های مبدا</Title>
+                          </Row>
+                        </Col>
 
-                    <Col>
-                      <ShipIcon />
-                      <Text className="result-layout-content-item-body-text">
-                        دریا
-                      </Text>
-                    </Col>
+                        <Col span={24}>
+                          <Table
+                            pagination={false}
+                            columns={columns}
+                            dataSource={data}
+                            className="expand-table"
+                          />
+                          <Row className="expand-table-footer">
+                            <Text>جمع فرعی: $ 682.00 دلار آمریکا</Text>
+                          </Row>
+                        </Col>
+                      </Row>
+                      <Divider />
+                      <Row>
+                        <Col span={24}>
+                          <Row className="expand-table-title">
+                            <img
+                              className="expand-table-img"
+                              src="https://festatic.freightos.com/microfrontsc/quote-view/1d7d9a7c9bcffb9bb3c598ae65d3295ec89dcefe/assets/images/modes/express.svg"
+                              alt=""
+                            />
+                            <Title>
+                              26300, Xilingol League 54701, Eau Claire{' '}
+                            </Title>
+                          </Row>
+                        </Col>
 
-                    <Table columns={columns} dataSource={data} />
+                        <Col span={24}>
+                          <Table
+                            pagination={false}
+                            columns={columns}
+                            dataSource={data}
+                            className="expand-table"
+                          />
+                          <Row className="expand-table-footer">
+                            <Text>جمع فرعی: $ 682.00 دلار آمریکا</Text>
+                          </Row>
+                        </Col>
+                      </Row>
+                      <Divider />
+                      <Row>
+                        <Col span={24}>
+                          <Row className="expand-table-title">
+                            <Title>بیمه</Title>
+                          </Row>
+                        </Col>
+
+                        <Col span={24}>
+                          <Table
+                            pagination={false}
+                            columns={columns}
+                            dataSource={data}
+                            className="expand-table"
+                          />
+                          <Row className="expand-table-footer">
+                            <Text>جمع فرعی: $ 682.00 دلار آمریکا</Text>
+                          </Row>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Alert
+                          message="جمع:
+                          23,752.79 دلار (USD)"
+                          type="info"
+                          className="expand-footer-alert"
+                        />
+                      </Row>
+                      <Row className="expand-footer-comment">
+                        <Col span={24}>
+                          <Text>CO2: 9980 کیلوگرم (تخمینی)</Text>
+                        </Col>
+                        <Divider />
+                        <Col span={24}>
+                          <Row className="expand-footer-comment-paragraph">
+                            <Text className="expand-footer-comment-paragraph-text">
+                              حامل: DHL، شماره کد: EL-36871-2022، خدمات: خدمات
+                              سریع
+                            </Text>
+                          </Row>
+                          <Row className="expand-footer-comment-paragraph">
+                            <Paragraph>
+                              اطلاعیه مهم: شرایط بیمه نامه خود را مشاهده کنید.
+                              با کلیک بر روی "انتخاب" و انتخاب ارائه دهنده
+                              تدارکات مورد نظر خود برای این محموله، تأیید می
+                              کنید که مطالعه کرده اید و شرایط پوشش بیمه خود را
+                              می پذیرید. بیمه نامه شما توسط شرکت بیمه برکلی
+                              (شعبه سنگاپور) نوشته شده و توسط Cover Genius
+                              Trading Pty Ltd اداره می شود. XCover.com نام تجاری
+                              Cover Genius Pty. Ltd است.
+                            </Paragraph>
+                          </Row>
+                        </Col>
+                      </Row>
                     </Panel>
                   </Collapse>
                 </Row>
               </Content>
             </Layout>
-            <Footer>footer</Footer>
+            {/* <Footer>footer</Footer> */}
           </Layout>
         </Col>
       </Row>
