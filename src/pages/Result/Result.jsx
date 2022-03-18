@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {
   Row,
@@ -11,95 +11,30 @@ import {
   Tooltip,
   Collapse,
   ConfigProvider,
-  Select,
   Slider,
   Checkbox,
   Space,
-  Rate,
-  Button,
-  Table,
-  Alert,
 } from 'antd';
 import OriginForm from '../Home/components/OriginForm';
 import GoodsForm from '../Home/components/GoodsForm';
 import LoadForm from '../Home/components/LoadForm';
-import {
-  ExclamationCircleOutlined,
-  ArrowLeftOutlined,
-  CalendarOutlined,
-  EnvironmentOutlined,
-} from '@ant-design/icons';
-import ShipIcon from '../../assets/Icons/ShipIcon';
-import TruckIcon from '../../assets/Icons/TruckIcon';
+import {ExclamationCircleOutlined, ArrowLeftOutlined} from '@ant-design/icons';
 import '../Home/Home.scss';
 import './Result.scss';
-import Title from 'antd/lib/skeleton/Title';
-import Paragraph from 'antd/lib/skeleton/Paragraph';
+import ItemTransferComponent from './Components/ItemTransferComponent';
+import data from '../../test.json';
 
 const Result = () => {
-  const {Header, Footer, Sider, Content} = Layout;
-  const {Text, Title, Paragraph} = Typography;
+  const {Header, Sider, Content} = Layout;
+  const {Text} = Typography;
   const {Panel} = Collapse;
-  const {Option} = Select;
   const {Step} = Steps;
   const [priceRange, setPriceRange] = useState([12, 80]);
   const [dateRange, setDateRange] = useState([12, 80]);
   const [stateFilter, setStateFilter] = useState(1);
-
-  const columns = [
-    {
-      title: 'کد هزینه',
-      dataIndex: 'feeCode',
-      key: 'feeCode',
-      render: text => <a>{text}</a>,
-    },
-    {
-      title: 'نام هزینه',
-      dataIndex: 'feeName',
-      key: 'feeName',
-    },
-    {
-      title: 'توضیحات',
-      dataIndex: 'comment',
-      key: 'comment',
-    },
-    {
-      title: 'واحد',
-      dataIndex: 'units',
-      key: 'units',
-    },
-    {
-      title: 'قیمت واحد',
-      dataIndex: 'unitPrice',
-      key: 'unitPrice',
-    },
-    {
-      title: 'میزان',
-      dataIndex: 'amount',
-      key: 'amount',
-    },
-  ];
-
-  const data = [
-    {
-      key: '1',
-      feeCode: 'Freight - Truck',
-      feeName: 'Freight - Truck',
-      comment: '-',
-      units: 1,
-      unitPrice: '$124.71 USD',
-      amount: '$124.71',
-    },
-    {
-      key: '2',
-      feeCode: 'D-LIFT',
-      feeName: 'Lift Gate Transfer at Delivery',
-      comment: '-',
-      units: 1,
-      unitPrice: '$70.00 USD',
-      amount: '$70.00',
-    },
-  ];
+  const [tabFilter, setTabFilter] = useState(
+    data.itemTransfer.contentFilter.tabs,
+  );
   const handleShowSortItems = e => {
     const itemCaseID = e.currentTarget.id;
     if (itemCaseID === 'greenest') {
@@ -235,7 +170,6 @@ const Result = () => {
                   </Row>
                 </Col>
                 <Col span={19}>
-                  {/* <div className="result-layout-header-right"> */}
                   <Row
                     className="result-layout-header-right"
                     justify={'center'}
@@ -248,8 +182,9 @@ const Result = () => {
                         }`}
                         onClick={handleShowSortItems}
                       >
-                        <Text>سبزترین · </Text>
-                        <Text> 25-30 روز · </Text> <Text> 37912 دلار </Text>{' '}
+                        <Text>پاک ترین </Text>
+                        <Text> {tabFilter.greenest.day}روز </Text>
+                        <Text> {tabFilter.greenest.cost} دلار </Text>
                       </div>
                     </Col>
                     <Col span={6}>
@@ -260,7 +195,9 @@ const Result = () => {
                         }`}
                         onClick={handleShowSortItems}
                       >
-                        <Text>ارزان ترین · 25-30 روز · 37912 دلار</Text>
+                        <Text>ارزان ترین </Text>
+                        <Text> {tabFilter.chipest.day}روز · </Text>
+                        <Text> {tabFilter.chipest.cost} دلار </Text>
                       </div>
                     </Col>
                     <Col span={6}>
@@ -271,7 +208,9 @@ const Result = () => {
                         }`}
                         onClick={handleShowSortItems}
                       >
-                        <Text>سریعترین · 22-27 روز · 38062 دلار</Text>
+                        <Text>سریعترین</Text>
+                        <Text> {tabFilter.quickest.day}روز · </Text>
+                        <Text> {tabFilter.quickest.cost} دلار </Text>
                       </div>
                     </Col>
                     <Col span={6}>
@@ -282,11 +221,12 @@ const Result = () => {
                         }`}
                         onClick={handleShowSortItems}
                       >
-                        <Text>بهترین ارزش · 22-27 روز · 38062 دلار</Text>
+                        <Text>بهترین</Text>
+                        <Text> {tabFilter.best.day}روز · </Text>
+                        <Text> {tabFilter.best.cost} دلار </Text>
                       </div>
                     </Col>
                   </Row>
-                  {/* </div> */}
                 </Col>
               </Row>
             </Header>
@@ -397,311 +337,7 @@ const Result = () => {
               </Sider>
               <Content>
                 <Row>
-                  <Collapse
-                    defaultActiveKey={['1']}
-                    className="result-layout-content-item"
-                  >
-                    <Panel
-                      className="result-layout-content-item-panel"
-                      header={
-                        <Row
-                          justify="space-between"
-                          className="result-layout-content-item-header"
-                        >
-                          <Col span={18}>
-                            <Row className="result-layout-content-item-parent">
-                              <Tooltip title="بهترین">
-                                <span
-                                  // type="primary"
-                                  className="result-layout-content-item-option bestValue"
-                                >
-                                  بهترین ارزش
-                                </span>
-                              </Tooltip>
-                              <Tooltip title="ظرفیت محدود به این معنی است که تعداد بیشتری از محموله‌ها لغو می‌شوند. فروشندگان قهرمان FCL ما محموله های بیشتری را در راه خود دریافت می کنند.">
-                                <span className="result-layout-content-item-option cancellation">
-                                  FCL Hero - لغو کم
-                                </span>
-                              </Tooltip>
-                              <Tooltip title="این ارائه دهنده تدارکات بر اساس قابلیت اطمینان، پاسخگویی و تحویل به موقع امتیاز بالایی می دهد">
-                                <span className="result-layout-content-item-option provider">
-                                  ارائه دهنده برتر لجستیک
-                                </span>
-                              </Tooltip>
-                            </Row>
-                            <Row
-                              justify="middle"
-                              className="result-layout-content-item-body first_body"
-                            >
-                              <Col>
-                                <ShipIcon />
-                              </Col>
-                              <Col>
-                                <Text className="result-layout-content-item-body-text">
-                                  دریا
-                                </Text>
-                              </Col>
-                              <Col>
-                                <Divider type="vertical" />
-                              </Col>
-                              <Col span={7}>
-                                <Row
-                                  justify="space-between"
-                                  className="result-layout-content-item-body-est"
-                                >
-                                  <Text className="result-layout-content-item-body-text">
-                                    برآورد
-                                  </Text>
-                                  <Text className="result-layout-content-item-body-text">
-                                    22-27 روز
-                                  </Text>
-                                  <Text className="result-layout-content-item-body-text">
-                                    (12-18 روز بندر به بندر)
-                                  </Text>
-                                </Row>
-                              </Col>
-                            </Row>
-                            <Row
-                              justify="middle"
-                              className="result-layout-content-item-body"
-                            >
-                              <Col>
-                                <EnvironmentOutlined />
-                              </Col>
-                              <Col>{' '}</Col>
-                              <Col className="result-layout-content-item-body-city">
-                                <Text className="result-layout-content-item-body-text">
-                                  1387574
-                                </Text>
-                                {' , '}
-                                <Text className="result-layout-content-item-body-text">
-                                  بندانزلی{' '}
-                                </Text>
-                              </Col>
-                              <Col>
-                                <Divider className="result-layout-content-item-body-truck">
-                                  <TruckIcon />
-                                </Divider>
-                              </Col>
-                              <Col>
-                                <Row
-                                  justify="space-between"
-                                  align="middle"
-                                  style={{marginRight: '1.5rem'}}
-                                >
-                                  <Col>
-                                    <Text className="result-layout-content-item-body-text">
-                                      CNZX
-                                    </Text>
-                                  </Col>
-                                  <Col>
-                                    <Divider className="result-layout-content-item-body-truck">
-                                      <ShipIcon />
-                                    </Divider>
-                                  </Col>
-                                  <Col>
-                                    <Text
-                                      className="result-layout-content-item-body-text"
-                                      style={{marginRight: '1.5rem'}}
-                                    >
-                                      ULAX
-                                    </Text>
-                                  </Col>
-                                  <Col>
-                                    <Divider className="result-layout-content-item-body-truck">
-                                      <TruckIcon />
-                                    </Divider>
-                                  </Col>
-                                  <Col>
-                                    <EnvironmentOutlined />
-                                  </Col>
-                                  <Col>{' '}</Col>
-                                  <Col>
-                                    <Text className="result-layout-content-item-body-text">
-                                      89101 , تهران
-                                    </Text>
-                                  </Col>
-                                </Row>
-                              </Col>
-                            </Row>
-                            <Row
-                              justify="middle"
-                              className="result-layout-content-item-body"
-                            >
-                              <Col>
-                                <img
-                                  width="40px"
-                                  height="22px"
-                                  src="https://festatic.freightos.com/sellers/logos/agpzfnRyYWRlb3Mxch0LEhB1c2VyL0xlZ2FsRW50aXR5GICAiNS6pqIKDA/en.png"
-                                  alt=""
-                                />
-                              </Col>
-                              <Col className="result-layout-content-item-body-city">
-                                <Text className="result-layout-content-item-body-text worldWide">
-                                  ECU در سراسر جهان
-                                </Text>
-                              </Col>
-                              <Col>
-                                <Row>
-                                  <Rate
-                                    defaultValue={3}
-                                    className="result-layout-content-item-body-lastOption-rate"
-                                    onChange={e => console.log(e)}
-                                  />
-                                </Row>
-                              </Col>
-                            </Row>
-                          </Col>
-
-                          <Col
-                            className="result-layout-content-item-choose"
-                            span={6}
-                          >
-                            <Row justify="center">
-                              <Col span="24">
-                                <Row justify="center">
-                                  <Text className="result-layout-content-item-choose-cost">
-                                    40,315 تومان
-                                    <div className="result-layout-content-item-choose-cost-off"></div>
-                                  </Text>
-                                </Row>
-                              </Col>
-                              <Col span="24">
-                                <Row justify="center">
-                                  <Text>40,315 تومان</Text>
-                                </Row>
-                              </Col>
-                            </Row>
-                            <Row justify="center">
-                              <Col span="24">
-                                <Row justify="center">
-                                  <Button
-                                    type="primary"
-                                    className="result-layout-content-item-choose-button"
-                                  >
-                                    انتخاب
-                                  </Button>
-                                </Row>
-                              </Col>
-                              <Col span="24">
-                                <Row
-                                  justify="center"
-                                  className="result-layout-content-item-choose-calendar"
-                                >
-                                  <CalendarOutlined />
-                                  <Text className="result-layout-content-item-choose-calendar-text">
-                                    دروازه ورودی: 14 مارس 2022
-                                  </Text>
-                                </Row>
-                              </Col>
-                            </Row>
-                          </Col>
-                        </Row>
-                      }
-                      key="1"
-                    >
-                      <Row>
-                        <Col span={24}>
-                          <Row className="expand-table-title">
-                            <Title>هزینه های مبدا</Title>
-                          </Row>
-                        </Col>
-
-                        <Col span={24}>
-                          <Table
-                            pagination={false}
-                            columns={columns}
-                            dataSource={data}
-                            className="expand-table"
-                          />
-                          <Row className="expand-table-footer">
-                            <Text>جمع فرعی: $ 682.00 دلار آمریکا</Text>
-                          </Row>
-                        </Col>
-                      </Row>
-                      <Divider />
-                      <Row>
-                        <Col span={24}>
-                          <Row className="expand-table-title">
-                            <img
-                              className="expand-table-img"
-                              src="https://festatic.freightos.com/microfrontsc/quote-view/1d7d9a7c9bcffb9bb3c598ae65d3295ec89dcefe/assets/images/modes/express.svg"
-                              alt=""
-                            />
-                            <Title>
-                              26300, Xilingol League 54701, Eau Claire{' '}
-                            </Title>
-                          </Row>
-                        </Col>
-
-                        <Col span={24}>
-                          <Table
-                            pagination={false}
-                            columns={columns}
-                            dataSource={data}
-                            className="expand-table"
-                          />
-                          <Row className="expand-table-footer">
-                            <Text>جمع فرعی: $ 682.00 دلار آمریکا</Text>
-                          </Row>
-                        </Col>
-                      </Row>
-                      <Divider />
-                      <Row>
-                        <Col span={24}>
-                          <Row className="expand-table-title">
-                            <Title>بیمه</Title>
-                          </Row>
-                        </Col>
-
-                        <Col span={24}>
-                          <Table
-                            pagination={false}
-                            columns={columns}
-                            dataSource={data}
-                            className="expand-table"
-                          />
-                          <Row className="expand-table-footer">
-                            <Text>جمع فرعی: $ 682.00 دلار آمریکا</Text>
-                          </Row>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Alert
-                          message="جمع:
-                          23,752.79 دلار (USD)"
-                          type="info"
-                          className="expand-footer-alert"
-                        />
-                      </Row>
-                      <Row className="expand-footer-comment">
-                        <Col span={24}>
-                          <Text>CO2: 9980 کیلوگرم (تخمینی)</Text>
-                        </Col>
-                        <Divider />
-                        <Col span={24}>
-                          <Row className="expand-footer-comment-paragraph">
-                            <Text className="expand-footer-comment-paragraph-text">
-                              حامل: DHL، شماره کد: EL-36871-2022، خدمات: خدمات
-                              سریع
-                            </Text>
-                          </Row>
-                          <Row className="expand-footer-comment-paragraph">
-                            <Paragraph>
-                              اطلاعیه مهم: شرایط بیمه نامه خود را مشاهده کنید.
-                              با کلیک بر روی "انتخاب" و انتخاب ارائه دهنده
-                              تدارکات مورد نظر خود برای این محموله، تأیید می
-                              کنید که مطالعه کرده اید و شرایط پوشش بیمه خود را
-                              می پذیرید. بیمه نامه شما توسط شرکت بیمه برکلی
-                              (شعبه سنگاپور) نوشته شده و توسط Cover Genius
-                              Trading Pty Ltd اداره می شود. XCover.com نام تجاری
-                              Cover Genius Pty. Ltd است.
-                            </Paragraph>
-                          </Row>
-                        </Col>
-                      </Row>
-                    </Panel>
-                  </Collapse>
+                  <ItemTransferComponent />
                 </Row>
               </Content>
             </Layout>
