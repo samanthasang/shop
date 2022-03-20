@@ -226,3 +226,33 @@
 .ant-collapse {
   border: none !important;
 }
+.editMenuTop {
+  width: 50px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px !important;
+}
+.modalEdit {
+  top: 100px !important;
+  .ant-modal-close {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+  .ant-modal-body {
+    background: #fdfdfd;
+    height: 57vh;
+  }
+  .ant-modal-footer {
+    width: 100%;
+    direction: ltr !important;
+    display: flex;
+    justify-content: start;
+  }
+}
+.centerMenu {
+  &-recommendedServices {
+    overflow-y: scroll;
+  }
+}
