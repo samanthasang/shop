@@ -1,15 +1,27 @@
 {
-  "OriginForm": {
+  "OriginDestinationData": {
     "type": [
       {
-        "name": "چین",
-        "imgSrc": "dsmnhgfsdjfsdhfgsdfhdsgf"
+        "value": "company",
+        "description": " کارخانه / انبار",
+        "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_aaqJcmxmtU1J0JhUomamdJk_QfqWLyn5_JhV3dzQVBFGClyiWsnHNmpn26vGVQomZXk&usqp=CAU"
+      },
+      {
+        "value": "airport",
+        "description": "بندر / فرودگاه ",
+        "imgSrc": "https://cdn-icons-png.flaticon.com/512/8/8176.png"
       }
     ],
     "country": [
       {
-        "name": "چین",
-        "imgSrc": "dsmnhgfsdjfsdhfgsdfhdsgf"
+        "value": "china",
+        "description": "چین",
+        "imgSrc": "https://festatic.freightos.com/flags/1x1/cn.svg"
+      },
+      {
+        "value": "Aregentina",
+        "description": "آرژانتین",
+        "imgSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/255px-Flag_of_Argentina.svg.png"
       }
     ]
   },
