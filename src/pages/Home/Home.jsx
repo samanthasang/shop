@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 // import ModalForm from './components/ModalForm';
 // import MyForm from './components/MyForm';
@@ -7,9 +7,74 @@ import OriginForm from './components/OriginForm';
 import LoadForm from './components/LoadForm';
 import GoodsForm from './components/GoodsForm';
 import {Row, Col, Button, Divider, Popover} from 'antd';
-import {ExclamationCircleOutlined, ArrowLeftOutlined} from '@ant-design/icons';
+import {
+  ExclamationCircleOutlined,
+  ArrowLeftOutlined,
+  CheckOutlined,
+} from '@ant-design/icons';
 import './Home.scss';
 const Home = () => {
+  const [originFormState, setOriginFormState] = useState(0);
+  const [originVisibleForm, setOriginVisibleForm] = useState(false);
+  const [originFormData, setOriginFormData] = useState(null);
+  const [destinationFormState, setDestinationFormState] = useState(0);
+  const [destinationVisibleForm, setDestinationVisibleForm] = useState(false);
+  const [destinationFormData, setDestinationFormData] = useState(null);
+  // const [loadFormState, setLoadFormState] = useState(0);
+  // const [goodFormState, setGoodFormState] = useState(0);
+  const [loadFormData, setLoadFormData] = useState(null);
+  const [goodFormData, setGoodFormData] = useState(null);
+  const [confirmButtonActive, setConfirmButtonActive] = useState(true);
+
+  useEffect(() => {
+    if (!originFormState && originVisibleForm) {
+      if (originFormData) setOriginFormState(1);
+      else setOriginFormState(2);
+    }
+  }, [originVisibleForm]);
+
+  useEffect(() => {
+    if (!destinationFormState && destinationVisibleForm) {
+      if (destinationFormData) setDestinationFormState(1);
+      else setDestinationFormState(2);
+    }
+  }, [destinationVisibleForm]);
+
+  useEffect(() => {
+    if (originFormData && destinationFormData && loadFormData && goodFormData)
+      setConfirmButtonActive(true);
+    else setConfirmButtonActive(false);
+  }, [originFormData, destinationFormData, loadFormData, goodFormData]);
+
+  const handleChangeOriginVisible = () => {
+    // if (!originFormState) {
+    //   setOriginFormState(2);
+    // }
+    setOriginVisibleForm(!originVisibleForm);
+  };
+  const handleChangeDestinationVisible = () => {
+    // if (!originFormState) {
+    //   setOriginFormState(2);
+    // }
+    setDestinationVisibleForm(!destinationVisibleForm);
+  };
+
+  const handleSubmitOriginForm = values => {
+    setOriginFormData(values);
+    if (values.type && values.country && values.address) {
+      setOriginVisibleForm(false);
+      setOriginFormState(1);
+    } else setOriginFormState(2);
+  };
+
+  const handleSubmitDestinationForm = values => {
+    setDestinationFormData(values);
+    if (values.type && values.country && values.address) {
+      setDestinationVisibleForm(false);
+      setDestinationFormState(1);
+    } else setDestinationFormState(2);
+  };
+
   return (
     <section>
       <div className="Home">
@@ -26,33 +91,98 @@ const Home = () => {
               <Row className="centerMenu">
                 <Col span={5}>
                   <Popover
-                    content={<OriginForm origin={true} />}
+                    content={
+                      <OriginForm
+                        origin={true}
+                        visible={originVisibleForm}
+                        onConfirmOrigin={handleSubmitOriginForm}
+                      />
+                    }
                     placement="bottomRight"
                     trigger={'click'}
+                    visible={originVisibleForm}
+                    onVisibleChange={handleChangeOriginVisible}
                   >
                     <div className="centerMenu_origin">
                       <div className="centerMenu_origin_top">
-                        <h5 style={{color: 'red'}}>اصلی</h5>
-                        <ExclamationCircleOutlined />
+                        <h5 style={{color: originFormState == 2 && 'red'}}>
+                          اصلی
+                        </h5>
+                        {originFormState ? (
+                          originFormState === 1 ? (
+                            <CheckOutlined style={{color: 'green'}} />
+                          ) : (
+                            <ExclamationCircleOutlined style={{color: 'red'}} />
+                          )
+                        ) : null}
                       </div>
                       <span style={{color: 'red'}}></span>
-                      <p style={{color: 'gray'}}>کارخانه/ انبار</p>
+                      <p style={{color: 'gray'}}>
+                        {originFormState && originFormData
+                          ? `${
+                              originFormData?.type
+                                ? `${originFormData.type}`
+                                : ''
+                            }${
+                              originFormData?.country
+                                ? ` | ${originFormData.country} `
+                                : ' '
+                            }${
+                              originFormData?.address
+                                ? ` | ${originFormData.address} `
+                                : ' '
+                            }`
+                          : 'از کجا حمل می کنید؟'}
+                      </p>
                     </div>
                   </Popover>
                 </Col>
                 <Divider type="vertical" />
                 <Col span={5}>
                   <Popover
-                    content={<OriginForm origin={false} />}
+                    content={
+                      <OriginForm
+                        origin={false}
+                        onConfirmDestination={handleSubmitDestinationForm}
+                        visible={destinationVisibleForm}
+                      />
+                    }
                     placement="bottomRight"
                     trigger={'click'}
+                    visible={destinationVisibleForm}
+                    onVisibleChange={handleChangeDestinationVisible}
                   >
                     <div className="centerMenu_origin">
                       <div className="centerMenu_origin_top">
-                        <h5>مقصد</h5>
+                        <h5 style={{color: destinationFormState == 2 && 'red'}}>
+                          مقصد
+                        </h5>
+                        {destinationFormState ? (
+                          destinationFormState === 1 ? (
+                            <CheckOutlined style={{color: 'green'}} />
+                          ) : (
+                            <ExclamationCircleOutlined style={{color: 'red'}} />
+                          )
+                        ) : null}
                       </div>
                       <span style={{color: 'red'}}></span>
-                      <p style={{color: 'gray'}}>به کجا حمل می کنید؟</p>
+                      <p style={{color: 'gray'}}>
+                        {destinationFormState && destinationFormData
+                          ? `${
+                              destinationFormData.type
+                                ? `${destinationFormData.type}`
+                                : null
+                            }${
+                              destinationFormData.country
+                                ? ` | ${destinationFormData.country} `
+                                : ' '
+                            }${
+                              destinationFormData.address
+                                ? ` | ${destinationFormData.address} `
+                                : ' '
+                            }`
+                          : 'به کجا حمل می کنید؟'}
+                      </p>
                     </div>
                   </Popover>
                 </Col>
@@ -92,9 +222,15 @@ const Home = () => {
                 <Divider type="vertical" />
                 <Col span={2}>
                   <div id="small-col-div">
-                    <Link to="/result">
-                      <ArrowLeftOutlined />
-                    </Link>
+                    {confirmButtonActive ? (
+                      <Link to="/result">
+                        <ArrowLeftOutlined />
+                      </Link>
+                    ) : (
+                      <ArrowLeftOutlined
+                        style={{color: '#68b8fa', cursor: 'not-allowed'}}
+                      />
+                    )}
                   </div>
                 </Col>
               </Row>
@@ -178,34 +314,3 @@ const Home = () => {
   );
 };
 export default Home;
-
-// <MyForm visible={modalVisible} onCancel={onCancelModal} />
-
-// <ModalForm
-// visible={modalVisible}
-//  onCancel={onCancelModal}
-//   />
-//   <Button type="primary" onClick={handleOpenModal}>
-//   exmaple for Open Form in Modal
-// </Button>
-
-// <Menu>
-// <Menu.Item key="0">
-//   <a href="https://www.antgroup.com">1st menu item</a>
-// </Menu.Item>
-// <Menu.Item key="1">
-//   <a href="https://www.aliyun.com">2nd menu item</a>
-// </Menu.Item>
-// <Menu.Divider />
-// <Menu.Item key="3">3rd menu item</Menu.Item>
-// </Menu>
-// <Menu>
-// <Menu.Item key="0">
-// <a href="https://www.antgroup.com">1st menu item</a>
-// </Menu.Item>
-// <Menu.Item key="1">
-// <a href="https://www.aliyun.com">2nd menu item</a>
-// </Menu.Item>
-// <Menu.Divider />
-// <Menu.Item key="3">3rd menu item</Menu.Item>
-// </Menu>

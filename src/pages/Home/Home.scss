@@ -108,6 +108,10 @@
       h5 {
         margin: 0 5px 0 0;
       }
+      svg {
+        width: 12px;
+        margin-top: 5px;
+      }
     }
     p {
       margin: 0 11px;
@@ -141,9 +145,7 @@
     align-items: flex-start;
     justify-content: space-between;
     height: 60px;
-    label {
-      margin-right: 7px;
-    }
+    margin-top: 5px !important;
     input {
       height: 32px;
       font-size: 14px;
@@ -151,6 +153,10 @@
         font-size: 10px;
       }
     }
+  }
+  &-title {
+    font-weight: 500;
+    font-size: 17px;
   }
   &-divider {
     margin: 0 !important;
@@ -164,6 +170,16 @@
     position: absolute;
     bottom: 5px;
     left: 10px;
+    button {
+      &:disabled {
+        color: #fdfdfd;
+        background: #b0cee8;
+        &:hover {
+          color: #fdfdfd;
+          background: #82bbec;
+        }
+      }
+    }
   }
 }
 // .Destination_Form_Style {
@@ -294,6 +310,9 @@
   height: 24px;
   width: 24px;
   border-radius: 15px 15px 15px 15px;
+  &-description {
+    margin-right: 4px;
+  }
 }
 .tab_img {
   height: 24px;
@@ -315,7 +334,7 @@
   margin-right: 3px;
   width: 100%;
 }
-.result-layout-content-item-panel-header:hover{
-  margin:0 0 2% 0;
-  border: 2px solid #2196f3 ;
+.result-layout-content-item-panel-header:hover {
+  margin: 0 0 2% 0;
+  border: 2px solid #2196f3;
 }
