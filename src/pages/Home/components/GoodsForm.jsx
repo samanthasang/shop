@@ -1,14 +1,25 @@
-import React, {useState} from 'react';
-import {Form, Input, Row, Select, Space, Button, Checkbox, Divider} from 'antd';
+import React, {useEffect, useState} from 'react';
+import {
+  Form,
+  Input,
+  Row,
+  Col,
+  Select,
+  Space,
+  Button,
+  Checkbox,
+  Divider,
+} from 'antd';
 import {QuestionCircleOutlined} from '@ant-design/icons';
 import '../Home.scss';
+import OriginForm from './OriginForm';
 
-const GoodsForm = ({visible}) => {
-  //   const [form] = Form.useForm();
+const GoodsForm = ({visible, onConfirm}) => {
+  const [goodForm] = Form.useForm();
   const {Option} = Select;
 
   const [CheckedBoxActive, setCheckedBoxActive] = useState(false);
-
+  const [submitDisable, setSubmitDisable] = useState(true);
   //   useEffect(() => {
   //     if (!visible) {
   //       form.resetFields();
@@ -21,85 +32,104 @@ const GoodsForm = ({visible}) => {
   //   }, [visible]);
 
   const handleWatchForm = () => {
-    //  final check form data for submit
-    // example for get data=>consr formData =  form.getFieldsValue();
+    const field = goodForm.getFieldValue();
+
+    if (field.cost && field.unit && field.readyGood) setSubmitDisable(false);
+    else setSubmitDisable(true);
   };
   const onFinish = values => {
     //  send data
-    // values is data in form
-    alert('Submit');
+    const data = {...values, dangerGood: CheckedBoxActive};
+    onConfirm(data);
   };
-
   return (
     <Form
-      // style={{ width: "800px", height: "100px", backgroundColor: "white",border:"1px solid gray" }}
       className="goodsForm"
       onFinish={onFinish}
       layout="horizontal"
       colon={false}
       onFieldsChange={handleWatchForm}
+      form={goodForm}
     >
-      <Space direction="vertical" size="small" style={{width: '100%'}}>
-        <h3 style={{textAlign: 'right'}}>از اجناس خود به ما بگوئید</h3>
-        <div style={{display: 'flex'}}>
-          <h5 style={{marginLeft: '3px'}}>ارزش اجناس</h5>
-          <span>
-            <QuestionCircleOutlined />
-          </span>
-        </div>
-        <div style={{display: 'flex', flexDirection: 'row', width: '100%'}}>
-          <Input
-            style={{width: '75%', marginLeft: '1px'}}
-            type="number"
-            step="50"
-            min="0"
-            max="500000"
+      <h3 style={{textAlign: 'right'}}>از اجناس خود به ما بگوئید</h3>
+      <div style={{display: 'flex'}}>
+        <h5 style={{marginLeft: '3px'}}>ارزش اجناس</h5>
+        <span>
+          <QuestionCircleOutlined />
+        </span>
+      </div>
+      <Row>
+        <Col span={20}>
+          <Form.Item
+            name="cost"
+            rules={[
+              {
+                required: true,
+                message: 'تعیین مبلغ ضروری است',
+              },
+            ]}
+          >
+            <Input type="number" step="50" min="0" max="500000" />
+          </Form.Item>
+        </Col>
+        <Col span={4}>
+          <Form.Item
+            name="unit"
+            rules={[
+              {
+                required: true,
+                message: 'تعیین واحد پول ضروری است',
+              },
+            ]}
+          >
+            <Select
+              style={{marginRight: '1px'}}
+              // defaultValue="EUR"
+              optionFilterProp="children"
+              filterOption={(input, option) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+            >
+              <Option value="rial">ریال</Option>
+              <Option value="tooman">تومان</Option>
+            </Select>
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row>
+        <Form.Item
+          name="dangerGood"
+          label="
+            محموله حاوی کالاهای خطرناک است"
+          className="LoadForm-dangerGood"
+          valuePropName="checked"
+        >
+          <Checkbox
+            checked={CheckedBoxActive}
+            onChange={e => {
+              setCheckedBoxActive(e.target.checked);
+              goodForm.setFieldsValue({dangerGood: e.target.checked});
+            }}
           />
-          <Select
-            style={{width: '25%'}}
-            defaultValue="EUR"
-            rules={[
-              {
-                required: true,
-                message: 'directionType is required',
-              },
-            ]}
-            optionFilterProp="children"
-            filterOption={(input, option) =>
-              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-            }
-          >
-            <Option value="EUR">EUR</Option>
-            <Option value="GBP">GBP</Option>
-            <Option value="USD">USD</Option>
-          </Select>
-        </div>
-        <div>
-          <Checkbox />
-          <label
-            style={{marginRight: '5px'}}
-            onChange={() => setCheckedBoxActive(true)}
-          >
-            محموله حاوی کالاهای خطرناک است
-          </label>
-        </div>
+        </Form.Item>
+      </Row>
 
-        <div style={{display: 'flex', flexDirection: 'row'}}>
-          <h5 style={{marginLeft: '3px'}}>آیا کالای شما آماده است؟</h5>
-          <span>
-            <QuestionCircleOutlined />
-          </span>
-        </div>
-        <div>
+      <Row style={{margin: '10px 3px'}}>
+        <h5>آیا کالای شما آماده است؟</h5>
+        <QuestionCircleOutlined style={{margin: '3px'}} />
+      </Row>
+      <div>
+        <Form.Item
+          name="readyGood"
+          rules={[
+            {
+              required: true,
+              message: 'وضعیت آماده بودن کالا ضروریست',
+            },
+          ]}
+        >
           <Select
-            style={{width: '100%'}}
             placeholder="بازه زمانی را انتخاب کنید"
-            rules={[
-              {
-                required: true,
-                message: 'directionType is required',
-              },
-            ]}
             optionFilterProp="children"
             filterOption={(input, option) =>
               option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
@@ -109,25 +139,20 @@ const GoodsForm = ({visible}) => {
             <Option value="2">ظرف 2 هفته آماده خواهد شد.</Option>
             <Option value="3">بیش از 2 هفته دیگر آماده خواهد شد.</Option>
           </Select>
-        </div>
-        <Divider className="originalForm-divider" />
-        <Row className="goodsForm-submit">
-          <Button type="primary" size="middle">
-            تایید
-          </Button>
-        </Row>
-      </Space>
+        </Form.Item>
+      </div>
+      <Divider className="originalForm-divider" />
+      <Row style={{marginTop: '10px'}} justify="end">
+        <Button
+          type="primary"
+          size="middle"
+          htmlType="submit"
+          disabled={submitDisable}
+        >
+          تایید
+        </Button>
+      </Row>
     </Form>
   );
 };
 export default GoodsForm;
-
-// <div>
-// {CheckedBoxActive ?
-//    ( <div
-//        style={{ border: "10px #bdbebd solid", boxShadow: "-5px 5px 10px 10px rgba(0, 0, 0, 0.1)", borderWidth: "0.3px", borderRadius: " 8px 8px 8px 8px" }}
-//    >
-//        <span style={{ color: "orange" }}><WarningOutlined /></span><p>در حال حاضر، فرآورده‌های ما فقط محموله‌های خطرناک را برای اقلام حاوی باتری‌های لیتیوم یون انجام می‌دهند. آنها دیگر محموله های خطرناک را پشتیبانی نمی کنند.</p>
-//    </div>)
-//    : {}}
-// </div>

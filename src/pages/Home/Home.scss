@@ -291,10 +291,17 @@
     float: right;
     margin-bottom: 10px;
   }
+  &-dangerGood {
+    flex-direction: row-reverse !important;
+    margin: 0 !important;
+    .ant-form-item-label {
+      margin-right: 5px;
+    }
+  }
 }
 .goodsForm {
   width: 500px;
-  height: 280px;
+  height: auto;
   background-color: white;
   // border: 1px #bdbebd solid;
   border-radius: 5px 5px 5px 5px;
