@@ -5,3 +5,9 @@ export const getData = payload => {
     data: payload,
   };
 };
+export const getFirstFormData = payload => {
+  return {
+    type: ALL.FORMDATA.HOMEPAGE,
+    data: payload,
+  };
+};

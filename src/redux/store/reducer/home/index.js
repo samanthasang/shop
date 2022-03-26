@@ -9,15 +9,22 @@ const initialStateRedux = (state, action) => {
     test: action.data,
   });
 };
+const getFirstPageFormData = (state, action) => {
+  return updateObject(state, {
+    formData: action.data,
+  });
+};
 
-const home = (state = initialState, action) => {
+const allData = (state = initialState, action) => {
   switch (action.type) {
     case ALL.TEST:
       return initialStateRedux(state, action);
+    case ALL.FORMDATA.HOMEPAGE:
+      return getFirstPageFormData(state, action);
 
     default:
       return state;
   }
 };
 
-export default home;
+export default allData;

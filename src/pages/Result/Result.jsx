@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useSelector} from 'react-redux';
 import {
   Row,
   Col,
@@ -23,6 +24,8 @@ import EditOrder from './Components/EditOrder';
 import data from '../../test.json';
 
 const Result = () => {
+  const {all} = useSelector(state => state);
+  console.log(all);
   const {Header, Sider, Content} = Layout;
   const {Text} = Typography;
   const {Panel} = Collapse;
