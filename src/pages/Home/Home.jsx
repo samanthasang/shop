@@ -17,13 +17,17 @@ const Home = () => {
   const [originFormState, setOriginFormState] = useState(0);
   const [originVisibleForm, setOriginVisibleForm] = useState(false);
   const [originFormData, setOriginFormData] = useState(null);
+  //
   const [destinationFormState, setDestinationFormState] = useState(0);
   const [destinationVisibleForm, setDestinationVisibleForm] = useState(false);
   const [destinationFormData, setDestinationFormData] = useState(null);
-  // const [loadFormState, setLoadFormState] = useState(0);
-  // const [goodFormState, setGoodFormState] = useState(0);
-  const [loadFormData, setLoadFormData] = useState(null);
+  //
+  const [goodFormState, setGoodFormState] = useState(0);
+  const [goodVisibleForm, setGoodVisibleForm] = useState(false);
   const [goodFormData, setGoodFormData] = useState(null);
+  //
+  // const [loadFormState, setLoadFormState] = useState(0);
+  const [loadFormData, setLoadFormData] = useState(null);
   const [confirmButtonActive, setConfirmButtonActive] = useState(true);
 
   useEffect(() => {
@@ -41,22 +45,26 @@ const Home = () => {
   }, [destinationVisibleForm]);
 
   useEffect(() => {
-    if (originFormData && destinationFormData && loadFormData && goodFormData)
+    if (!goodFormState && goodVisibleForm) {
+      if (goodFormData) setGoodFormState(1);
+      else setGoodFormState(2);
+    }
+  }, [goodVisibleForm]);
+
+  useEffect(() => {
+    if (originFormData && destinationFormData && goodFormData)
       setConfirmButtonActive(true);
     else setConfirmButtonActive(false);
   }, [originFormData, destinationFormData, loadFormData, goodFormData]);
 
   const handleChangeOriginVisible = () => {
-    // if (!originFormState) {
-    //   setOriginFormState(2);
-    // }
     setOriginVisibleForm(!originVisibleForm);
   };
   const handleChangeDestinationVisible = () => {
-    // if (!originFormState) {
-    //   setOriginFormState(2);
-    // }
     setDestinationVisibleForm(!destinationVisibleForm);
+  };
+  const handleChangeGoodVisible = () => {
+    setGoodVisibleForm(!goodVisibleForm);
   };
 
   const handleSubmitOriginForm = values => {
@@ -73,6 +81,13 @@ const Home = () => {
       setDestinationVisibleForm(false);
       setDestinationFormState(1);
     } else setDestinationFormState(2);
+  };
+  const handleSubmitGoodForm = values => {
+    setGoodFormData(values);
+    if (values.cost && values.unit && values.readyGood) {
+      setGoodVisibleForm(false);
+      setGoodFormState(1);
+    } else setGoodFormState(2);
   };
 
   return (
@@ -105,7 +120,7 @@ const Home = () => {
                   >
                     <div className="centerMenu_origin">
                       <div className="centerMenu_origin_top">
-                        <h5 style={{color: originFormState == 2 && 'red'}}>
+                        <h5 style={{color: originFormState === 2 && 'red'}}>
                           اصلی
                         </h5>
                         {originFormState ? (
@@ -154,7 +169,9 @@ const Home = () => {
                   >
                     <div className="centerMenu_origin">
                       <div className="centerMenu_origin_top">
-                        <h5 style={{color: destinationFormState == 2 && 'red'}}>
+                        <h5
+                          style={{color: destinationFormState === 2 && 'red'}}
+                        >
                           مقصد
                         </h5>
                         {destinationFormState ? (
@@ -206,13 +223,29 @@ const Home = () => {
                 <Divider type="vertical" />
                 <Col span={5}>
                   <Popover
-                    content={<GoodsForm />}
+                    content={
+                      <GoodsForm
+                        visible={goodVisibleForm}
+                        onConfirm={handleSubmitGoodForm}
+                      />
+                    }
                     placement="bottomLeft"
                     trigger={'click'}
+                    visible={goodVisibleForm}
+                    onVisibleChange={handleChangeGoodVisible}
                   >
                     <div className="centerMenu_origin">
                       <div className="centerMenu_origin_top">
-                        <h5>کالاها و خدمات</h5>
+                        <h5 style={{color: goodFormState === 2 && 'red'}}>
+                          کالاها و خدمات
+                        </h5>
+                        {goodFormState ? (
+                          goodFormState === 1 ? (
+                            <CheckOutlined style={{color: 'green'}} />
+                          ) : (
+                            <ExclamationCircleOutlined style={{color: 'red'}} />
+                          )
+                        ) : null}
                       </div>
                       <span style={{color: 'red'}}></span>
                       <p style={{color: 'gray'}}>از اجناس خود به ما بگویید</p>
