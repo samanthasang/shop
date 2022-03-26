@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
 
 // reducers
-import home from './home';
+import allData from './home';
 
 export default combineReducers({
-  all: home,
+  all: allData,
 });

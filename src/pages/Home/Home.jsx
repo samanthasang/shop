@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 // import ModalForm from './components/ModalForm';
 // import MyForm from './components/MyForm';
 import OriginForm from './components/OriginForm';
 // import DestinationFrom from './components/DestinationFrom';
 import LoadForm from './components/LoadForm';
 import GoodsForm from './components/GoodsForm';
+import {useDispatch} from 'react-redux';
+import {getFirstFormData} from '../../redux/action/home';
 import {Row, Col, Button, Divider, Popover} from 'antd';
 import {
   ExclamationCircleOutlined,
@@ -14,6 +16,8 @@ import {
 } from '@ant-design/icons';
 import './Home.scss';
 const Home = () => {
+  let history = useHistory();
+  const dispatch = useDispatch();
   const [originFormState, setOriginFormState] = useState(0);
   const [originVisibleForm, setOriginVisibleForm] = useState(false);
   const [originFormData, setOriginFormData] = useState(null);
@@ -89,7 +93,15 @@ const Home = () => {
       setGoodFormState(1);
     } else setGoodFormState(2);
   };
-
+  const handlesubmitAllFormData = () => {
+    const Formdata = {
+      origin: originFormData,
+      destination: destinationFormData,
+      good: goodFormData,
+    };
+    dispatch(getFirstFormData(Formdata));
+    history.push('/result');
+  };
   return (
     <section>
       <div className="Home">
@@ -256,9 +268,9 @@ const Home = () => {
                 <Col span={2}>
                   <div id="small-col-div">
                     {confirmButtonActive ? (
-                      <Link to="/result">
+                      <div onClick={handlesubmitAllFormData}>
                         <ArrowLeftOutlined />
-                      </Link>
+                      </div>
                     ) : (
                       <ArrowLeftOutlined
                         style={{color: '#68b8fa', cursor: 'not-allowed'}}

@@ -32,4 +32,7 @@ export const ALL = {
     GET_USER_CONFIG: 'user/basics/GET_USER_CONFIG',
     POST_USER_CONFIG: 'user/basics/POST_USER_CONFIG',
   },
+  FORMDATA: {
+    HOMEPAGE: 'home',
+  },
 };
