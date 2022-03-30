@@ -16,16 +16,16 @@ import {
   Space,
 } from 'antd';
 import {ExclamationCircleOutlined} from '@ant-design/icons';
-import '../Home/Home.scss';
-import './Result.scss';
 import ItemTransferComponent from './Components/ItemTransferComponent';
 import PencilIcon from '../../assets/Icons/PencilIcon';
 import EditOrder from './Components/EditOrder';
 import data from '../../test.json';
+import '../Home/Home.scss';
+import './Result.scss';
 
 const Result = () => {
   const {all} = useSelector(state => state);
-  console.log(all);
+  // console.log(all);
   const {Header, Sider, Content} = Layout;
   const {Text} = Typography;
   const {Panel} = Collapse;
@@ -83,12 +83,7 @@ const Result = () => {
               <div className="Home-center-Forms-details">
                 <Row className="centerMenu">
                   <Col span={5}>
-                    <Row
-                      // content={<OriginForm origin={true} />}
-                      // placement="bottomRight"
-                      // trigger={'click'}
-                      onClick={handleShowModal}
-                    >
+                    <Row onClick={handleShowModal}>
                       <div className="centerMenu_origin">
                         <div className="centerMenu_origin_top">
                           <h5 style={{color: 'red'}}>اصلی</h5>
@@ -101,12 +96,7 @@ const Result = () => {
                   </Col>
                   <Divider type="vertical" />
                   <Col span={5}>
-                    <Row
-                      // content={<OriginForm origin={false} />}
-                      // placement="bottomRight"
-                      // trigger={'click'}
-                      onClick={handleShowModal}
-                    >
+                    <Row onClick={handleShowModal}>
                       <div className="centerMenu_origin">
                         <div className="centerMenu_origin_top">
                           <h5>مقصد</h5>
@@ -118,12 +108,7 @@ const Result = () => {
                   </Col>
                   <Divider type="vertical" />
                   <Col span={5}>
-                    <Row
-                      // content={<LoadForm />}
-                      // placement="bottomRight"
-                      // trigger={'click'}
-                      onClick={handleShowModal}
-                    >
+                    <Row onClick={handleShowModal}>
                       <div className="centerMenu_origin">
                         <div className="centerMenu_origin_top">
                           <h5>بار</h5>
@@ -136,12 +121,7 @@ const Result = () => {
 
                   <Divider type="vertical" />
                   <Col span={5}>
-                    <Row
-                      // content={<GoodsForm />}
-                      // placement="bottomLeft"
-                      // trigger={'click'}
-                      onClick={handleShowModal}
-                    >
+                    <Row onClick={handleShowModal}>
                       <div className="centerMenu_origin">
                         <div className="centerMenu_origin_top">
                           <h5>کالاها و خدمات</h5>
@@ -163,83 +143,6 @@ const Result = () => {
                     </div>
                   </Col>
                 </Row>
-                {/* <Row className="centerMenu">
-                    <Col span={5}>
-                      <Popover
-                        content={<OriginForm origin={true} />}
-                        placement="bottomRight"
-                        trigger={'click'}
-                      >
-                        <div className="centerMenu_origin">
-                          <div className="centerMenu_origin_top">
-                            <h5 style={{color: 'red'}}>اصلی</h5>
-                            <ExclamationCircleOutlined />
-                          </div>
-                          <span style={{color: 'red'}}></span>
-                          <p style={{color: 'gray'}}>کارخانه/ انبار</p>
-                        </div>
-                      </Popover>
-                    </Col>
-                    <Divider type="vertical" />
-                    <Col span={5}>
-                      <Popover
-                        content={<OriginForm origin={false} />}
-                        placement="bottomRight"
-                        trigger={'click'}
-                      >
-                        <div className="centerMenu_origin">
-                          <div className="centerMenu_origin_top">
-                            <h5>مقصد</h5>
-                          </div>
-                          <span style={{color: 'red'}}></span>
-                          <p style={{color: 'gray'}}>به کجا حمل می کنید؟</p>
-                        </div>
-                      </Popover>
-                    </Col>
-                    <Divider type="vertical" />
-                    <Col span={5}>
-                      <Popover
-                        content={<LoadForm />}
-                        placement="bottomRight"
-                        trigger={'click'}
-                      >
-                        <div className="centerMenu_origin">
-                          <div className="centerMenu_origin_top">
-                            <h5>بار</h5>
-                          </div>
-                          <span style={{color: 'red'}}></span>
-                          <p style={{color: 'gray'}}>چه چیزی ارسال می کنید؟</p>
-                        </div>
-                      </Popover>
-                    </Col>
-
-                    <Divider type="vertical" />
-                    <Col span={5}>
-                      <Popover
-                        content={<GoodsForm />}
-                        placement="bottomLeft"
-                        trigger={'click'}
-                      >
-                        <div className="centerMenu_origin">
-                          <div className="centerMenu_origin_top">
-                            <h5>کالاها و خدمات</h5>
-                          </div>
-                          <span style={{color: 'red'}}></span>
-                          <p style={{color: 'gray'}}>
-                            از اجناس خود به ما بگویید
-                          </p>
-                        </div>
-                      </Popover>
-                    </Col>
-                    <Divider type="vertical" />
-                    <Col span={2}>
-                      <div id="small-col-div">
-                        <Link to="/home">
-                          <ArrowLeftOutlined />
-                        </Link>
-                      </div>
-                    </Col>
-                  </Row> */}
               </div>
             </div>
           </Row>
@@ -423,13 +326,12 @@ const Result = () => {
                 </Collapse>
               </Row>
             </Sider>
-            <Content>
+            <Content style={{overflow: 'visible'}}>
               <Row>
                 <ItemTransferComponent />
               </Row>
             </Content>
           </Layout>
-          {/* <Footer>footer</Footer> */}
         </Layout>
       </Col>
       <EditOrder
