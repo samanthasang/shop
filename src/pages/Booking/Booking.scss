@@ -1,0 +1,55 @@
+.booking-container {
+  background: #fdfdfd;
+  margin: 4px 0;
+  &-steps {
+    background: #fdfdfd;
+    padding: 1rem 0;
+    margin: 4px 0;
+  }
+  &-details {
+    height: 50vh;
+    &-right {
+      background: #fefefe;
+      box-shadow: 0 0 3px 0 rgb(35, 37, 55/ 12%);
+      padding: 24px;
+      &-priceDetails {
+        font-size: 18px;
+        font-weight: 500;
+      }
+      &-priceSeller {
+        font-size: 13px;
+        span {
+          color: #53575f;
+        }
+      }
+      &-divider {
+        margin: 0 !important;
+      }
+      &-Duties {
+        span {
+          color: #53575f;
+        }
+        &-include {
+          svg {
+            transform: scaleX(-1);
+            margin-left: 5px;
+          }
+        }
+      }
+      &-Insurance {
+        span {
+          color: #53575f;
+        }
+        &-explain {
+          .ant-typography {
+            color: #8d929c;
+            font-size: 11.5px;
+          }
+        }
+      }
+    }
+    &-left {
+      background: #fefefe;
+    }
+  }
+}

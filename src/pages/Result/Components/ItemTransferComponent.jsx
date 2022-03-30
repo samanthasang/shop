@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 import {
   Row,
   Col,
@@ -18,6 +19,7 @@ import {columns} from './columns';
 import '../Result.scss';
 import data from '../../../test.json';
 const ItemTransferComponent = () => {
+  let history = useHistory();
   const {Text, Title, Paragraph} = Typography;
   const {Panel} = Collapse;
   const [tableColumn, setTableColumn] = useState(columns);
@@ -28,11 +30,14 @@ const ItemTransferComponent = () => {
     setTableData(data.itemTransfer.tableData);
     setItemsContent(data.itemTransfer.items);
   }, []);
+  const handleSelectItem = () => {
+    history.push('/booking');
+  };
   return (
     <>
       {itemsContent.map(item => (
         <Collapse
-          defaultActiveKey={['1']}
+          // defaultActiveKey={['1']}
           key={item}
           className="result-layout-content-item"
         >
@@ -210,6 +215,7 @@ const ItemTransferComponent = () => {
                         <Button
                           type="primary"
                           className="result-layout-content-item-choose-button"
+                          onClick={handleSelectItem}
                         >
                           انتخاب
                         </Button>
