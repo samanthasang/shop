@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Radio } from 'antd';
+import { Row,Col,Card, Form, Input, Button, Radio } from 'antd';
 
-const PasswordForm = () => {
+import '../AccountDetails.scss'
+
+const PasswordForm = (props) => {
     const onFinish = (values) => {
         console.log('Success:', values);
       };
@@ -10,7 +12,10 @@ const PasswordForm = () => {
         console.log('Failed:', errorInfo);
       };
   return (
-    <Form
+    <Row className='passForm' >
+      <Col span={22} offset={1}>
+        <Card title="ویرایش رمز عبور"style={{textAlign: 'right'}} >
+    <Form style={{textAlign: 'right'}}
       name="basic"
       labelCol={{
         span: 24,
@@ -25,12 +30,11 @@ const PasswordForm = () => {
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
-      <Form.Item
-        label="Current"
+      <Form.Item style={{textAlign: 'right'}}
+        label="رمز عبور کنونی"
         name="Current"
         rules={[
           {
-            required: true,
             message: 'Please input your Current !',
           },
         ]}
@@ -39,11 +43,10 @@ const PasswordForm = () => {
       </Form.Item>
 
       <Form.Item
-        label="New"
+        label="رمز عبور جدید"
         name="New"
         rules={[
           {
-            required: true,
             message: 'Please input your password!',
           },
         ]}
@@ -51,11 +54,10 @@ const PasswordForm = () => {
         <Input />
       </Form.Item>
       <Form.Item
-        label="Re-type new"
+        label="تکرار رمز عبور جدید"
         name="Re-type new"
         rules={[
           {
-            required: true,
             message: 'Please input your password!',
           },
         ]}
@@ -73,18 +75,15 @@ const PasswordForm = () => {
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
-      </Form.Item>
-      <Form.Item
-        wrapperCol={{
-          offset: 1,
-          span: 4,
-        }}
-      >
-        <Button  htmlType="submit">
+        <Button style={{ marginRight: "1em" }} onClick={props.showProfileCard} htmlType="submit">
           cancel
         </Button>
       </Form.Item>
     </Form>
+        </Card>
+
+      </Col>
+    </Row>
   );
 };
 

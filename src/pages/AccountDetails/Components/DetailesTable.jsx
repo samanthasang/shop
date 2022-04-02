@@ -1,9 +1,9 @@
-import { Row, Col, Card,Table, Tag, Space, Button, Form, Input, Checkbox, Divider } from 'antd';
-import { GoogleOutlined, UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Row, Col, Card, Skeleton, Avatar, Table, Tag, Space, Button, Form, Input, Checkbox, Divider } from 'antd';
+import { EditOutlined, EllipsisOutlined, SettingOutlined, GoogleOutlined, UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 const { Meta } = Card;
-const DetailesTable = () => {
+const DetailesTable = (props) => {
 
     const columns = [
         {
@@ -52,18 +52,40 @@ const DetailesTable = () => {
 
 
   return (
-  <div className="site-card-wrapper" style={{ width: "100%", marginTop: "50px" }} >
+  <div className="site-card-wrapper" style={{ width: "100%" }} >
     <Row  >
       <Col span={22} offset={1}>
-        <Card title="Card title">
+        <Card title="پروفایل کاربری">
             <Card >
-            <Table columns={columns} dataSource={data}  extra={<a href="#">More</a>}/>
+
+            <div style={{ display: 'inline-block', width: "20%",float: "rigth" }} >
+              <p>نام</p>
+              <p>samantha sang</p>
+              </div>
+            <div style={{ display: 'inline-block', width: "25%",float: "rigth" }} >
+              <p>نام شرکت</p>
+              <p>	samanthasang70@gmail.com</p>
+              </div>
+            <div style={{ display: 'inline-block', width: "25%",float: "rigth" }} >
+              <p>ایمیل</p>
+              <p>	samanthasang70@gmail.com</p>
+              </div>
+            <div style={{ display: 'inline-block', width: "20%",float: "rigth" }} >
+              <p>شماره تماس</p>
+              <p>09100215643</p>
+              </div>
+              <Button onClick={props.showProfileEditCard} style={{ width: "10px",float: "left", marginTop: '15px' }} shape="circle" icon={<EditOutlined />} />
             </Card>
-            <Card
-               
-                >
-            <Table columns={passcolumns} dataSource={passdata} />
+            <Card span={12}>
+              <div style={{ display: 'inline-block', width: "90%",float: "rigth" }} >
+                <p>رمز عبور</p>
+                <p>Password</p>
+              </div>
+              <Button onClick={props.showPasswordEditCard} style={{ width: "10px",float: "left", marginTop: '15px' }} shape="circle" icon={<EditOutlined />} />
+
+            {/* <Table columns={passcolumns} dataSource={passdata} /> */}
             </Card>
+        
         </Card>
 
       </Col>

@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
 import { Row,Col,Card, Form, Input, Button, Radio } from 'antd';
 
-const ProfileForm = (props) => {
+
+const CompanyForm = (props) => {
+
+
+
+    const [ editable, setEditable ] = useState(true);
+
+    const EditableOn = () => {
+        setEditable(!editable);
+    };
+
+
     const onFinish = (values) => {
         console.log('Success:', values);
       };
@@ -10,9 +21,9 @@ const ProfileForm = (props) => {
         console.log('Failed:', errorInfo);
       };
   return (
-    <Row  >
+    <Row className='passForm' >
       <Col span={22} offset={1}>
-        <Card title="ویرایش پروفایل">
+        <Card title="مشخصات شرکت">
     <Form
       name="basic"
       labelCol={{
@@ -29,7 +40,7 @@ const ProfileForm = (props) => {
       autoComplete="off"
     >
       <Form.Item
-        label="نام"
+        label="نام شرکت"
         name="Name"
         rules={[
           {
@@ -37,11 +48,11 @@ const ProfileForm = (props) => {
           },
         ]}
       >
-        <Input />
+        <Input disabled={editable} />
       </Form.Item>
 
       <Form.Item
-        label="نام شرکت"
+        label="نام "
         name="Company name"
         rules={[
           {
@@ -49,10 +60,10 @@ const ProfileForm = (props) => {
           },
         ]}
       >
-        <Input />
+        <Input disabled={editable}/>
       </Form.Item>
       <Form.Item
-        label="ایمیل"
+        label="کشور"
         name="Email"
         rules={[
           {
@@ -60,10 +71,10 @@ const ProfileForm = (props) => {
           },
         ]}
       >
-        <Input />
+        <Input disabled={editable}/>
       </Form.Item>
       <Form.Item
-        label="شماره تماس"
+        label="شهر"
         name="Phone Number"
         rules={[
           {
@@ -71,24 +82,36 @@ const ProfileForm = (props) => {
           },
         ]}
       >
-        <Input />
+        <Input disabled={editable}/>
       </Form.Item>
 
-
+{editable ? 
       <Form.Item
-        wrapperCol={{
+      wrapperCol={{
           offset: 0,
           span: 4,
         }}
-      >
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-        <Button style={{ marginRight: "1em" }} onClick={props.showProfileCard} htmlType="submit">
-          cancel
+        >
+        <Button onClick={EditableOn} type="primary" htmlType="submit">
+          ویرایش
         </Button>
       </Form.Item>
-    </Form>
+    :
+      <Form.Item
+      wrapperCol={{
+          offset: 0,
+          span: 4,
+        }}
+        >
+        <Button type="primary" htmlType="submit">
+          تایید
+        </Button>
+        <Button style={{ marginRight: "1em" }} onClick={EditableOn} htmlType="submit">
+          انصراف
+        </Button>
+      </Form.Item>
+    }
+    </Form> 
         </Card>
 
       </Col>
@@ -97,4 +120,4 @@ const ProfileForm = (props) => {
 };
 
 
-export default  ProfileForm;
+export default  CompanyForm;

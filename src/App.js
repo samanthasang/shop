@@ -10,6 +10,7 @@ import Login from './pages/Login/Login';
 import SingUp from './pages/SingUp/SingUp';
 import MySetting from './pages/MySetting/MySetting';
 import AccountDetails from './pages/AccountDetails/AccountDetails';
+import CompanyProfile from './pages/CompanyProfile/CompanyProfile';
 
 // style
 import './App.scss';
@@ -42,6 +43,9 @@ const App = () => {
           </Route>
           <Route path="/accountdetails">
             <AccountDetails />
+          </Route>
+          <Route path="/companyprofile">
+            <CompanyProfile />
           </Route>
         </Switch>
       </Layout>
