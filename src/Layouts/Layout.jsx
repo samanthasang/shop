@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
-import {Button, Layout as LayoutAnt} from 'antd';
+import React, { Fragment, useState } from 'react';
+import { Tooltip, Divider, Menu, Dropdown, Popover, Button, Layout as LayoutAnt} from 'antd';
 import { Link } from 'react-router-dom';
 
 
 import ShipIcon from '../assets/Icons/ShipIcon';
 import TruckIcon from '../assets/Icons/TruckIcon';
+import { UserOutlined, SearchOutlined, MenuOutlined } from '@ant-design/icons';
 
 
 // import Toolbar from 'components/ui/Toolbar/index';
@@ -16,6 +17,9 @@ import TruckIcon from '../assets/Icons/TruckIcon';
 // import {logOutAsUser} from 'services/loginAsUser';
 
 const {Content} = LayoutAnt;
+
+
+
 
 const Layout = ({children}) => {
   // const [collapsed, setCollapsed] = useState(false);
@@ -33,6 +37,48 @@ const Layout = ({children}) => {
   //   setCollapsed(!collapsed);
   // };
 
+
+const [ login, setLogin ] = useState(false);
+
+const changeLogin = () => {
+  setLogin(!login);
+};
+
+
+  const menu = (
+    <Menu>
+      <Menu.Item key="0" size="large">
+                <Link to='/home' size="large" ><SearchOutlined /> حمل و نقل</Link>
+      </Menu.Item>
+      <Menu.Item key="1">
+                <Link to='/result' ><ShipIcon /> فاکتور</Link>
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="2">
+                <Link to='/booking' ><TruckIcon /> تنظیمات</Link>
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="3">
+                <Link to='/booking' ><TruckIcon /> سوالات متداول</Link>
+      </Menu.Item>
+      <Menu.Item key="4">
+                <Link to='/booking' ><TruckIcon /> خروج</Link>
+      </Menu.Item>
+    </Menu>
+  );
+  const menuCurrency = (
+    <Menu>
+      <Menu.Item key="0">
+                <a >USD ($)</a>
+      </Menu.Item>
+      <Menu.Item key="1">
+                <a >EUR (€)</a>
+      </Menu.Item>
+      <Menu.Item key="2">
+                <a >GBP (£)</a>
+      </Menu.Item>
+    </Menu>
+  );
   return (
     <LayoutAnt>
       <header className="haeder ant-layout-header">
@@ -49,23 +95,43 @@ const Layout = ({children}) => {
           
           <div>
             <div className='unauthenticated-menu'>
-              <Button className="ant-btn ant-btn-primary ant-btn-sm haeder-signup" type="primary">
-                <span>SignUp</span>
-              </Button>
+              {login ?
         <Fragment>
         <ul>
             <li>
-                <Link to='/home'>
-                  <ShipIcon />
+              <Button type="primary" shape="round" icon={<SearchOutlined />} onClick={changeLogin} >
+                  Find A Quote
+            </Button>
+            </li>
+            <li>
+                <Link to='/login'>
+                <Tooltip title="حمل و نقل">
+                  <Button shape="circle" icon={<ShipIcon />} />
+                </Tooltip>
                 </Link>
             </li>
             <li>
                 <Link to='/result'>
-                  <TruckIcon />
+                <Tooltip title="تغییر ارز">
+                        <Dropdown overlay={menuCurrency} trigger={['click']} size={["large"]}>
+                  <Button hover="disable"  shape="circle" >£</Button>
+                        </Dropdown>
+                </Tooltip>
                 </Link>
             </li>
+            <li>
+            <Dropdown overlay={menu} trigger={['click']} size={"large"}>
+              <Button shape="round" icon={<MenuOutlined />} >
+                <Button shape="circle" size='small' >S</Button>
+              </Button>
+            </Dropdown>
+            </li>
         </ul>
-        </Fragment>
+        </Fragment> :
+    <Button type="primary" icon={<UserOutlined />}  onClick={changeLogin}>
+      ورود
+    </Button> 
+    }
             </div>
           </div>
         </div>
