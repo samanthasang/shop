@@ -6,6 +6,11 @@ import {ConfigProvider} from 'antd';
 import Home from './pages/Home/Home';
 import Result from './pages/Result/Result';
 import Booking from './pages/Booking/Booking';
+import Login from './pages/Login/Login';
+import SingUp from './pages/SingUp/SingUp';
+import MySetting from './pages/MySetting/MySetting';
+import AccountDetails from './pages/AccountDetails/AccountDetails';
+import CompanyProfile from './pages/CompanyProfile/CompanyProfile';
 
 // style
 import './App.scss';
@@ -26,6 +31,21 @@ const App = () => {
           </Route>
           <Route path="/booking">
             <Booking />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/singup">
+            <SingUp />
+          </Route>
+          <Route path="/mysetting">
+            <MySetting />
+          </Route>
+          <Route path="/accountdetails">
+            <AccountDetails />
+          </Route>
+          <Route path="/companyprofile">
+            <CompanyProfile />
           </Route>
         </Switch>
       </Layout>

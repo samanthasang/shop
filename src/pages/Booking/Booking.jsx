@@ -14,12 +14,18 @@ import {
   Checkbox,
   Space,
 } from 'antd';
-import {QuestionCircleOutlined} from '@ant-design/icons';
+import {
+  QuestionCircleOutlined,
+  ClockCircleOutlined,
+  CalendarOutlined,
+} from '@ant-design/icons';
+import HouseIcon from '../../assets/Icons/HouseIcon';
+import TruckIcon from '../../assets/Icons/TruckIcon';
 import './Booking.scss';
 
 const Booking = () => {
   const {Step} = Steps;
-  const {Text, Paragraph} = Typography;
+  const {Text, Paragraph, Title} = Typography;
   return (
     <Row justify="center" className="booking-container">
       <Col span={16}>
@@ -101,7 +107,122 @@ const Booking = () => {
             </Row>
           </Col>
           <Col span={15}>
-            <Row className="booking-container-details-left">1</Row>
+            <Row className="booking-container-details-left">
+              <Col span={24}>
+                <Row className="booking-container-details-left-card">
+                  <Col span={24}>
+                    <Row>
+                      <Title className="booking-container-details-left-card-summary-title">
+                        خلاصه رزرو
+                      </Title>
+                    </Row>
+                    <Row
+                      justify="center"
+                      className="booking-container-details-left-card-summary-icon"
+                    >
+                      <TruckIcon width={50} />
+                    </Row>
+                    <Row
+                      className="booking-container-details-left-card-summary-other"
+                      justify="center"
+                    >
+                      <Col span={3}>
+                        <Row
+                          className="booking-container-details-left-card-summary-icon HomeIcon"
+                          justify="center"
+                        >
+                          <Col span={13}>
+                            <Row justify="center">
+                              <HouseIcon />
+                            </Row>
+                          </Col>
+                          <Col span={13}>
+                            <Row justify="center">
+                              <Text>ایران </Text>
+                              <br />
+                              <Text>تهران </Text>
+                            </Row>
+                          </Col>
+                        </Row>
+                      </Col>
+                      <Col span={16}>
+                        <Divider
+                          dashed={true}
+                          className="booking-container-details-left-card-summary-other-divider"
+                        />
+                      </Col>
+                      <Col span={3}>
+                        <Row
+                          className="booking-container-details-left-card-summary-icon HomeIcon"
+                          justify="center"
+                        >
+                          <Col span={13}>
+                            <Row justify="center">
+                              <HouseIcon />
+                            </Row>
+                          </Col>
+                          <Col span={13}>
+                            <Row justify="center">
+                              <Text>ایران </Text>
+                              <br />
+                              <Text>تهران </Text>
+                            </Row>
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col span={17}>
+                    <Row className="booking-container-details-left-doorRight">
+                      <Col span={24}>
+                        <Row
+                          className="booking-container-details-left-doorRight-top"
+                          align="middle"
+                        >
+                          <ClockCircleOutlined />
+                          <Text className="booking-container-details-left-doorRight-text">
+                            برآورد زمان حمل و نقل از وانت: 1-10 روز
+                          </Text>
+                        </Row>
+                        <Row
+                          className="booking-container-details-left-doorRight-bottom"
+                          align="middle"
+                        >
+                          <CalendarOutlined />
+                          <Text className="booking-container-details-left-doorRight-text">
+                            کالا آماده: کالا آماده است
+                          </Text>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col span={7}>
+                    <Row className="booking-container-details-left-doorLeft">
+                      <Col span={24}>
+                        <Row
+                          className="booking-container-details-left-card-summary-icon"
+                          justify="center"
+                        >
+                          <TruckIcon width={50} />
+                        </Row>
+                        <Row justify="center">
+                          <Text className="booking-container-details-left-doorLeft-text1">
+                            LTR
+                          </Text>
+                        </Row>
+                        <Row justify="center">
+                          <Text className="booking-container-details-left-doorLeft-text2">
+                            از محل به محل
+                          </Text>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Col>
