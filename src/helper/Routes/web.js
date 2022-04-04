@@ -1,0 +1,38 @@
+const constant = {
+  ROOT: '/',
+  LOGIN: '/login',
+  FORGET_PASSWORD: '/forget-password',
+  CURRENT: '/current',
+  SCHEDULE: '/schedule',
+  CURRENT_FLIGHTS_DOMESTIC: '/current/current-domestic',
+  CURRENT_FLIGHTS_INTERNATIONAL: '/current/current-international',
+  SCHEDULE_FLIGHTS_DOMESTIC: '/schedule/schedule-domestic',
+  SCHEDULE_FLIGHTS_INTERNATIONAL: '/schedule/schedule-international',
+  USER_MANAGEMENT: '/user-management',
+  USER_MANAGEMENT_GROUPS: '/group',
+  USER_MANAGEMENT_USERS: '/user',
+  ENTERPRISE_MANAGEMENT: '/enterprise-management',
+  ENTERPRISE_MANAGEMENT_DEVICES: '/device',
+  ENTERPRISE_MANAGEMENT_ADVERTISEMENT: '/advertisement',
+  ENTERPRISE_MANAGEMENT_PLAYLIST: '/playList',
+  ENTERPRISE_MANAGEMENT_DEFINITIONS: '/definitions',
+  ENTERPRISE_MANAGEMENT_DEFINITIONS_AIRLINE: '/definitions/airline',
+  ENTERPRISE_MANAGEMENT_DEFINITIONS_AIRCRAFT: '/definitions/aircraft',
+  ENTERPRISE_MANAGEMENT_DEFINITIONS_AIRCRAFT_TYPE: '/definitions/aircraftType',
+  ENTERPRISE_MANAGEMENT_DEFINITIONS_FLIGHT_STATUS: '/definitions/flightStatus',
+  ENTERPRISE_MANAGEMENT_DEFINITIONS_RESOURCE_AND_SERVICE_TYPE:
+    '/definitions/resourceType',
+  ENTERPRISE_MANAGEMENT_DEFINITIONS_RESOURCE_AND_SERVICE:
+    '/definitions/resource',
+  ENTERPRISE_MANAGEMENT_DEFINITIONS_AIRPORT: '/definitions/airport',
+  ENTERPRISE_MANAGEMENT_SETTINGS: '/setting',
+  LOG_ROOT: '/log',
+  LOGS: '/log',
+  LOG_FILTER: '/log/:id',
+  REPORTS_FLIGHT: '/report/flight',
+  REPORTS: '/report',
+  REPORTS_RESOURCE: '/report/resource',
+  FORBIDDEN: '/403',
+};
+
+export default constant;
