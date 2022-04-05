@@ -4,6 +4,8 @@ import {useHistory} from 'react-router-dom';
 // import MyForm from './components/MyForm';
 import OriginForm from './components/OriginForm';
 // import DestinationFrom from './components/DestinationFrom';
+// import HomeApiClass from './../../apis/home';
+// import {handleNotification} from '../../services/Notifications';
 import LoadForm from './components/LoadForm';
 import GoodsForm from './components/GoodsForm';
 import {useDispatch} from 'react-redux';
@@ -33,7 +35,7 @@ const Home = () => {
   // const [loadFormState, setLoadFormState] = useState(0);
   const [loadFormData, setLoadFormData] = useState(null);
   const [confirmButtonActive, setConfirmButtonActive] = useState(true);
-
+  //
   useEffect(() => {
     if (!originFormState && originVisibleForm) {
       if (originFormData) setOriginFormState(1);
