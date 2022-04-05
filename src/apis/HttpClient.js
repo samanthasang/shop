@@ -5,14 +5,14 @@ class HttpClient {
   constructor(baseURL, contentType = 'application/json-patch+json') {
     this.instance = axios.create({
       headers: {
-        Accept: '*/*',
+        Accept: '/',
         'Content-Type': contentType,
       },
       baseURL,
       transformRequest: [
         function (data, headers) {
           // console.log(headers);
-          const token = sessionStorage?.getItem('ship');
+          // const token = sessionStorage?.getItem('ship');
           // if (token)
           // headers.Authorization = `Bearer ${token}`;
           headers.Authorization = `Bearer $sldjkfhjksdhfjkshdfjkhsdjkfhsdjkhfjksdhfkjsdhfjkh`;

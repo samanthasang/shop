@@ -13,12 +13,8 @@ const constants = {
   userProfile: '/v2/UserProfile',
   about: '/Version',
   Account: {
-    registerCustomer: 'registerCustomer',
-    resultTypes: 'Public/ActionResultTypes',
-    actionTypes: 'Public/ActionLogTypes',
-    publicData: 'Public',
-    getEnrolment: 'Enrolment',
-    userConfig: 'UserConfig/ui',
+    registerCustomer: 'Account/registerCustomer',
+    login: 'AccountAccount/login',
   },
   Dashboard: {
     registerCustomer: '/Account/registerCustomer',

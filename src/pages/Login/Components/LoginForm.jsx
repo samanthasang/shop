@@ -1,12 +1,14 @@
-import { Form, Input, Button, Checkbox, Divider } from 'antd';
-import { GoogleOutlined, UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import {Form, Input, Button, Checkbox, Divider, Typography, Row} from 'antd';
+import {GoogleOutlined, UserOutlined, LockOutlined} from '@ant-design/icons';
+import {Link} from 'react-router-dom';
 
-const LoginForm = () => {
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+import '../login.scss';
+const LoginForm = ({login}) => {
+  const onFinish = values => {
+    // console.log('Received values of form: ', values);
+    login(values);
   };
-
+  const {Text} = Typography;
   return (
     <Form
       name="normal_login"
@@ -25,7 +27,10 @@ const LoginForm = () => {
           },
         ]}
       >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="ایمیل" />
+        <Input
+          prefix={<UserOutlined className="site-form-item-icon" />}
+          placeholder="ایمیل"
+        />
       </Form.Item>
       <Form.Item
         name="password"
@@ -44,36 +49,46 @@ const LoginForm = () => {
       </Form.Item>
       <Form.Item>
         <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>مرا به خاطر بسپار</Checkbox>
+          <Checkbox>
+            <Text>مرا بخاطر بسپار</Text>
+          </Checkbox>
         </Form.Item>
 
-        <a className="login-form-forgot" href="" style={{ float: "left"}}>
+        <Link className="login-form-forgot" style={{float: 'left'}}>
           فراموشی رمز
-        </a>
+        </Link>
       </Form.Item>
+      <Button
+        type="primary"
+        size="large"
+        style={{width: '100%'}}
+        htmlType="submit"
+        className="login-form-button"
+      >
+        ورود
+      </Button>
 
+      <Divider plain>ورود با</Divider>
       <Form.Item>
-        <Button type="primary" size='large' style={{ width: "100%"}} htmlType="submit" className="login-form-button">
-          ورود
-        </Button>
-    <Divider plain>ورود با</Divider>
-      </Form.Item>
-      <Form.Item>
-        <Button icon={<GoogleOutlined />}  size='large' style={{ width: "100%"}} htmlType="submit" className="login-form-button">
+        <Button
+          size="large"
+          style={{width: '100%'}}
+          htmlType="submit"
+          className="login-form-button"
+        >
           Google
+          <GoogleOutlined style={{marginRight: '10px'}} />
         </Button>
       </Form.Item>
-      <Form.Item >
-      <p style={{ textAlign: "center", width: '100%'}}>
-      اکانت ندارید 
-      <Link to='/singup'> 
-      <span> ثبت نام </span>     
-        </Link> کنید
-    </p>
-      </Form.Item>
+      <Row justify="center">
+        اکانت ندارید
+        <Link to="/singup">
+          <Text className="signupLink"> ثبت نام </Text>
+        </Link>
+        کنید
+      </Row>
     </Form>
   );
 };
-
 
 export default LoginForm;

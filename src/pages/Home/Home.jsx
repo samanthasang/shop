@@ -4,8 +4,8 @@ import {useHistory} from 'react-router-dom';
 // import MyForm from './components/MyForm';
 import OriginForm from './components/OriginForm';
 // import DestinationFrom from './components/DestinationFrom';
-import HomeApiClass from './../../apis/home';
-import {handleNotification} from '../../services/Notifications';
+// import HomeApiClass from './../../apis/home';
+// import {handleNotification} from '../../services/Notifications';
 import LoadForm from './components/LoadForm';
 import GoodsForm from './components/GoodsForm';
 import {useDispatch} from 'react-redux';
@@ -36,30 +36,6 @@ const Home = () => {
   const [loadFormData, setLoadFormData] = useState(null);
   const [confirmButtonActive, setConfirmButtonActive] = useState(true);
   //
-  useEffect(() => {
-    // fetch();
-  }, []);
-  // setInterval(() => {
-  handleNotification('success', 'موفق', `باموفقیت انجام شد`);
-  // }, 5000);
-  const fetchregister = async () => {
-    try {
-      const {statusCode} = await HomeApiClass.register({
-        phoneNumber: '09308418021',
-        email: 'pooriadaloochi@gmail.com',
-        password: '61541241',
-      });
-      if (statusCode === 'OK') {
-        handleNotification(
-          'success',
-          'یگلتنیبتلنمیبتلنمتبی',
-          `کسینتمبنمسیتبتیسبمنت`,
-        );
-      }
-    } catch (err) {
-      //
-    }
-  };
   useEffect(() => {
     if (!originFormState && originVisibleForm) {
       if (originFormData) setOriginFormState(1);
@@ -128,12 +104,8 @@ const Home = () => {
     dispatch(getFirstFormData(Formdata));
     history.push('/result');
   };
-  const handleFetch = () => {
-    fetchregister();
-  };
   return (
     <section>
-      <button onClick={handleFetch}>request</button>
       <div className="Home">
         <div className="Home-header">
           <h2>حمل و نقل که فقط کار می کند</h2>
