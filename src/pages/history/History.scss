@@ -1,0 +1,121 @@
+.history {
+  background: #fdfdfd;
+  margin-top: 2px;
+  .ant-radio-group {
+    .ant-radio-button-wrapper {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      span {
+        font-size: 12.5px;
+      }
+    }
+  }
+  &-switcher {
+    // .ant-radio-button-wrapper {
+    //   border-radius: 5px;
+    // }
+    &-radio {
+      margin-top: 4rem;
+      &-button {
+        padding: 0 5px !important;
+        margin: 0 5px;
+        height: 24px !important;
+        border-radius: 5px;
+        span {
+          margin: auto;
+        }
+        &-loading {
+          svg {
+            fill: #1890ff;
+          }
+        }
+        &-excel {
+          &-text {
+            color: #1890ff !important;
+            padding: 0 5px;
+          }
+        }
+      }
+    }
+  }
+  &-container {
+    &-header {
+      &-box {
+        height: 47px;
+        background: #f6f6f6;
+        border-radius: 2px;
+        box-shadow: 0 1px 2px 2px rgba(54, 56, 71, 0.116);
+        svg {
+          transform: scaleX(-1);
+        }
+        &-serialOfOrder1 {
+          margin-right: 5px;
+          font-size: 14px;
+          font-weight: 500;
+        }
+        &-serialOfOrder2 {
+          margin-right: 5px;
+          font-size: 11.5px;
+          color: #707070;
+        }
+      }
+      .aiplaneIcon {
+        width: 47px;
+      }
+      .serial {
+        margin-right: 3px;
+      }
+    }
+    &-status {
+      padding: 10px;
+      height: 80px;
+      background-color: #fdfdfd;
+      box-shadow: 0 1px 2px 2px rgba(54, 56, 71, 0.116);
+      &-title {
+        color: #929faa;
+        font-weight: 500;
+      }
+      &-circle {
+        width: 8px;
+        height: 8px;
+        background: #d9d9d9;
+        border-radius: 50%;
+        margin-top: 5px;
+      }
+      &-booking {
+        margin-right: 7px;
+        color: #53575f;
+      }
+      &-getStart {
+        font-size: 12px;
+        color: #53575f;
+      }
+    }
+  }
+}
+.dashDivider {
+  height: 10px;
+  width: 1px;
+  margin-right: 5px;
+  // margin-top: 2px;
+  background: #9c9c9c;
+}
+.locationIcon {
+  svg {
+    margin-top: 3px;
+    margin-right: 1px;
+  }
+}
+.circleOrigin {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 3px;
+  border: 1px solid #9c9c9c;
+}
+.destination {
+  margin: 10px -10px;
+}
+.origin {
+  margin: -3px -10px;
+}
