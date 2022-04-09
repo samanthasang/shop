@@ -12,6 +12,7 @@ import MySetting from './pages/MySetting/MySetting';
 import AccountDetails from './pages/AccountDetails/AccountDetails';
 import CompanyProfile from './pages/CompanyProfile/CompanyProfile';
 import Verification from './pages/Verification/Verification';
+import History from './pages/history/History';
 
 // style
 import './App.scss';
@@ -50,6 +51,9 @@ const App = () => {
           </Route>
           <Route path="/verification">
             <Verification />
+          </Route>
+          <Route path="/history">
+            <History />
           </Route>
         </Switch>
       </Layout>
