@@ -1,6 +1,7 @@
 .booking-container {
   background: #fdfdfd;
   margin: 4px 0;
+  height: inherit;
   &-steps {
     background: #fdfdfd;
     padding: 1rem 0;
@@ -108,6 +109,10 @@
         &-text2 {
           color: #707070 !important;
           font-size: 12px !important;
+        }
+        &-text3 {
+          color: #707070 !important;
+          font-size: 8px !important;
         }
       }
     }
