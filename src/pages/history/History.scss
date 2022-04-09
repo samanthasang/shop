@@ -93,3 +93,29 @@
     }
   }
 }
+.dashDivider {
+  height: 10px;
+  width: 1px;
+  margin-right: 5px;
+  // margin-top: 2px;
+  background: #9c9c9c;
+}
+.locationIcon {
+  svg {
+    margin-top: 3px;
+    margin-right: 1px;
+  }
+}
+.circleOrigin {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 3px;
+  border: 1px solid #9c9c9c;
+}
+.destination {
+  margin: 10px -10px;
+}
+.origin {
+  margin: -3px -10px;
+}
