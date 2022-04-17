@@ -8,22 +8,19 @@ import './login.scss';
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const handleLogin = async values => {
-    console.log(values);
     setLoading(true);
+
+    const payload = new URLSearchParams(values);
     try {
-      const {statusCode, token} = await AcountApi.login({
-        phoneNumber: '09308418021',
-        email: 'pooriadaloochi@gmail.com',
-        password: '61541241',
-      });
-      if (statusCode === 'OK') {
+      const {statusCode, data} = await AcountApi.login(payload);
+      if (statusCode === 'Success') {
         handleNotification('success', 'موفق', 'باموفقیت وارد شدید');
-        localStorage.setItem('ship', JSON.stringify(token));
-        sessionStorage.setItem('ship', token);
+        localStorage.setItem('ship', JSON.stringify(data));
+        sessionStorage.setItem('ship', data);
         window.location.href = '/';
       }
     } catch (err) {
-      //
+      console.log(err);
     } finally {
       setLoading(false);
     }
