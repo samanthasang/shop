@@ -14,7 +14,7 @@ const constants = {
   about: '/Version',
   Account: {
     registerCustomer: 'Account/registerCustomer',
-    login: 'AccountAccount/login',
+    login: 'Account/login',
   },
   Dashboard: {
     registerCustomer: '/Account/registerCustomer',
