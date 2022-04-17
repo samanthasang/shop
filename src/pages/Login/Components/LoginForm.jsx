@@ -19,7 +19,7 @@ const LoginForm = ({login}) => {
       onFinish={onFinish}
     >
       <Form.Item
-        name="username"
+        name="email"
         rules={[
           {
             required: true,
@@ -48,11 +48,11 @@ const LoginForm = ({login}) => {
         />
       </Form.Item>
       <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
+        {/* <Form.Item name="remember" valuePropName="checked" noStyle>
           <Checkbox>
             <Text>مرا بخاطر بسپار</Text>
           </Checkbox>
-        </Form.Item>
+        </Form.Item> */}
 
         <Link className="login-form-forgot" style={{float: 'left'}}>
           فراموشی رمز

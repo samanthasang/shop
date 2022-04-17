@@ -12,10 +12,11 @@ class HttpClient {
       transformRequest: [
         function (data, headers) {
           // console.log(headers);
-          // const token = sessionStorage?.getItem('ship');
-          // if (token)
-          // headers.Authorization = `Bearer ${token}`;
-          headers.Authorization = `Bearer $sldjkfhjksdhfjkshdfjkhsdjkfhsdjkhfjksdhfkjsdhfjkh`;
+          const token = sessionStorage?.getItem('ship');
+          if (token) {
+            headers.Authorization = `Bearer ${token}`;
+            // headers.Authorization = `Bearer $sldjkfhjksdhfjkshdfjkhsdjkfhsdjkhfjksdhfkjsdhfjkh`;
+          }
           // check for formData
           // if (headers['Content-Type'] === 'multipart/form-data') {
           //   const formData = new FormData();

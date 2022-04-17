@@ -3,6 +3,7 @@ import Layout from './Layouts/Layout';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import {ConfigProvider} from 'antd';
 // Components
+// import PublicRoute, {PrivateRoute} from './helper/Routes';
 import Home from './pages/Home/Home';
 import Result from './pages/Result/Result';
 import Booking from './pages/Booking/Booking';
@@ -50,6 +51,9 @@ const App = () => {
           </Route>
           <Route path="/history">
             <History />
+          </Route>
+          <Route>
+            <div style={{textAlign: 'center'}}>صفحه ای یافت نشد</div>
           </Route>
         </Switch>
       </Layout>
