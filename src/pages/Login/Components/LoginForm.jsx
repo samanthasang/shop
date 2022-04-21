@@ -47,17 +47,19 @@ const LoginForm = ({login}) => {
           placeholder="رمز عبور"
         />
       </Form.Item>
-      <Form.Item>
-        {/* <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>
+        <Form.Item className='login-form-check' name="remember" valuePropName="checked" 
+        style={{width: '50%', textAlign: 'right', float: 'right'}}>
+          <Checkbox className='login-form-check'>
             <Text>مرا بخاطر بسپار</Text>
           </Checkbox>
-        </Form.Item> */}
+        </Form.Item> 
 
-        <Link className="login-form-forgot" style={{float: 'left'}}>
+      <Form.Item className='login-form-forgot'>
+        <Link to={'/ForgotPass'} className="login-form-forgot" style={{float: 'left'}}>
           فراموشی رمز
         </Link>
       </Form.Item>
+      <Form.Item className='login-form-btn'>
       <Button
         type="primary"
         size="large"
@@ -67,6 +69,7 @@ const LoginForm = ({login}) => {
       >
         ورود
       </Button>
+      </Form.Item>
 
       <Divider plain>ورود با</Divider>
       <Form.Item>

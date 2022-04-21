@@ -1,10 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import { Tabs, Table,
-    Typography,
-    Tooltip, Divider, Alert,
-    Rate,
-    Button,
-    Collapse, Row, Col, Card, Spin} from 'antd';
+  Row,
+  Col,
+  Steps,
+  Layout,
+  ConfigProvider,
+  Slider,
+  Checkbox,
+  Space,
+  Typography,
+  Card,
+  Tooltip, 
+  Divider, 
+  Button,
+  Collapse
+  } from 'antd';
 
 
 import PaymentForm from './PaymentForm';
@@ -13,8 +23,10 @@ import DeliveryForm from './DeliveryForm';
 import CommoditiesForm from './CommoditiesForm';
 import UploadDoc from './UploadDoc';
 
+import TruckIcon from '../../../assets/Icons/TruckIcon';
 
 import '../Verification.scss';
+import DoorToDoor from '../../../assets/Icons/DoorToDoor';
 
 
 const text = `
@@ -33,55 +45,139 @@ const ActionRequired = () => {
     const [UploadD, setUploadDoc] = useState(false);
 
 
+    const handlePayment =  () => {
+      setPaymentForm(true);
+      setPickUpForm(false);
+      setDeliveryForm(false);
+      setCommoditiesForm(false);
+      setUploadDoc(false);
+    };
+    const handlePickUp =  () => {
+      setPaymentForm(false);
+      setPickUpForm(true);
+      setDeliveryForm(false);
+      setCommoditiesForm(false);
+      setUploadDoc(false);
+    };
+    const handleDelivery =  () => {
+      setPaymentForm(false);
+      setPickUpForm(false);
+      setDeliveryForm(true);
+      setCommoditiesForm(false);
+      setUploadDoc(false);
+    };
+    const handleCommodities =  () => {
+      setPaymentForm(false);
+      setPickUpForm(false);
+      setDeliveryForm(false);
+      setCommoditiesForm(true);
+      setUploadDoc(false);
+    };
+    const handleUploadDoc =  () => {
+      setPaymentForm(false);
+      setPickUpForm(false);
+      setDeliveryForm(false);
+      setCommoditiesForm(false);
+      setUploadDoc(true);
+    };
+    const {Text} = Typography;
+    const {Header, Sider, Content} = Layout;
+    const [priceRange, setPriceRange] = useState([12, 80]);
+    const [dateRange, setDateRange] = useState([12, 80]);
 
   return (
-    <section>
-      <Row className="centerMenu" gutter={[24, 0]}>
-        <Col span={8} offset={0}>
-        <Collapse defaultActiveKey={['1']} >
-    <Panel header="مبلغ پرداختی" key="1">
-      <a>روش پرداخت</a>
-    </Panel>
-    <Panel header="جزئیات تماس" key="2">
-      <a>تحویل دهنده</a>
-      <a>تحویل گیرنده</a>
-    </Panel>
-    <Panel header="کالاهای شما" key="3">
-      <a>کالاها</a>
-      <a>بارگذاری اسناد</a>
-    </Panel>
-  </Collapse>
-        </Col>
-        <Col span={16} offset={0}>
-            <Row span={24}>
-                <Col span={24}>
-                <div className="site-card-border-less-wrapper">
-                {Payment &&  <Card title="جزئیات صورتحساب شرکت" bordered={false} >
-                             <PaymentForm/>
-                        </Card> }
-                        {PickUp && 
-                    <Card title="تحویل دهنده" bordered={false} >
+    <section style={{height: "auto"}}>
+      <Row className=""  >
+        <Col span={22} offset={1}>
+          <Card>
+            <Row>
+
+            <Col span={24} offset={0}>
+                <Card>
+                  <TruckIcon />
+                  <span>Door To Door</span>
+                  <span>
+                    ایران ، تهران
+                     </span>
+                  <DoorToDoor />
+                  <span>
+                    ایران ، تهران
+                     </span>
+                     <Button type="link">انصراف محموله</Button>
+
+                </Card>
+
+            </Col>
+            <Col span={5} offset={0}>
+                <Collapse defaultActiveKey={['1']} >
+                  <Panel header="مبلغ پرداختی" key="1" onClick={handlePayment}>
+                    <Row >
+                      <Col span={24}>
+
+                    <a onClick={handlePayment}>روش پرداخت</a>
+                      </Col>
+                    </Row>
+                  </Panel>
+                  <Panel header="جزئیات تماس" key="2" onClick={handlePickUp}>
+                    <Row >
+                      <Col span={24}>
+                    <a onClick={handlePickUp}>تحویل دهنده</a>
+                        
+                      </Col>
+                      <Col span={24}>
+                    <a onClick={handleDelivery}>تحویل گیرنده</a>
+                        
+                      </Col>
+                    </Row>
+                  </Panel>
+                  <Panel header="کالاهای شما" key="3" onClick={handleCommodities}>
+                    <Row >
+                      <Col span={24}>
+                    <a onClick={handleCommodities}>کالاها</a>
+                        
+                      </Col>
+                      <Col span={24} onClick={handleUploadDoc}>
+                    <a >بارگذاری اسناد</a>
+                        
+                      </Col>
+                    </Row>
+                  </Panel>
+                </Collapse>
+
+            </Col>
+            <Col span={17} offset={2}>
+                <Row span={24}>
+                    <Col span={24}>
+                    <div className="site-card-border-less-wrapper">
+                    {Payment &&  <Card title="جزيیات صورتحساب شرکت" >
+                                <PaymentForm/>
+                            </Card> }
+                            {PickUp && 
+                        <Card title="تحویل دهنده" >
+                            <PickUpForm />
+                            </Card>
+                            }
+                            {Delivery && 
+                        <Card title="تحویل گیرنده">
                         <PickUpForm />
+                            </Card>
+                            }
+                            {Commodities && 
+                        <Card title="کالاها" >
+                            <CommoditiesForm />
                         </Card>
-                        }
-                        {Delivery && 
-                    <Card title="تحویل گیرنده" bordered={false} >
-                        <DeliveryForm />
+                            }
+                        {UploadD && 
+                        <Card title="بارگذاری اسناد">
+                            <UploadDoc />
                         </Card>
-                        }
-                        {Commodities && 
-                    <Card title="کالاها" bordered={false} >
-                        <CommoditiesForm />
-                    </Card>
-                        }
-                    {UploadD && 
-                    <Card title="بارگذاری اسناد" bordered={false} >
-                    <UploadDoc />
-                    </Card>
-                    } 
-                </div>
-                </Col>
+                        } 
+                    </div>
+                    </Col>
+                </Row>
+            </Col>
             </Row>
+          </Card>
         </Col>
       </Row>
     </section>

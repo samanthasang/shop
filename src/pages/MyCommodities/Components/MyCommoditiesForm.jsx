@@ -7,7 +7,7 @@ import { InboxOutlined } from '@ant-design/icons';
 
 import data from '../../../test.json';
 
-const CommoditiesForm = () => {
+const MyCommoditiesForm = () => {
     const onFinish = (values) => {
         console.log('Success:', values);
       };
@@ -44,6 +44,9 @@ const CommoditiesForm = () => {
 
 
   return (
+    <Row  >
+      <Col span={22} offset={1}>
+        <Card title="کالاها">
     <Form
       name="basic"
       labelCol={{
@@ -264,8 +267,12 @@ const CommoditiesForm = () => {
       </Col>
       </Row>
     </Form>
+        </Card>
+
+      </Col>
+    </Row>
   );
 };
 
 
-export default CommoditiesForm;
+export default  MyCommoditiesForm;

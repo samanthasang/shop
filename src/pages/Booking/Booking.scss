@@ -115,6 +115,154 @@
           font-size: 8px !important;
         }
       }
+      &-dimensionsRight {
+        height: 150px;
+        margin: 5px 10px 0 10px;
+        padding: 30px 10px;
+        border-radius: 5px;
+        background: #fdfdfd;
+        &-text1 {
+          font-weight: 500;
+        }
+        &-text2 {
+          color: #707070 !important;
+          font-size: 12px !important;
+        }
+        &-text3 {
+          color: #707070 !important;
+          font-size: 10px !important;
+        }
+        &-icon {
+          svg {
+            width: 1.5rem;
+            color: #3f3e3e;
+          }
+        }
+      }
+      &-dimensionsLeft {
+        height: 150px;
+        margin: 5px 0 10px 10px;
+        padding: 10px;
+        border-radius: 5px;
+        background: #fdfdfd;
+        &-title {
+          font-size: 18px !important;
+          margin: 10px;
+        }
+        &-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &-item {
+            // width: 100%;
+            padding: 0 7px;
+            &-icon {
+              svg {
+                width: 1.5rem;
+                color: #3f3e3e;
+              }
+            }
+            &-text2 {
+              color: #707070 !important;
+              font-size: 12px !important;
+              direction: rtl;
+            }
+            &-text3 {
+              color: #707070 !important;
+              font-size: 10px !important;
+            }
+          }
+        }
+      }
+      &-companyRight {
+        height: 110px;
+        margin: 5px 10px 0 10px;
+        padding: 10px;
+        border-radius: 5px;
+        background: #fdfdfd;
+        &-title {
+          font-size: 16px !important;
+          margin: 10px;
+        }
+        &-text2 {
+          color: #707070 !important;
+          font-size: 12px !important;
+          margin: 10px;
+        }
+        &-icon {
+          svg {
+            width: 1.5rem;
+            color: #3f3e3e;
+          }
+        }
+      }
+      &-companyLeft {
+        height: 110px;
+        margin: 5px 0 10px 10px;
+        padding: 10px;
+        border-radius: 5px;
+        background: #fdfdfd;
+        &-title {
+          font-size: 16px !important;
+          margin: 10px;
+        }
+        &-text2 {
+          color: #707070 !important;
+          font-size: 12px !important;          
+          margin: 10px;
+        }
+        &-icon {
+          svg {
+            width: 1.5rem;
+            color: #3f3e3e;
+          }
+        }
+      }
+      &-infoDate {
+        height: 90px;
+        margin: 5px 10px 10px 10px;
+        border-radius: 5px;
+        background: #fefefe;
+        box-shadow: 0 0 3px 0 rgb(35, 37, 55/ 12%);
+        border-right: 4px solid #edaf07;
+        padding: 5px;
+        &-title {
+          font-size: 16px !important;
+          margin: 10px;
+        }
+        &-text2 {
+          color: #707070 !important;
+          font-size: 12px !important;          
+          margin: 10px;
+        }
+        &-icon {
+          svg {
+            width: 1.5rem;
+            color: #3f3e3e;
+          }
+        }
+      }
+      &-formBooking {
+        height: 135px;
+        margin: 5px 10px 10px 10px;
+        border-radius: 5px;
+        background: #fefefe;
+        padding: 15px;
+        &-button {
+          width: 100%;
+        }
+        &-text2 {
+          color: #707070 !important;
+          font-size: 12px !important;          
+          margin: 10px;
+        }
+        &-icon {
+          svg {
+            width: 1.5rem;
+            color: #3f3e3e;
+          }
+        }
+      }
     }
   }
 }

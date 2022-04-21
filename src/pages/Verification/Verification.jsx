@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Tabs, Row, Col, Card, Spin} from 'antd';
 
 import VerificationTabs from './Components/VerificationTabs';
+import VerificationHeader from './Components/VerificationHeader';
 
 import './Verification.scss';
 
@@ -10,23 +11,21 @@ const { TabPane } = Tabs
 const Verification = () => {
   return (
     <section>
-     <Row className="centerMenu" gutter={[24, 2]}>
-        <Col span={22} offset={1}>
+     <Row className="" >
+        <Col span={24} >
             
-            <Row className="centerMenu" gutter={[24, 2]}>
-                <Col span={22} offset={1}>
-
+            <Row className="" >
+                <Col span={24} >
+                  <VerificationHeader />
                 </Col>
             </Row>
-        </Col>
-        <Col span={22} offset={1}>
             
-            <Row className="centerMenu" gutter={[24, 2]}>
+            <Row className="">
                 
-        <Col span={22} offset={1}>
-            <VerificationTabs />
+              <Col span={24} >
+                  <VerificationTabs />
 
-        </Col>
+              </Col>
             </Row>
         </Col>
       </Row>

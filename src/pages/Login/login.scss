@@ -14,3 +14,44 @@
     color: #1890ff !important;
     margin: 0 5px;
   }
+
+  .login{
+    &-page{
+      &-form{
+        &-card{
+          width: 100%;
+          margin-top: 50px!important;
+          text-align: -webkit-center;
+          &-img{
+            width: 40%;    
+            height: auto!important;
+            margin: 0 auto;
+            display: block;
+          }
+          &-text1 {
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px!important;
+          }
+          &-text2 {
+            width: 100%;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  .login{
+    &-form{
+      &-forgot{
+        width: 50%;
+        text-align: left;
+        float: left;
+      }
+      &-btn{
+        width: 100%;
+      }
+    }
+  }

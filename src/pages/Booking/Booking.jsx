@@ -4,6 +4,7 @@ import {
   Col,
   Steps,
   Divider,
+  Form,
   Button,
   Layout,
   Typography,
@@ -34,6 +35,13 @@ const Booking = () => {
     setActivePromo(!activePromo);
   };
   
+  const onFinish = () => {
+    console.log('Success:');
+  };
+
+  const onFinishFailed = () => {
+    console.log('Failed:');
+  };
 
 
 
@@ -41,7 +49,7 @@ const Booking = () => {
   const {Text, Paragraph, Title} = Typography;
   return (
     <Row justify="center" className="booking-container">
-      <Col span={16}>
+      <Col span={22}>
         <Row justify="center" className="booking-container-steps">
           <Col span={19}>
             <Steps size="small" current={2}>
@@ -286,26 +294,26 @@ const Booking = () => {
               <Col span={24}>
                 <Row>
                   <Col span={7}>
-                    <Row className="booking-container-details-left-doorLeft">
+                    <Row className="booking-container-details-left-dimensionsRight">
                       <Col span={24}>
                         <Row justify="center">
-                          <Text className="booking-container-details-left-doorLeft-text1">
+                          <Text className="booking-container-details-left-dimensionsRight-text1">
                           وزن/حجم کل
                           </Text>
                         </Row>
                         <Row
-                          className="booking-container-details-left-card-summary-icon"
+                          className="booking-container-details-left-dimensionsRight-icon"
                           justify="center"
                         >
                           <MonitorWeight width={100} />
                         </Row>
                         <Row justify="center">
-                          <Text className="booking-container-details-left-doorLeft-text2">
+                          <Text className="booking-container-details-left-dimensionsRight-text2">
                           234.00 KG
                           </Text>
                         </Row>
                         <Row justify="center">
-                          <Text className="booking-container-details-left-doorLeft-text3">
+                          <Text className="booking-container-details-left-dimensionsRight-text3">
                           0.00 CBM
                           </Text>
                         </Row>
@@ -313,32 +321,36 @@ const Booking = () => {
                     </Row>
                   </Col>
                   <Col span={17}>
-                    <Row className="booking-container-details-left-doorRight">
+                    <Row className="booking-container-details-left-dimensionsLeft">
                       <Col span={24}>
                     <Row>
-                      <Title className="booking-container-details-left-card-summary-title">
+                      <Title className="booking-container-details-left-dimensionsLeft-title">
                         خلاصه رزرو
                       </Title>
                     </Row>
 
+                    <Row className='booking-container-details-left-dimensionsLeft-container'>
+                          <Col className='booking-container-details-left-dimensionsLeft-container-item'>
 
-                    <Row
-                          className="booking-container-details-left-card-summary-icon"
-                          justify="center"
-                        >
-                          <MonitorWeight width={100} />
-                        </Row>
-                        <Row justify="center">
-                          <Text className="booking-container-details-left-doorLeft-text2">
-                          Boxes/Crates
-                          </Text>
-                        </Row>
-                        <Row justify="center">
-                          <Text className="booking-container-details-left-doorLeft-text3">
-                          4 × 3 × 4 cm
-                          </Text>
-                        </Row>
+                              <Row
+                                className="booking-container-details-left-dimensionsLeft-container-item-icon"
+                                justify="center"
+                                >
+                                <MonitorWeight width={100} />
+                              </Row>
+                              <Row justify="center">
+                                <Text className="booking-container-details-left-dimensionsLeft-container-item-text2">
+                                1 x Boxes/Crates
+                                </Text>
+                              </Row>
+                              <Row justify="center">
+                                <Text className="booking-container-details-left-dimensionsLeft-container-item-text3">
+                                4 × 3 × 4 cm
+                                </Text>
+                              </Row>
+                          </Col>
 
+                    </Row>
 
                       </Col>
                     </Row>
@@ -348,17 +360,20 @@ const Booking = () => {
               <Col span={24}>
                 <Row>
                   <Col span={12}>
-                    <Row className="booking-container-details-left-doorRight">
+                    <Row className="booking-container-details-left-companyRight">
                       <Col span={24}>
                     <Row>
-                      <Title className="booking-container-details-left-card-summary-title">
-                        خلاصه رزرو
+                      <Title className="booking-container-details-left-companyRight-title">
+                      فروشنده : 
                       </Title>
+                          <Text className="booking-container-details-left-companyRight-text2">
+                          Primorus Worldwide
+                          </Text>
                     </Row>
 
 
                     <Row
-                          className="booking-container-details-left-card-summary-icon"
+                          className="booking-container-details-left-companyRight-icon"
                           justify="center"
                         >
                         <img
@@ -373,17 +388,21 @@ const Booking = () => {
                     </Row>
                   </Col>
                   <Col span={12}>
-                    <Row className="booking-container-details-left-doorRight">
+                    <Row className="booking-container-details-left-companyLeft">
                       <Col span={24}>
                     <Row>
-                      <Title className="booking-container-details-left-card-summary-title">
-                        خلاصه رزرو
+                      <Title className="booking-container-details-left-companyLeft-title">
+                      بیمه : 
+
                       </Title>
+                          <Text className="booking-container-details-left-companyLeft-text2">
+                          xcover.com
+                          </Text>
                     </Row>
 
 
                     <Row
-                          className="booking-container-details-left-card-summary-icon"
+                          className="booking-container-details-left-companyLeft-icon"
                           justify="center"
                         >
                         <img
@@ -400,10 +419,10 @@ const Booking = () => {
                 </Row>
               </Col>
               <Col span={24}>
-                <Row>
+                    <Row className="booking-container-details-left-infoDate">
                       <Col span={24}>
                     <Row>
-                      <Text className="booking-container-details-left-card-summary-title">
+                      <Text className="booking-container-details-left-infoDate-title">
                       این نرخ تا 4 مه 2022 تضمین شده است. اگر کالاهای شما پس از این تاریخ جابه‌جا شوند، ممکن است قیمت پیشنهادی مطابق با نرخ بازار تعدیل شود.
                       </Text>
                     </Row>
@@ -415,22 +434,27 @@ const Booking = () => {
               <Col span={24}>
                 <Row>
                   <Col span={24}>
-                    <Row className="booking-container-details-left-doorRight">
+                    <Row className="booking-container-details-left-formBooking">
                       <Col span={24}>
-                    <Row>
-                      
-        <Checkbox>من تأیید می کنم که این یک محموله تجاری است و تمام جزئیات صحیح است. من شرایط نقل قول و رزرو زیر را می پذیرم. </Checkbox>
-                    </Row>
+                        <Form
+            name="basic"
+            labelCol={{ span: 0 }}
+            wrapperCol={{ span: 24 }}
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+            autoComplete="off"
+          >
 
+            <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 0, span: 24 }}>
+            <Checkbox>من تأیید می کنم که این یک محموله تجاری است و تمام جزئیات صحیح است. من شرایط نقل قول و رزرو زیر را می پذیرم. </Checkbox>
+            </Form.Item>
 
-                      </Col>
-                      <Col span={24}>
-                    <Row>
-                      
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-                    </Row>
+            <Form.Item wrapperCol={{ offset: 0, span: 24 }}>     
+              <Button type="primary" htmlType="submit" className="booking-container-details-left-formBooking-button">
+              تایید و رزرو ارسال
+              </Button>
+            </Form.Item>
+          </Form>
 
 
                       </Col>
@@ -443,33 +467,40 @@ const Booking = () => {
               </Col>
                       <Col span={24}>
                     <Row>
-                      <Text className="booking-container-details-left-card-summary-title">
-                      این نرخ تا 4 مه 2022 تضمین شده است. اگر کالاهای شما پس از این تاریخ جابه‌جا شوند، ممکن است قیمت پیشنهادی مطابق با نرخ بازار تعدیل شود.
+                      <Title className="booking-container-details-left-card-summary-title">
+                      شرایط رزرو
+                      </Title>                    
+                      </Row>
+
+
+                  </Col>
+                      <Col span={24}>
+                    <Row>
+                      <Text className="booking-container-details-left-companyLeft-text2">
+                      با کلیک کردن روی "تأیید و رزرو ارسال" با قرارداد خدمات اصلی Freightos، شرایط و ضوابط خریدار، و خط مشی رازداری موافقت می کنم. Freightos رزرو شما را ظرف یک روز کاری تأیید می‌کند و فروشنده منتخب شما ترتیب تحویل را می‌دهد. اگر در مورد رزرو خود سؤالی دارید، لطفاً به ship@freightos.com ایمیل بزنید.                      </Text>
+                    </Row>
+
+
+                  </Col>
+              <Col span={24}>
+                <Divider dashed className="booking-container-details-right-divider" />
+              </Col>
+                      <Col span={24}>
+                    <Row>
+                      <Text className="booking-container-details-left-companyLeft-text2">
+                      بارگیری پس از تحویل تایید می شود. اگر حمل و نقل واقعی شما با اطلاعات ارائه شده متفاوت است، قیمت شما ممکن است تغییر کند. ممکن است هزینه های اضافی متحمل شوید و بر اساس آن هزینه دریافت کنید.                      
                       </Text>
                     </Row>
 
 
                   </Col>
               <Col span={24}>
-                <Divider className="booking-container-details-right-divider" />
+                <Divider dashed className="booking-container-details-right-divider" />
               </Col>
                       <Col span={24}>
                     <Row>
-                      <Text className="booking-container-details-left-card-summary-title">
-                      این نرخ تا 4 مه 2022 تضمین شده است. اگر کالاهای شما پس از این تاریخ جابه‌جا شوند، ممکن است قیمت پیشنهادی مطابق با نرخ بازار تعدیل شود.
-                      </Text>
-                    </Row>
-
-
-                  </Col>
-              <Col span={24}>
-                <Divider className="booking-container-details-right-divider" />
-              </Col>
-                      <Col span={24}>
-                    <Row>
-                      <Text className="booking-container-details-left-card-summary-title">
-                      این نرخ تا 4 مه 2022 تضمین شده است. اگر کالاهای شما پس از این تاریخ جابه‌جا شوند، ممکن است قیمت پیشنهادی مطابق با نرخ بازار تعدیل شود.
-                      </Text>
+                      <Text className="booking-container-details-left-companyLeft-text2">
+                      سیاست لغو استاندارد: محموله ها ممکن است بدون هزینه اضافی لغو شوند قبل از اینکه فروشنده محموله شما را پردازش کند. در غیر این صورت، هزینه های مستقیم از شما دریافت خواهد شد.                      </Text>
                     </Row>
 
 

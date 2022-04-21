@@ -5,6 +5,8 @@ const TruckIcon = () => {
     <svg
       viewBox="0 0 32 32"
       data-icon="mode-truck"
+      width="1.5em"
+      height="1.5em"
       fill="currentColor"
       aria-hidden="true"
       focusable="false"

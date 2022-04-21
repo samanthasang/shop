@@ -2,6 +2,7 @@ import {Form, Input, Button, Typography, Divider, Row} from 'antd';
 import {GoogleOutlined, UserOutlined, LockOutlined} from '@ant-design/icons';
 import {Link} from 'react-router-dom';
 import '../SingUp.scss';
+import FormItem from 'antd/lib/form/FormItem';
 const SingUpForm = ({signUp}) => {
   const onFinish = values => {
     signUp(values);
@@ -47,17 +48,21 @@ const SingUpForm = ({signUp}) => {
           placeholder="رمز عبور"
         />
       </Form.Item>
-      <Button
-        type="primary"
-        size="large"
-        style={{width: '100%'}}
-        htmlType="submit"
-        className="login-form-button"
-      >
-        ثبت نام
-      </Button>
+      <Form.Item>
+
+        <Button
+          type="primary"
+          size="large"
+          style={{width: '100%'}}
+          htmlType="submit"
+          className="login-form-button"
+          >
+          ثبت نام
+        </Button>
+        </Form.Item>
       <Divider plain>ثبت نام با</Divider>
 
+      <Form.Item>
       <Button
         icon={<GoogleOutlined />}
         size="large"
@@ -67,6 +72,7 @@ const SingUpForm = ({signUp}) => {
       >
         Google
       </Button>
+        </Form.Item>
       <Row justify="center">
         با ثبت نام، Freightos را می پذیرم
         <br />

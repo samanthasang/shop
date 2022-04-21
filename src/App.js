@@ -9,6 +9,8 @@ import Result from './pages/Result/Result';
 import Booking from './pages/Booking/Booking';
 import Login from './pages/Login/Login';
 import SingUp from './pages/SingUp/SingUp';
+import ForgotPass from './pages/ForgotPass/ForgotPass';
+import MyCommodities from './pages/MyCommodities/MyCommodities';
 import MySetting from './pages/MySetting/MySetting';
 import AccountDetails from './pages/AccountDetails/AccountDetails';
 import CompanyProfile from './pages/CompanyProfile/CompanyProfile';
@@ -40,6 +42,12 @@ const App = () => {
           </Route>
           <Route path="/singup">
             <SingUp />
+          </Route>
+          <Route path="/forgotPass">
+            <ForgotPass />
+          </Route>
+          <Route path="/mycommodities">
+            <MyCommodities />
           </Route>
           <Route path="/mysetting">
             <MySetting />

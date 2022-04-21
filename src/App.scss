@@ -22,11 +22,40 @@
   color: var(--text-contrast-color);
   justify-content: space-between;
   align-items: center;
+  &-btn {
+    // width: 6rem;
+    height: 40px;
+    border-radius: 5px;
+    margin-right: 16px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    padding: 0;
+  }
   &-logo {
     // width: 6rem;
     height: 40px;
     border-radius: 5px;
     margin-right: 16px;
+    margin-left: 16px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    padding: 0;
+  }
+  &-btn:hover {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    padding: 0;
+  }
+  &-btn:focus {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    padding: 0;
+  }
+  &-btn:active {
     border: 0;
     outline: 0;
     background: transparent;
@@ -52,7 +81,8 @@
       height: 60px;
     }
   }
-  &-ul {
+  &-nav {
+    width: 130px;
     display: flex;
     align-items: center;
   }
@@ -101,6 +131,37 @@
     }
   }
 }
+
+.menu {
+  &-currency{
+    width: 150px;
+    text-align: center;
+    &-listItem {
+      text-align: center!important;
+    }
+    &-listItem span {
+      direction: ltr!important;
+    }
+  }
+}
+.menuleft {
+  &-navbarItem{
+    width: 200px;
+    text-align: center;
+    &-listItem {
+      text-align: right!important;
+      clear: both;
+      margin: 0;
+      padding: 7px 23px;
+      color: rgba(0, 0, 0, 0.85);
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 22px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+  }
+}
 .clean-header-row {
   display: flex;
   justify-content: space-between;
@@ -133,6 +194,34 @@
   align-items: center;
   height: 60px;
   margin-left: 16px;
+  &-btn{
+    padding: 0px 9px;
+  }
+  &-btn:hover,
+  &-btn:focus {
+    color: #000000!important;
+    border-color: #d9d9d9!important;
+    background: #fff;
+  }
+  &-iconbtn{
+    padding: 0px 7px;
+  }
+  &-iconbtn:hover,
+  &-iconbtn:focus {
+    color: #000000!important;
+    border-color: #d9d9d9!important;
+    background: #fff;
+  }
+  &-drop-left{
+    margin: 0 5px 0 0;
+    background-color: var(--primary-cta-color);
+    color: var(--text-contrast-color);
+  }
+  &-drop-left:hover,&-drop-left:focus{
+    margin: 0 5px 0 0;
+    background-color: var(--primary-cta-color);
+    color: var(--text-contrast-color);
+  }
 }
 
 .Home-header h2 {

@@ -46,6 +46,7 @@ const Quote = () => {
   return (
     <section>
     <Row>
+      <Col span={22} offset={1}>
 {itemsContent.map(item => (<>
   <Row>
     <Col span={24}>
@@ -141,7 +142,7 @@ const Quote = () => {
       </Row>
     </Col>
   </Row></>
-))}
+))}</Col>
     </Row>
     </section>
   );

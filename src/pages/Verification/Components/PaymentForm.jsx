@@ -1,4 +1,4 @@
-import {Form, Input, Button, Typography, Divider, Row} from 'antd';
+import {Form, Input, Button, Typography, Divider, Row, Col} from 'antd';
 import {GoogleOutlined, UserOutlined, LockOutlined} from '@ant-design/icons';
 import {Link} from 'react-router-dom';
 const PaymentForm = ({signUp}) => {
@@ -18,156 +18,177 @@ const PaymentForm = ({signUp}) => {
       }}
       onFinish={onFinish}
     >
+      <Row >
+        <Col span={24}>
       <Form.Item
-        name="url"
-        label="URL"
+        name="fullname"
+        label="نام و نام خانوادگی"
         rules={[
           {
-            required: true,
             message: 'لطفا ایمیل خود را وارد کنید',
           },
         ]}
       >
         <Input
-          
-          placeholder="ایمیل"
+          placeholder="لطفا نام و نام خانوادگی را وارد کنید"
         />
       </Form.Item>
+        </Col>
+      </Row>
+      <Row>
+        <Col span={11}>
       <Form.Item
-        name="password"
-        label="URL"
+        name="companyname"
+        label="نام شرکت"
         rules={[
           {
-            required: true,
-            message: 'لطفا رمز عبور را وارد کنید',
+            message: 'لطفا نام شرکت را وارد کنید',
           },
         ]}
       >
         <Input
-          type="password"
-          placeholder="رمز عبور"
+          placeholder='لطفا نام شرکت را وارد کنید'
         />
       </Form.Item>
+      </Col>
+        <Col span={11} offset={1}>
       <Form.Item
-        name="password"
-        label="URL"
+        name="phonenumber"
+        label="شماره تلفن"
         rules={[
           {
-            required: true,
-            message: 'لطفا رمز عبور را وارد کنید',
+            message: 'لطفا شماره تلفن را وارد کنید',
           },
         ]}
       >
         <Input
-          type="password"
-          placeholder="رمز عبور"
+          type="Phone"
+          placeholder='لطفا شماره تلفن را وارد کنید'
         />
       </Form.Item>
+      </Col>
+      </Row>
+      <Row>
+        <Col span={11}>
       <Form.Item
-        name="password"
-        label="URL"
+        name="businessname"
+        label="انجام تجارت به عنوان
+        (اختیاری)"
         rules={[
           {
-            required: true,
-            message: 'لطفا رمز عبور را وارد کنید',
+            message: 'لطفا نام تجاری را وارد کنید',
           },
         ]}
       >
         <Input
-          type="password"
-          placeholder="رمز عبور"
+          placeholder='لطفا نام تجاری را وارد کنید'
         />
       </Form.Item>
+      </Col>
+        <Col span={11} offset={1}>
       <Form.Item
-        name="password"
-        label="URL"
+        name="vatname"
+        label="VAT / شناسه مالیاتی
+        (اختیاری)"
         rules={[
           {
-            required: true,
-            message: 'لطفا رمز عبور را وارد کنید',
+            message: 'لطفا شناسه مالیاتی را وارد کنید',
           },
         ]}
       >
         <Input
-          type="password"
-          placeholder="رمز عبور"
+          placeholder='لطفا شناسه مالیاتی را وارد کنید'
         />
-      </Form.Item>
+      </Form.Item></Col>
+      </Row>
+      <Row>
+        <Col span={24}>
       <Form.Item
-        name="password"
-        label="URL"
+        name="companybilling"
+        label="آدرس صورتحساب شرکت"
         rules={[
           {
-            required: true,
-            message: 'لطفا رمز عبور را وارد کنید',
+            message: 'لطفا آدرس صورتحساب شرکت را وارد کنید',
           },
         ]}
       >
         <Input
-          type="password"
-          placeholder="رمز عبور"
+          placeholder='لطفا آدرس صورتحساب شرکت را وارد کنید'
         />
       </Form.Item>
+      </Col>
+      </Row>
+      <Row>
+        <Col span={11}>
       <Form.Item
-        name="password"
-        label="URL"
+        name="cityname"
+        label="شهر"
         rules={[
           {
-            required: true,
-            message: 'لطفا رمز عبور را وارد کنید',
+            message: 'لطفا نام شهر را وارد کنید',
           },
         ]}
       >
         <Input
-          type="password"
-          placeholder="رمز عبور"
+          placeholder='لطفا نام شهر را وارد کنید'
         />
       </Form.Item>
+      </Col>
+        <Col span={11} offset={1}>
+
       <Form.Item
-        name="password"
-        label="URL"
+        name="regionname"
+        label="منطقه
+        (اختیاری)"
         rules={[
           {
-            required: true,
-            message: 'لطفا رمز عبور را وارد کنید',
+            message: 'لطفا نام منطقه را وارد کنید',
           },
         ]}
       >
         <Input
-          type="password"
-          placeholder="رمز عبور"
+          placeholder='لطفا نام منطقه را وارد کنید'
         />
       </Form.Item>
+
+        </Col>
+      </Row>
+      <Row>
+        <Col span={11}>
       <Form.Item
-        name="password"
-        label="URL"
+        name="zipcode"
+        label="کد پستی
+        "
         rules={[
           {
-            required: true,
-            message: 'لطفا رمز عبور را وارد کنید',
+            message: 'لطفا کد پستی را وارد کنید',
           },
         ]}
       >
         <Input
-          type="password"
-          placeholder="رمز عبور"
+          placeholder='لطفا کد پستی را وارد کنید'
         />
       </Form.Item>
+      </Col>
+        <Col span={11} offset={1}>
       <Form.Item
-        name="password"
-        label="URL"
+        name="countryname"
+        label="کشور"
         rules={[
           {
-            required: true,
-            message: 'لطفا رمز عبور را وارد کنید',
+            message: 'لطفا نام کشور را وارد کنید',
           },
         ]}
       >
         <Input
-          type="password"
-          placeholder="رمز عبور"
+          placeholder='لطفا نام کشور را وارد کنید'
         />
       </Form.Item>
+      </Col>
+      </Row>
+      <Row>
+        <Col span={2} >
+      <Form.Item >
       <Button
         type="primary"
         size="large"
@@ -175,32 +196,10 @@ const PaymentForm = ({signUp}) => {
         htmlType="submit"
         className="login-form-button"
       >
-        ثبت نام
+        ذخیره
       </Button>
-      <Divider plain>ثبت نام با</Divider>
-
-      <Button
-        icon={<GoogleOutlined />}
-        size="large"
-        style={{width: '100%'}}
-        htmlType="submit"
-        className="login-form-button"
-      >
-        Google
-      </Button>
-      <Row justify="center">
-        با ثبت نام، Freightos را می پذیرم
-        <br />
-        <Link to="/login">
-          <Text className="linkText"> شرایط و ضوابط </Text>
-        </Link>
-      </Row>
-      <Row justify="center">
-        اکانت دارید
-        <Link to="/login">
-          <Text className="linkText"> وارد </Text>
-        </Link>
-        شوید
+      </Form.Item>
+      </Col>
       </Row>
     </Form>
   );
