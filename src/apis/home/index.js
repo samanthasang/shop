@@ -6,7 +6,7 @@ class HomeApiClass extends HttpClient {
     super(AP.root + AP.version);
   }
 
-  home = payload => this.instance.post(AP.Dashboard.home, payload);
+  allLoad = payload => this.instance.get(AP.Dashboard.allLoads);
 
   register = payload =>
     this.instance.post(AP.Dashboard.registerCustomer, payload);

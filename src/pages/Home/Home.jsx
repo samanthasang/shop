@@ -10,6 +10,8 @@ import LoadForm from './components/LoadForm';
 import GoodsForm from './components/GoodsForm';
 import {useDispatch} from 'react-redux';
 import {getFirstFormData} from '../../redux/action/home';
+import HomeApi from '../../apis/home/index';
+import {handleNotification} from '../../services/Notifications';
 import {Row, Col, Button, Divider, Popover} from 'antd';
 import {
   ExclamationCircleOutlined,
@@ -17,6 +19,7 @@ import {
   CheckOutlined,
 } from '@ant-design/icons';
 import './Home.scss';
+// GET​/api​/v1​/Customer​/Load​/AllLoads
 const Home = () => {
   let history = useHistory();
   const dispatch = useDispatch();
@@ -62,6 +65,25 @@ const Home = () => {
       setConfirmButtonActive(true);
     else setConfirmButtonActive(false);
   }, [originFormData, destinationFormData, loadFormData, goodFormData]);
+
+  useEffect(() => {
+    fetchAllLoad();
+  }, []);
+
+  const fetchAllLoad = async () => {
+    // setLoading(true);
+    try {
+      const {statusCode, data} = await HomeApi.allLoad();
+      if (statusCode === 'Success') {
+        handleNotification('success', 'موفق', '');
+        console.log(data);
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      // setLoading(false);
+    }
+  };
 
   const handleChangeOriginVisible = () => {
     setOriginVisibleForm(!originVisibleForm);
