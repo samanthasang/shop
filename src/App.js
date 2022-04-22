@@ -13,6 +13,7 @@ import MySetting from './pages/MySetting/MySetting';
 import AccountDetails from './pages/AccountDetails/AccountDetails';
 import CompanyProfile from './pages/CompanyProfile/CompanyProfile';
 import History from './pages/history/History';
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 
 // style
 import './App.scss';
@@ -37,8 +38,11 @@ const App = () => {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/singup">
+          <Route path="/register">
             <SingUp />
+          </Route>
+          <Route path="/forgatPassword">
+            <ForgotPassword />
           </Route>
           <Route path="/mysetting">
             <MySetting />

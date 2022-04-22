@@ -1,24 +1,23 @@
 import React, {useState} from 'react';
 import {Row, Col, Card, Spin} from 'antd';
-import LoginForm from './Components/LoginForm';
-import {handleNotification} from '../../services/Notifications';
+import ForgotPasswordForm from './components/ForgotPasswordForm';
 import AcountApi from '../../apis/acount';
-import './login.scss';
+import {handleNotification} from '../../services/Notifications';
+import './ForgotPassword.scss';
 
-const Login = () => {
+const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
-  const handleLogin = async values => {
+  const handleSendEmailForgot = async values => {
     setLoading(true);
     try {
-      const {statusCode, data} = await AcountApi.login(values);
-      if (statusCode === 'Success') {
-        handleNotification('success', 'موفق', 'باموفقیت وارد شدید');
-        localStorage.setItem('ship', JSON.stringify(data));
-        sessionStorage.setItem('ship', data);
-        window.location.href = '/';
-      }
+      const {IsSuccess, Message} = await AcountApi.forgotPasswordSendEmail(
+        values,
+      );
+      if (IsSuccess === 'OK') {
+        handleNotification('success', 'موفق', Message);
+      } else handleNotification('error', 'ناموفق', Message);
     } catch (err) {
-      console.log(err);
+      //
     } finally {
       setLoading(false);
     }
@@ -36,12 +35,12 @@ const Login = () => {
                 style={{textAlign: 'center', width: '100%'}}
               />
               <p style={{textAlign: 'center', width: '100%'}}>
-                از اینکه به Freightos.com پیوستید متشکریم
+                به Freightos.com خوش آمدید
               </p>
               <p style={{textAlign: 'center', width: '100%'}}>
-                از بازدید شما از Freightos.com سپاسگزاریم
+                حمل و نقل ساده شده
               </p>
-              <LoginForm login={handleLogin} />
+              <ForgotPasswordForm sendEmailForgot={handleSendEmailForgot} />
             </Card>
           </Spin>
         </Col>
@@ -50,4 +49,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

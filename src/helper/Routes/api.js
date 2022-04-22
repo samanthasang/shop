@@ -15,10 +15,11 @@ const constants = {
   Account: {
     registerCustomer: 'Account/registerCustomer',
     login: 'Account/login',
+    forgotPassword: 'Account/ForgotPassword',
   },
+  // ​/api​/v1​/Customer​/Load​/AllLoads
   Dashboard: {
-    registerCustomer: '/Account/registerCustomer',
-    home: 'Home',
+    allLoads: 'Customer/Load/AllLoads',
     resultTypes: 'Public/ActionResultTypes',
     actionTypes: 'Public/ActionLogTypes',
     publicData: 'Public',

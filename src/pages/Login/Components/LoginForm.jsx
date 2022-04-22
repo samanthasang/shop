@@ -54,7 +54,11 @@ const LoginForm = ({login}) => {
           </Checkbox>
         </Form.Item> */}
 
-        <Link className="login-form-forgot" style={{float: 'left'}}>
+        <Link
+          to="/forgatPassword"
+          className="login-form-forgot"
+          style={{float: 'left'}}
+        >
           فراموشی رمز
         </Link>
       </Form.Item>
