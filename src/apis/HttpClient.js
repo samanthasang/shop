@@ -12,9 +12,8 @@ class HttpClient {
       transformRequest: [
         function (data, headers) {
           const token = sessionStorage?.getItem('ship');
-          if (token) {
-            headers.Authorization = `Bearer ${token}`;
-          }
+          if (token) headers.Authorization = `Bearer ${token}`;
+
           return JSON.stringify(data);
         },
       ],
@@ -49,18 +48,19 @@ class HttpClient {
     //     window.location.href = '/';
     //   }, 1000);
     // }
-
-    if (error?.response?.data && error?.response?.status !== 401) {
-      handleNotification(
-        'error',
-        'ناموفق',
-        error?.response?.data?.errorMessages
-          ? error?.response?.data?.errorMessages[0]
-            ? error?.response?.data.statusMessage[0]
-            : error?.response?.data?.title
-          : error?.response?.data?.statusMessage,
-      );
-    }
+    handleNotification('error', 'ناموفق', error.response?.data?.message);
+    // }
+    // if (error?.response?.data && error?.response?.status !== 401) {
+    //   handleNotification(
+    //     'error',
+    //     'ناموفق',
+    //     error?.response?.data?.errorMessages
+    //       ? error?.response?.data?.errorMessages[0]
+    //         ? error?.response?.data.statusMessage[0]
+    //         : error?.response?.data?.title
+    //       : error?.response?.data?.statusMessage,
+    //   );
+    // }
     return Promise.reject(error);
   };
 }
