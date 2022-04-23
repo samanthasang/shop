@@ -8,7 +8,7 @@ import Home from './pages/Home/Home';
 import Result from './pages/Result/Result';
 import Booking from './pages/Booking/Booking';
 import Login from './pages/Login/Login';
-import SingUp from './pages/SingUp/SingUp';
+import Register from './pages/register/Register';
 import MySetting from './pages/MySetting/MySetting';
 import AccountDetails from './pages/AccountDetails/AccountDetails';
 import CompanyProfile from './pages/CompanyProfile/CompanyProfile';
@@ -39,7 +39,7 @@ const App = () => {
             <Login />
           </Route>
           <Route path="/register">
-            <SingUp />
+            <Register />
           </Route>
           <Route path="/forgatPassword">
             <ForgotPassword />
