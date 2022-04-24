@@ -11,3 +11,9 @@ export const getFirstFormData = payload => {
     data: payload,
   };
 };
+export const isLoginDis = value => {
+  return {
+    type: ALL.ACCOUNT.ISLOGIN,
+    data: value,
+  };
+};

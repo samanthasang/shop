@@ -10,7 +10,7 @@ class AcountApiClass extends HttpClient {
   login = payload => this.instance.post(makeUrlApi(AP.Account.login, payload));
 
   register = payload =>
-    this.instance.post(makeUrlApi(AP.Account.registerCustomer, payload));
+    this.instance.post(AP.Account.registerCustomer, payload);
 
   forgotPasswordSendEmail = payload =>
     this.instance.post(AP.Account.forgotPassword, payload);

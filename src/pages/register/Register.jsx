@@ -1,26 +1,21 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import {Row, Col, Card, Spin} from 'antd';
-import SingUpForm from './Components/SingUpForm';
+import RegisterCustomerForm from './Components/RegisterCustomerForm';
 import AcountApi from '../../apis/acount';
 import {handleNotification} from '../../services/Notifications';
-import './SingUp.scss';
+import './Register.scss';
 
-const SingUp = () => {
+const Register = () => {
+  let history = useHistory();
   const [loading, setLoading] = useState(false);
-  const handleSignUp = async values => {
-    console.log(values);
+  const handleRegisterCustomer = async values => {
     setLoading(true);
     try {
-      const {statusCode, token} = await AcountApi.register({
-        phoneNumber: '09308418021',
-        email: 'pooriadaloochi@gmail.com',
-        password: '61541241',
-      });
-      if (statusCode === 'OK') {
-        handleNotification('success', 'موفق', 'باموفقیت وارد شدید');
-        localStorage.setItem('ship', JSON.stringify(token));
-        sessionStorage.setItem('ship', token);
-        window.location.href = '/';
+      const {statusCode, message} = await AcountApi.register(values);
+      if (statusCode === 'Success') {
+        handleNotification('success', 'موفق', message);
+        history.push('/login');
       }
     } catch (err) {
       //
@@ -46,7 +41,7 @@ const SingUp = () => {
               <p style={{textAlign: 'center', width: '100%'}}>
                 حمل و نقل ساده شده
               </p>
-              <SingUpForm signUp={handleSignUp} />
+              <RegisterCustomerForm registerCustomer={handleRegisterCustomer} />
             </Card>
           </Spin>
         </Col>
@@ -55,4 +50,4 @@ const SingUp = () => {
   );
 };
 
-export default SingUp;
+export default Register;

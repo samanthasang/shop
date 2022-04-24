@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Form,
   Input,
@@ -19,16 +19,40 @@ import {PlusOutlined} from '@ant-design/icons';
 import '../Home.scss';
 
 const Loader = ({visible}) => {
-  //   const [form] = Form.useForm();
+  const [radioButtonType, setRadioButtonType] = useState('type');
+  const [submitDisable, setSubmitDisable] = useState(true);
+  const [typeBar, setTypeBar] = useState(1);
+  // const [loades, setLoades] = useState(null);
+
+  const [loadFreeForm] = Form.useForm();
+  const [loadContainerForm] = Form.useForm();
+
   const {Option} = Select;
   const {Title, Text} = Typography;
   const {Panel} = Collapse;
   const {TabPane} = Tabs;
-  const [RadioButtonvalue, setRadioButton] = useState(0);
 
   const handleChangeFromRadio = e => {
-    console.log(e);
-    setRadioButton(e.target.value);
+    setRadioButtonType(e.target.value);
+  };
+
+  // useEffect(() => {
+  //   if (loadFreeForm.getFieldValue().length) setSubmitDisable(false);
+  //   else setSubmitDisable(true);
+  // }, [loadFreeForm]);
+
+  const onFinish = values => {
+    console.log(values);
+    //  send data
+  };
+  const onFinishContainer = values => {
+    console.log(values);
+  };
+  const handleWatchForm = values => {
+    //  send data
+  };
+  const handleWatchContainerForm = values => {
+    //  send data
   };
 
   return (
@@ -37,7 +61,10 @@ const Loader = ({visible}) => {
         <Title level={5}>چه چیزی حمل می کنید؟</Title>
       </Row>
       <Row className="LoadForm-content">
-        <Tabs defaultActiveKey="1">
+        <Tabs
+          defaultActiveKey={typeBar === 'free' ? 1 : 2}
+          onChange={e => setTypeBar(e)}
+        >
           <TabPane
             tab={
               <>
@@ -51,21 +78,29 @@ const Loader = ({visible}) => {
             }
             key="1"
           >
-            <Form>
+            <Form
+              // className="goodsForm"
+              onFinish={onFinish}
+              layout="horizontal"
+              colon={false}
+              onFieldsChange={handleWatchForm}
+              form={loadFreeForm}
+            >
               <Row>
                 <Radio.Group
                   onChange={handleChangeFromRadio}
-                  value={RadioButtonvalue}
+                  // value={RadioButtonvalue}
+                  defaultValue="type"
                 >
-                  <Radio value={0}>
+                  <Radio value="type">
                     <Text> محاسبه بر اساس نوع واحد</Text>
                   </Radio>
-                  <Radio value={1}>
+                  <Radio value="all">
                     <Text>محاسبه بر اساس کل حمل و نقد</Text>
                   </Radio>
                 </Radio.Group>
               </Row>
-              {RadioButtonvalue ? (
+              {radioButtonType === 'all' ? (
                 <Row justify="center">
                   <Col span={22}>
                     <Alert
@@ -83,8 +118,16 @@ const Loader = ({visible}) => {
                         <Row style={{marginBottom: '10px'}}>
                           <Text># از واحد</Text>
                         </Row>
-                        <Form.Item name="numberPollets">
-                          <Input defaultValue="1" type="number" />
+                        <Form.Item
+                          name="numberPollets"
+                          rules={[
+                            {
+                              required: true,
+                              message: 'انتخاب تعداد پالت ها اجباری است',
+                            },
+                          ]}
+                        >
+                          <Input type="number" />
                         </Form.Item>
                       </Col>
                       <Col span={8}>
@@ -93,28 +136,41 @@ const Loader = ({visible}) => {
                             <Text>حجم کل</Text>
                           </Col>
                           <Col span={13}>
-                            <Input type="number" />
+                            <Form.Item
+                              name="totalVolume"
+                              rules={[
+                                {
+                                  required: true,
+                                  message: 'انتخاب حجم کل اجباری است',
+                                },
+                              ]}
+                            >
+                              <Input type="number" />
+                            </Form.Item>
                           </Col>
                           <Col span={11}>
-                            <Select
-                              defaultValue="CBM"
+                            <Form.Item
+                              name="totalUnitVolume"
                               style={{width: '100%'}}
                               rules={[
                                 {
                                   required: true,
-                                  message: 'directionType is required',
+                                  message: 'انتخاب واحد حجم کل اجباری است',
                                 },
                               ]}
-                              optionFilterProp="children"
-                              filterOption={(input, option) =>
-                                option.children
-                                  .toLowerCase()
-                                  .indexOf(input.toLowerCase()) >= 0
-                              }
                             >
-                              <Option value="CFT">CBM</Option>
-                              <Option value="CFT">CFT</Option>
-                            </Select>
+                              <Select
+                                optionFilterProp="children"
+                                filterOption={(input, option) =>
+                                  option.children
+                                    .toLowerCase()
+                                    .indexOf(input.toLowerCase()) >= 0
+                                }
+                              >
+                                <Option value="CFT">CBM</Option>
+                                <Option value="CFT">CFT</Option>
+                              </Select>
+                            </Form.Item>
                           </Col>
                         </Row>
                       </Col>
@@ -124,28 +180,43 @@ const Loader = ({visible}) => {
                             <Text>مجموع وزن</Text>
                           </Col>
                           <Col span={14}>
-                            <Input type="number" />
-                          </Col>
-                          <Col span={10}>
-                            <Select
-                              defaultValue="KG"
-                              style={{width: '100%'}}
+                            <Form.Item
+                              name="totalWeight"
                               rules={[
                                 {
                                   required: true,
-                                  message: 'directionType is required',
+                                  message: 'انتخاب مجموع وزن کل اجباری است',
                                 },
                               ]}
-                              optionFilterProp="children"
-                              filterOption={(input, option) =>
-                                option.children
-                                  .toLowerCase()
-                                  .indexOf(input.toLowerCase()) >= 0
-                              }
                             >
-                              <Option value="KG">KG</Option>
-                              <Option value="LB">LB</Option>
-                            </Select>
+                              <Input type="number" />
+                            </Form.Item>
+                          </Col>
+                          <Col span={10}>
+                            <Form.Item
+                              name="totalUnitWeight"
+                              rules={[
+                                {
+                                  required: true,
+                                  message:
+                                    'انتخاب واحد مجموع وزن کل اجباری است',
+                                },
+                              ]}
+                              style={{width: '100%'}}
+                            >
+                              <Select
+                                defaultValue="KG"
+                                optionFilterProp="children"
+                                filterOption={(input, option) =>
+                                  option.children
+                                    .toLowerCase()
+                                    .indexOf(input.toLowerCase()) >= 0
+                                }
+                              >
+                                <Option value="KG">KG</Option>
+                                <Option value="LB">LB</Option>
+                              </Select>
+                            </Form.Item>
                           </Col>
                         </Row>
                       </Col>
@@ -157,26 +228,52 @@ const Loader = ({visible}) => {
                   <Row className="LoadForm-content-polletsUnits">
                     <Col className="LoadForm-content-polletsUnits-pollets">
                       <Text style={{margin: '10px 0'}}>انواع دسته بندی</Text>
-                      <Radio.Group defaultValue="a">
-                        <Radio.Button value="a">پالت ها</Radio.Button>
-                        <Radio.Button value="b">جعبه ها/ محفظه ها</Radio.Button>
-                      </Radio.Group>
+                      <Form.Item
+                        name="numberPollets"
+                        rules={[
+                          {
+                            required: true,
+                            message: 'انتخاب تعداد پالت ها اجباری است',
+                          },
+                        ]}
+                      >
+                        <Radio.Group>
+                          <Radio.Button value="p">پالت ها</Radio.Button>
+                          <Radio.Button value="b">
+                            جعبه ها/ محفظه ها
+                          </Radio.Button>
+                        </Radio.Group>
+                      </Form.Item>
                     </Col>
                     <Col className="LoadForm-content-polletsUnits-units">
                       <Text style={{margin: '10px 0'}}># از واحد</Text>
-                      <Form.Item name="numberPollets">
+                      <Form.Item
+                        name="numberPollets"
+                        rules={[
+                          {
+                            required: true,
+                            message: 'انتخاب تعداد پالت ها اجباری است',
+                          },
+                        ]}
+                      >
                         <Input defaultValue="1" type="number" />
                       </Form.Item>
                     </Col>
                   </Row>
                   <Row className="LoadForm-content-polletsUnits-pollets-type">
                     <Col span={24}>
-                      <Text className="titleOfInputs">نوع پالت</Text>
+                      <Text className="titleOfInputs">سایز پالت</Text>
                     </Col>
                     <Col span={24}>
                       <Form.Item
-                        name="numberPollets"
+                        name="sizePollets"
                         className="LoadForm-content-polletsUnits-pollets-type-item"
+                        rules={[
+                          {
+                            required: true,
+                            message: 'انتخاب سایز پالت ها اجباری است',
+                          },
+                        ]}
                       >
                         <Select
                           style={{width: '100%'}}
@@ -208,40 +305,67 @@ const Loader = ({visible}) => {
                         </Col>
                         <Col span={24}>
                           <Row>
-                            <Input
-                              placeholder="L"
-                              style={{width: '20%', marginLeft: '1px'}}
-                              type="number"
-                            />
-                            <Input
-                              placeholder="W"
-                              style={{width: '20%', marginLeft: '1px'}}
-                              type="number"
-                            />
-                            <Input
-                              placeholder="H"
-                              style={{width: '20%', marginLeft: '1px'}}
-                              type="number"
-                            />
-                            <Select
-                              style={{width: '25%'}}
-                              defaultValue="EUR"
+                            <Form.Item
+                              name="lPollets"
                               rules={[
                                 {
                                   required: true,
-                                  message: 'directionType is required',
+                                  message: 'وارد کردن طول پالت ها اجباری است',
                                 },
                               ]}
-                              optionFilterProp="children"
-                              filterOption={(input, option) =>
-                                option.children
-                                  .toLowerCase()
-                                  .indexOf(input.toLowerCase()) >= 0
-                              }
+                              style={{width: '20%', marginLeft: '1px'}}
                             >
-                              <Option value="CM">CM</Option>
-                              <Option value="IN">IN</Option>
-                            </Select>
+                              <Input placeholder="L" type="number" />
+                            </Form.Item>
+                            <Form.Item
+                              name="wPollets"
+                              rules={[
+                                {
+                                  required: true,
+                                  message:
+                                    'وارد کردن ارتفاع پالت ها اجباری است',
+                                },
+                              ]}
+                              style={{width: '20%', marginLeft: '1px'}}
+                            >
+                              <Input placeholder="W" type="number" />
+                            </Form.Item>
+                            <Form.Item
+                              name="hPollets"
+                              rules={[
+                                {
+                                  required: true,
+                                  message: 'وارد کردن عرض پالت ها اجباری است',
+                                },
+                              ]}
+                              style={{width: '20%', marginLeft: '1px'}}
+                            >
+                              <Input placeholder="H" type="number" />
+                            </Form.Item>
+
+                            <Form.Item
+                              name="unitPollets"
+                              rules={[
+                                {
+                                  required: true,
+                                  message: 'وارد کردن واحد پالت ها اجباری است',
+                                },
+                              ]}
+                              style={{width: '25%'}}
+                            >
+                              <Select
+                                defaultValue="EUR"
+                                optionFilterProp="children"
+                                filterOption={(input, option) =>
+                                  option.children
+                                    .toLowerCase()
+                                    .indexOf(input.toLowerCase()) >= 0
+                                }
+                              >
+                                <Option value="CM">CM</Option>
+                                <Option value="IN">IN</Option>
+                              </Select>
+                            </Form.Item>
                           </Row>
                         </Col>
                       </Row>
@@ -253,28 +377,43 @@ const Loader = ({visible}) => {
                         </Col>
                         <Row>
                           <Col span={12}>
-                            <Input type="number" />
-                          </Col>
-                          <Col span={12}>
-                            <Select
-                              defaultValue="KG"
-                              style={{width: '100%'}}
+                            <Form.Item
+                              name="weightPollets"
                               rules={[
                                 {
                                   required: true,
-                                  message: 'directionType is required',
+                                  message: 'وارد کردن وزن پالت ها اجباری است',
                                 },
                               ]}
-                              optionFilterProp="children"
-                              filterOption={(input, option) =>
-                                option.children
-                                  .toLowerCase()
-                                  .indexOf(input.toLowerCase()) >= 0
-                              }
                             >
-                              <Option value="KG">KG</Option>
-                              <Option value="LB">LB</Option>
-                            </Select>
+                              <Input type="number" />
+                            </Form.Item>
+                          </Col>
+                          <Col span={12}>
+                            <Form.Item
+                              name="weightUnitPollets"
+                              rules={[
+                                {
+                                  required: true,
+                                  message:
+                                    'وارد کردن واحد وزن پالت ها اجباری است',
+                                },
+                              ]}
+                              style={{width: '100%'}}
+                            >
+                              <Select
+                                defaultValue="KG"
+                                optionFilterProp="children"
+                                filterOption={(input, option) =>
+                                  option.children
+                                    .toLowerCase()
+                                    .indexOf(input.toLowerCase()) >= 0
+                                }
+                              >
+                                <Option value="KG">KG</Option>
+                                <Option value="LB">LB</Option>
+                              </Select>
+                            </Form.Item>
                           </Col>
                         </Row>
                       </Row>
@@ -282,6 +421,36 @@ const Loader = ({visible}) => {
                   </Row>
                 </>
               )}
+
+              <Row>
+                <Form.Item
+                  name="Overweight"
+                  style={{width: '100%'}}
+                  valuePropName="checked"
+                >
+                  <Checkbox style={{marginRight: '1.5rem'}}>اضافه وزن</Checkbox>
+                </Form.Item>
+              </Row>
+              <Row className="LoadForm-submit">
+                <Divider
+                  className="originalForm-divider LoadForm-divider"
+                  orientation="right"
+                />
+
+                <Row className="originalForm-submit">
+                  {/* <Button icon={<PlusOutlined />} style={{marginLeft: '1rem'}}>
+                    <Text style={{marginRight: '5px'}}>یک بار دیگر اضافه کنید </Text>
+                  </Button> */}
+                  <Button
+                    type="primary"
+                    size="middle"
+                    htmlType="submit"
+                    // disabled={submitDisable}
+                  >
+                    تایید
+                  </Button>
+                </Row>
+              </Row>
             </Form>
           </TabPane>
           <TabPane
@@ -307,52 +476,93 @@ const Loader = ({visible}) => {
                 />
               </Col>
             </Row>
-            <Row justify="space-between">
-              <Col span={6}>
-                <Row>
-                  <Col span={24}>
-                    <Text className="LoadForm-content-tabFreeBar-units-title">
-                      # از واحد
-                    </Text>
-                  </Col>
-                  <Col span={24}>
-                    <Form.Item name="numberOfunits" className="">
-                      <Input defaultValue="1" type="number" />
-                    </Form.Item>
-                  </Col>
+            <Form
+              onFinish={onFinishContainer}
+              layout="horizontal"
+              colon={false}
+              onFieldsChange={handleWatchContainerForm}
+              form={loadContainerForm}
+              style={{width: '100%'}}
+            >
+              <Row justify="space-between">
+                <Col span={6}>
+                  <Row>
+                    <Col span={24}>
+                      <Text className="LoadForm-content-tabFreeBar-units-title">
+                        # از واحد
+                      </Text>
+                    </Col>
+                    <Col span={24}>
+                      <Form.Item
+                        name="numberOfunits"
+                        rules={[
+                          {
+                            required: true,
+                            message: 'انتخاب مقدار واحد اجباری است',
+                          },
+                        ]}
+                      >
+                        <Input defaultValue={0} type="number" />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col span={14}>
+                  <Text className="LoadForm-content-tabFreeBar-type-title">
+                    نوع کانتینر
+                  </Text>
+
+                  <Form.Item
+                    name="typeContainer"
+                    style={{width: '100%'}}
+                    rules={[
+                      {
+                        required: true,
+                        message: 'انتخاب نوع کانتینر اجباری است',
+                      },
+                    ]}
+                  >
+                    <Radio.Group style={{direction: 'rtl'}}>
+                      <Radio.Button value="a">'20</Radio.Button>
+                      <Radio.Button value="b">'40</Radio.Button>
+                      <Radio.Button value="c">40' HC</Radio.Button>
+                      <Radio.Button value="d">45' HC</Radio.Button>
+                    </Radio.Group>
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Row>
+                <Form.Item
+                  name="Overweight"
+                  style={{width: '100%'}}
+                  valuePropName="checked"
+                >
+                  <Checkbox style={{marginRight: '1.5rem'}}>اضافه وزن</Checkbox>
+                </Form.Item>
+              </Row>
+              <Row className="LoadForm-submit">
+                <Divider
+                  className="originalForm-divider LoadForm-divider"
+                  orientation="right"
+                />
+
+                <Row className="originalForm-submit">
+                  {/* <Button icon={<PlusOutlined />} style={{marginLeft: '1rem'}}>
+            <Text style={{marginRight: '5px'}}>یک بار دیگر اضافه کنید </Text>
+          </Button> */}
+                  <Button
+                    type="primary"
+                    size="middle"
+                    htmlType="submit"
+                    disabled={submitDisable}
+                  >
+                    تایید
+                  </Button>
                 </Row>
-              </Col>
-              <Col span={14}>
-                <Text className="LoadForm-content-tabFreeBar-type-title">
-                  نوع کانتینر
-                </Text>
-                <Radio.Group defaultValue="a" style={{direction: 'rtl'}}>
-                  <Radio.Button value="a">'20</Radio.Button>
-                  <Radio.Button value="b">'40</Radio.Button>
-                  <Radio.Button value="c">40' HC</Radio.Button>
-                  <Radio.Button value="d">45' HC</Radio.Button>
-                </Radio.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Checkbox style={{marginRight: '1.5rem'}}>اضافه وزن</Checkbox>
-            </Row>
+              </Row>
+            </Form>
           </TabPane>
         </Tabs>
-      </Row>
-      <Row className="LoadForm-submit">
-        <Divider
-          className="originalForm-divider LoadForm-divider"
-          orientation="right"
-        />
-        <Row className="LoadForm-submit-buttons">
-          <Button icon={<PlusOutlined />} style={{marginLeft: '1rem'}}>
-            <Text style={{marginRight: '5px'}}>یک بار دیگر اضافه کنید </Text>
-          </Button>
-          <Button type="primary" size="middle">
-            تایید
-          </Button>
-        </Row>
       </Row>
     </div>
   );

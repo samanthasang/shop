@@ -23,7 +23,8 @@ const LoginForm = ({login}) => {
         rules={[
           {
             required: true,
-            message: 'لطفا ایمیل خود را وارد کنید',
+            message: 'لطفا ایمیل خود را صحیح وارد کنید',
+            pattern: new RegExp(/\S+@\S+\.\S+/),
           },
         ]}
       >
@@ -86,7 +87,7 @@ const LoginForm = ({login}) => {
       </Form.Item>
       <Row justify="center">
         اکانت ندارید
-        <Link to="/singup">
+        <Link to="/register">
           <Text className="signupLink"> ثبت نام </Text>
         </Link>
         کنید
