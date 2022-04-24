@@ -16,7 +16,8 @@ const Login = () => {
         localStorage.setItem('ship', JSON.stringify(data));
         sessionStorage.setItem('ship', data);
         window.location.href = '/';
-      }
+      } else if (statusCode === 'NotFound')
+        handleNotification('error', 'ناموفق', data);
     } catch (err) {
       console.log(err);
     } finally {

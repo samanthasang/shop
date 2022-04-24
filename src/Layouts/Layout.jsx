@@ -1,5 +1,14 @@
 import React, {Fragment, useState} from 'react';
-import {Tooltip, Menu, Dropdown, Button, Row, Layout as LayoutAnt} from 'antd';
+import {
+  Tooltip,
+  Menu,
+  Dropdown,
+  Button,
+  Row,
+  Col,
+  Popover,
+  Layout as LayoutAnt,
+} from 'antd';
 import {Link} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
@@ -18,6 +27,7 @@ import {UserOutlined, SearchOutlined, MenuOutlined} from '@ant-design/icons';
 const {Content} = LayoutAnt;
 
 const Layout = ({children}) => {
+  const [visiblePopLogOut, setvisiblePopLogOut] = useState(false);
   const {isLogin} = useSelector(state => state.all);
   // const [collapsed, setCollapsed] = useState(false);
   // const {information} = useSelector(state => state['user'].auth);
@@ -85,6 +95,12 @@ const Layout = ({children}) => {
       window.location.href = '/';
     }, 100);
   };
+  const handleCancelLogOut = () => {
+    setvisiblePopLogOut(false);
+  };
+  const handleLogOutVisible = () => {
+    setvisiblePopLogOut(!visiblePopLogOut);
+  };
   return (
     <LayoutAnt>
       <header className="haeder ant-layout-header">
@@ -98,13 +114,36 @@ const Layout = ({children}) => {
               />
             </Row>
             {isLogin && (
-              <Button
-                // className="haeder-logo screen-logo"
-                type="primary"
-                onClick={handleLogOut}
+              <Popover
+                content={
+                  <Row>
+                    <Col span={24}>
+                      <Row>آیا میخواهید از حساب خود خارج شوید ؟</Row>
+                    </Col>
+                    <Col span={24}>
+                      <Row justify="space-between" className="popoverLogOut">
+                        <Button
+                          type="primary"
+                          danger
+                          onClick={handleCancelLogOut}
+                        >
+                          خیر
+                        </Button>
+                        <Button type="primary" onClick={handleLogOut}>
+                          بله
+                        </Button>
+                      </Row>
+                    </Col>
+                  </Row>
+                }
+                placement="bottomRight"
+                trigger={'click'}
+                visible={visiblePopLogOut}
               >
-                Log Out
-              </Button>
+                <Button type="primary" onClick={handleLogOutVisible}>
+                  Log Out
+                </Button>
+              </Popover>
             )}
           </div>
 
