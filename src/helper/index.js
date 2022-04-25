@@ -78,3 +78,9 @@ export const locationDetect = address => {
   const URL = window.location.pathname.split('/');
   return URL.includes(address);
 };
+
+const urlparams = payload => new URLSearchParams(payload);
+export const makeUrlApi = (api, payload) => {
+  if (payload.json) return `${api}?${payload}`;
+  else return `${api}?${urlparams(payload)}`;
+};

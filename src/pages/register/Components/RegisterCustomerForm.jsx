@@ -1,11 +1,19 @@
 import {Form, Input, Button, Typography, Divider, Row} from 'antd';
-import {GoogleOutlined, UserOutlined, LockOutlined} from '@ant-design/icons';
+import {
+  GoogleOutlined,
+  UserOutlined,
+  LockOutlined,
+  UserSwitchOutlined,
+} from '@ant-design/icons';
 import {Link} from 'react-router-dom';
 import '../SingUp.scss';
+
 import FormItem from 'antd/lib/form/FormItem';
 const SingUpForm = ({signUp}) => {
+
+const RegisterCustomerForm = ({registerCustomer}) => {
   const onFinish = values => {
-    signUp(values);
+    registerCustomer(values);
     // console.log('Received values of form: ', values);
   };
 
@@ -20,11 +28,12 @@ const SingUpForm = ({signUp}) => {
       onFinish={onFinish}
     >
       <Form.Item
-        name="username"
+        name="email"
         rules={[
           {
             required: true,
-            message: 'لطفا ایمیل خود را وارد کنید',
+            message: 'لطفا ایمیل خود را صحیح وارد کنید',
+            pattern: new RegExp(/\S+@\S+\.\S+/),
           },
         ]}
       >
@@ -34,7 +43,23 @@ const SingUpForm = ({signUp}) => {
         />
       </Form.Item>
       <Form.Item
+        name="phoneNumber"
+        rules={[
+          {
+            required: true,
+            message: 'لطفا شماره همراه خود را صحیح وارد کنید',
+            pattern: new RegExp(/^[0-9]+$/),
+          },
+        ]}
+      >
+        <Input
+          prefix={<UserSwitchOutlined className="site-form-item-icon" />}
+          placeholder="شماره همراه مانند :                                 09123456789"
+        />
+      </Form.Item>
+      <Form.Item
         name="password"
+        // label="رمز عبور"
         rules={[
           {
             required: true,
@@ -48,18 +73,32 @@ const SingUpForm = ({signUp}) => {
           placeholder="رمز عبور"
         />
       </Form.Item>
-      <Form.Item>
 
-        <Button
-          type="primary"
-          size="large"
-          style={{width: '100%'}}
-          htmlType="submit"
-          className="login-form-button"
-          >
-          ثبت نام
-        </Button>
-        </Form.Item>
+      <Form.Item
+        name="confirmPassword"
+        // label="تکرار رمز عبور"
+        rules={[
+          {
+            required: true,
+            message: 'لطفا رمز عبور را مجددا وارد کنید',
+          },
+        ]}
+      >
+        <Input.Password
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          type="password"
+          placeholder="تکرار رمز عبور"
+        />
+      </Form.Item>
+      <Button
+        type="primary"
+        size="large"
+        style={{width: '100%'}}
+        htmlType="submit"
+        className="login-form-button"
+      >
+        ثبت نام
+      </Button>
       <Divider plain>ثبت نام با</Divider>
 
       <Form.Item>
@@ -91,4 +130,4 @@ const SingUpForm = ({signUp}) => {
   );
 };
 
-export default SingUpForm;
+export default RegisterCustomerForm;

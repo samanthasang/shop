@@ -10,6 +10,8 @@ import LoadForm from './components/LoadForm';
 import GoodsForm from './components/GoodsForm';
 import {useDispatch} from 'react-redux';
 import {getFirstFormData} from '../../redux/action/home';
+import HomeApi from '../../apis/home/index';
+import {handleNotification} from '../../services/Notifications';
 import {Row, Col, Button, Divider, Popover} from 'antd';
 import {
   ExclamationCircleOutlined,
@@ -17,6 +19,7 @@ import {
   CheckOutlined,
 } from '@ant-design/icons';
 import './Home.scss';
+// GET​/api​/v1​/Customer​/Load​/AllLoads
 const Home = () => {
   let history = useHistory();
   const dispatch = useDispatch();
@@ -32,8 +35,11 @@ const Home = () => {
   const [goodVisibleForm, setGoodVisibleForm] = useState(false);
   const [goodFormData, setGoodFormData] = useState(null);
   //
-  // const [loadFormState, setLoadFormState] = useState(0);
+  const [loadFormState, setLoadFormState] = useState(0);
+  const [loadVisibleForm, setLoadVisibleForm] = useState(false);
   const [loadFormData, setLoadFormData] = useState(null);
+  //
+  // const [loadFormState, setLoadFormState] = useState(0);
   const [confirmButtonActive, setConfirmButtonActive] = useState(true);
   //
   useEffect(() => {
@@ -56,12 +62,37 @@ const Home = () => {
       else setGoodFormState(2);
     }
   }, [goodVisibleForm]);
+  useEffect(() => {
+    if (!loadFormState && loadVisibleForm) {
+      if (loadFormData) setLoadFormState(1);
+      else setLoadFormState(2);
+    }
+  }, [loadVisibleForm]);
 
   useEffect(() => {
     if (originFormData && destinationFormData && goodFormData)
       setConfirmButtonActive(true);
     else setConfirmButtonActive(false);
   }, [originFormData, destinationFormData, loadFormData, goodFormData]);
+
+  useEffect(() => {
+    // fetchAllLoad();
+  }, []);
+
+  const fetchAllLoad = async () => {
+    // setLoading(true);
+    try {
+      const {statusCode, data} = await HomeApi.allLoad();
+      if (statusCode === 'Success') {
+        handleNotification('success', 'موفق', '');
+        console.log(data);
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      // setLoading(false);
+    }
+  };
 
   const handleChangeOriginVisible = () => {
     setOriginVisibleForm(!originVisibleForm);
@@ -94,6 +125,13 @@ const Home = () => {
       setGoodVisibleForm(false);
       setGoodFormState(1);
     } else setGoodFormState(2);
+  };
+  const handleSubmitLoadForm = values => {
+    setLoadFormData(values);
+    if (values.cost && values.unit && values.readyGood) {
+      setLoadVisibleForm(false);
+      setLoadFormState(1);
+    } else setLoadFormState(2);
   };
   const handlesubmitAllFormData = () => {
     const Formdata = {
@@ -220,16 +258,32 @@ const Home = () => {
                 <Divider type="vertical" />
                 <Col span={5}>
                   <Popover
-                    content={<LoadForm />}
+                    content={
+                      <LoadForm
+                        visible={goodVisibleForm}
+                        onConfirm={handleSubmitGoodForm}
+                      />
+                    }
                     placement="bottomRight"
                     trigger={'click'}
                   >
                     <div className="centerMenu_origin">
                       <div className="centerMenu_origin_top">
                         <h5>بار</h5>
+                        {loadFormState ? (
+                          loadFormState === 1 ? (
+                            <CheckOutlined style={{color: 'green'}} />
+                          ) : (
+                            <ExclamationCircleOutlined style={{color: 'red'}} />
+                          )
+                        ) : null}
                       </div>
                       <span style={{color: 'red'}}></span>
-                      <p style={{color: 'gray'}}>چه چیزی ارسال می کنید؟</p>
+                      <p style={{color: 'gray'}}>
+                        {loadFormState && loadFormData
+                          ? 'تکمیل'
+                          : ' چه چیزی ارسال می کنید؟'}
+                      </p>
                     </div>
                   </Popover>
                 </Col>
@@ -240,7 +294,7 @@ const Home = () => {
                     content={
                       <GoodsForm
                         visible={goodVisibleForm}
-                        onConfirm={handleSubmitGoodForm}
+                        onConfirm={handleSubmitLoadForm}
                       />
                     }
                     placement="bottomLeft"

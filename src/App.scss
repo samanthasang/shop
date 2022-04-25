@@ -33,7 +33,7 @@
     padding: 0;
   }
   &-logo {
-    // width: 6rem;
+    width: 70px;
     height: 40px;
     border-radius: 5px;
     margin-right: 16px;
@@ -86,6 +86,10 @@
     display: flex;
     align-items: center;
   }
+}
+.popoverLogOut {
+  // width: 10rem;
+  margin-top: 1rem;
 }
 .expand {
   &-table {
