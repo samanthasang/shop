@@ -8,7 +8,6 @@ import {
 } from '@ant-design/icons';
 import ExcelIcon from '../../assets/Icons/ExcelIcon';
 import AirplaneIcon from '../../assets/Icons/AirplaneIcon';
-import LocationIcon from '../../assets/Icons/LocationIcon';
 import './History.scss';
 
 const History = () => {
@@ -131,67 +130,23 @@ const History = () => {
                 <Row>
                   <Col span={12}>
                     <Row>
-                      <Col span={6}>
+                      <Col span={24}>
                         <Row>
-                          <Text className="history-container-status-title">
-                            مبدا و مقصد
-                          </Text>
+                          <Text>مبدا و مقصد</Text>
                         </Row>
                       </Col>
-                      <Col span={18}></Col>
-                    </Row>
-                    <Row>
-                      <Col>
+                      <Col span={24}>
                         <Row>
-                          <Col>
-                            <div className="circleOrigin"></div>
-                          </Col>
-                          <Col span={24}>
-                            <Row
-                              style={{width: '10px', height: '10px'}}
-                              justify="center"
-                              align="middle"
-                            >
-                              <div className="dashDivider" />
-                            </Row>
-                          </Col>
-                          <Col span={24}>
-                            <Row justify="start" className="locationIcon">
-                              <LocationIcon />
-                            </Row>
-                          </Col>
-                        </Row>
-                      </Col>
-                      <Col span={16}>
-                        <Row>
-                          <Text className="history-container-status-getStart origin">
-                            تهران
-                          </Text>
-                        </Row>
-                        <Row>
-                          <Text className="history-container-status-getStart destination">
-                            مشهد
-                          </Text>
+                          <Col span={2}>1</Col>
                         </Row>
                       </Col>
                     </Row>
                   </Col>
                   <Col span={12}>
                     <Row>
-                      <Text className="history-container-status-title">
-                        بار
-                      </Text>
-                    </Row>
-
-                    <Row>
-                      <Text className="history-container-status-getStart">
-                        پالت، 0 CFT، 1 LB
-                      </Text>
-                    </Row>
-                    <Row>
-                      <Text className="history-container-status-getStart">
-                        ارزش 1 میلیون تومان
-                      </Text>
+                      <Col span={24}>1</Col>
+                      <Col span={24}>1</Col>
+                      <Col span={24}>1</Col>
                     </Row>
                   </Col>
                 </Row>
