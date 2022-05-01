@@ -28,6 +28,8 @@ const ProfileForm = (props) => {
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
+    <Row span={24} >
+    <Col span={11}>
       <Form.Item
         label="نام"
         name="Name"
@@ -40,6 +42,9 @@ const ProfileForm = (props) => {
         <Input />
       </Form.Item>
 
+      </Col>
+
+<Col span={11} offset={2}>
       <Form.Item
         label="نام شرکت"
         name="Company name"
@@ -51,6 +56,10 @@ const ProfileForm = (props) => {
       >
         <Input />
       </Form.Item>
+      </Col>
+      </Row>
+    <Row span={24} >
+    <Col span={11}>
       <Form.Item
         label="ایمیل"
         name="Email"
@@ -62,6 +71,10 @@ const ProfileForm = (props) => {
       >
         <Input />
       </Form.Item>
+
+</Col>
+
+<Col span={11} offset={2}>
       <Form.Item
         label="شماره تماس"
         name="Phone Number"
@@ -74,6 +87,11 @@ const ProfileForm = (props) => {
         <Input />
       </Form.Item>
 
+      </Col>
+      </Row>
+
+      <Row >
+      <Col span={2}>
 
       <Form.Item
         wrapperCol={{
@@ -82,12 +100,22 @@ const ProfileForm = (props) => {
         }}
       >
         <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-        <Button style={{ marginRight: "1em" }} onClick={props.showProfileCard} htmlType="submit">
-          cancel
+          ذخیره تغییرات
         </Button>
       </Form.Item>
+      </Col>
+      <Col span={2}>
+      <Form.Item
+        wrapperCol={{
+          offset: 0,
+          span: 4,
+        }}>
+        <Button style={{ marginRight: "1em" }} onClick={props.showProfileCard} htmlType="submit">
+          انصراف
+        </Button>
+      </Form.Item>
+      </Col>
+      </Row>
     </Form>
         </Card>
 

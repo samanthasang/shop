@@ -64,21 +64,33 @@ const PasswordForm = (props) => {
       >
         <Input />
       </Form.Item>
-
+      <Row >
+      <Col span={2}>
 
       <Form.Item
         wrapperCol={{
           offset: 0,
           span: 4,
         }}
-      >
+        >
         <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-        <Button style={{ marginRight: "1em" }} onClick={props.showProfileCard} htmlType="submit">
-          cancel
+        تغییر رمز عبور
         </Button>
       </Form.Item>
+      </Col>
+      <Col span={2}>
+        <Form.Item
+          wrapperCol={{
+            offset: 0,
+            span: 4,
+          }}
+          >
+        <Button style={{ marginRight: "1em" }} onClick={props.showProfileCard} htmlType="submit">
+        انصراف
+        </Button>
+      </Form.Item>
+      </Col>
+      </Row>
     </Form>
         </Card>
 

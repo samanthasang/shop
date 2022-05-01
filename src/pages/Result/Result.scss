@@ -245,7 +245,7 @@
   }
   .ant-modal-body {
     background: #fdfdfd;
-    height: 57vh;
+    height: 67vh;
   }
   .ant-modal-footer {
     width: 100%;
@@ -255,7 +255,26 @@
   }
 }
 .centerMenu {
+  background-color: white;
+  border: 10px #bdbebd solid;
+  box-shadow: -5px 5px 10px 10px rgba(0, 0, 0, 0.1);
+  border-width: 0.3px;
+  border-radius: 8px 8px 8px 8px;
+
   &-recommendedServices {
-    overflow-y: scroll;
+    margin-top: 2rem;
+    // overflow-y: scroll;
   }
+}
+.Switch-button{
+  margin: 1rem  0 1rem 1rem !important;
+}
+.Switch-text{
+  margin: 1rem 0 !important;
+}
+.questionCircle{
+  margin:0 1rem !important;
+}
+.popoverContent-link{
+  margin-right: 0.25rem;
 }

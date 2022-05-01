@@ -37,7 +37,7 @@
         "amount": "$124.71"
       },
       {
-        "key": "2",
+        "key": 2,
         "feeCode": "D-LIFT",
         "feeName": "Lift Gate Transfer at Delivery",
         "comment": "-",
@@ -80,7 +80,7 @@
         }
       },
       {
-        "key": 1,
+        "key": 2,
         "panelContent": {
           "way": "دریا",
           "icon": "sea",

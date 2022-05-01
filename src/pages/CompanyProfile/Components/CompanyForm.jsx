@@ -39,19 +39,24 @@ const CompanyForm = (props) => {
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
+      <Row span={24} >
+      <Col span={11}>
       <Form.Item
-        label="نام شرکت"
+      label="نام شرکت"
         name="Name"
         rules={[
           {
             message: 'Please input your Name !',
           },
         ]}
-      >
+        >
         <Input disabled={editable} />
       </Form.Item>
+        </Col>
 
+        <Col span={11} offset={2}>
       <Form.Item
+      layout="inline"
         label="نام "
         name="Company name"
         rules={[
@@ -62,6 +67,12 @@ const CompanyForm = (props) => {
       >
         <Input disabled={editable}/>
       </Form.Item>
+        </Col>
+        </Row>
+
+
+      <Row span={24} >
+      <Col span={11}>
       <Form.Item
         label="کشور"
         name="Email"
@@ -73,6 +84,9 @@ const CompanyForm = (props) => {
       >
         <Input disabled={editable}/>
       </Form.Item>
+        </Col>
+
+        <Col span={11} offset={2}>
       <Form.Item
         label="شهر"
         name="Phone Number"
@@ -84,6 +98,7 @@ const CompanyForm = (props) => {
       >
         <Input disabled={editable}/>
       </Form.Item>
+        </Col></Row>
 
 {editable ? 
       <Form.Item
@@ -97,6 +112,8 @@ const CompanyForm = (props) => {
         </Button>
       </Form.Item>
     :
+    <Row >
+    <Col span={2}>
       <Form.Item
       wrapperCol={{
           offset: 0,
@@ -104,12 +121,22 @@ const CompanyForm = (props) => {
         }}
         >
         <Button type="primary" htmlType="submit">
-          تایید
+          ذخیره تغییرات
         </Button>
+      </Form.Item>
+      </Col>
+      <Col span={2}>
+      <Form.Item
+        wrapperCol={{
+          offset: 0,
+          span: 4,
+        }}>
         <Button style={{ marginRight: "1em" }} onClick={EditableOn} htmlType="submit">
           انصراف
         </Button>
       </Form.Item>
+      </Col>
+      </Row>
     }
     </Form> 
         </Card>

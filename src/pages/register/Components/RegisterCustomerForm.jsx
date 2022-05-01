@@ -6,7 +6,10 @@ import {
   UserSwitchOutlined,
 } from '@ant-design/icons';
 import {Link} from 'react-router-dom';
-import '../SingUp.scss';
+import '../Register.scss';
+
+import FormItem from 'antd/lib/form/FormItem';
+
 const RegisterCustomerForm = ({registerCustomer}) => {
   const onFinish = values => {
     registerCustomer(values);
@@ -69,6 +72,7 @@ const RegisterCustomerForm = ({registerCustomer}) => {
           placeholder="رمز عبور"
         />
       </Form.Item>
+
       <Form.Item
         name="confirmPassword"
         // label="تکرار رمز عبور"
@@ -96,6 +100,7 @@ const RegisterCustomerForm = ({registerCustomer}) => {
       </Button>
       <Divider plain>ثبت نام با</Divider>
 
+      <Form.Item>
       <Button
         icon={<GoogleOutlined />}
         size="large"
@@ -105,6 +110,7 @@ const RegisterCustomerForm = ({registerCustomer}) => {
       >
         Google
       </Button>
+        </Form.Item>
       <Row justify="center">
         با ثبت نام، Freightos را می پذیرم
         <br />

@@ -14,7 +14,8 @@ import {useSelector} from 'react-redux';
 
 import ShipIcon from '../assets/Icons/ShipIcon';
 import TruckIcon from '../assets/Icons/TruckIcon';
-import {UserOutlined, SearchOutlined, MenuOutlined} from '@ant-design/icons';
+import { LogoutOutlined, QuestionCircleOutlined, SettingOutlined, UserOutlined, SearchOutlined, MenuOutlined } from '@ant-design/icons';
+
 
 // import Toolbar from 'components/ui/Toolbar/index';
 // import {connect} from 'react-redux';

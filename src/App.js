@@ -8,10 +8,13 @@ import Home from './pages/Home/Home';
 import Result from './pages/Result/Result';
 import Booking from './pages/Booking/Booking';
 import Login from './pages/Login/Login';
+import ForgotPass from './pages/ForgotPass/ForgotPass';
+import MyCommodities from './pages/MyCommodities/MyCommodities';
 import Register from './pages/register/Register';
 import MySetting from './pages/MySetting/MySetting';
 import AccountDetails from './pages/AccountDetails/AccountDetails';
 import CompanyProfile from './pages/CompanyProfile/CompanyProfile';
+import Verification from './pages/Verification/Verification';
 import History from './pages/history/History';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 // redux
