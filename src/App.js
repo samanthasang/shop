@@ -8,7 +8,6 @@ import Home from './pages/Home/Home';
 import Result from './pages/Result/Result';
 import Booking from './pages/Booking/Booking';
 import Login from './pages/Login/Login';
-import SingUp from './pages/SingUp/SingUp';
 import ForgotPass from './pages/ForgotPass/ForgotPass';
 import MyCommodities from './pages/MyCommodities/MyCommodities';
 import Register from './pages/register/Register';

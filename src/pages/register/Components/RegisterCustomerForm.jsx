@@ -6,10 +6,9 @@ import {
   UserSwitchOutlined,
 } from '@ant-design/icons';
 import {Link} from 'react-router-dom';
-import '../SingUp.scss';
+import '../Register.scss';
 
 import FormItem from 'antd/lib/form/FormItem';
-const SingUpForm = ({signUp}) => {
 
 const RegisterCustomerForm = ({registerCustomer}) => {
   const onFinish = values => {

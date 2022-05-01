@@ -4,7 +4,6 @@ import {Row, Col, Card, Spin} from 'antd';
 import RegisterCustomerForm from './Components/RegisterCustomerForm';
 import AcountApi from '../../apis/acount';
 import {handleNotification} from '../../services/Notifications';
-import './SingUp.scss';
 import Paragraph from 'antd/lib/typography/Paragraph';
 import './Register.scss';
 
@@ -42,7 +41,6 @@ const Register = () => {
               <Paragraph className='singUp-page-form-card-text2' >
                 حمل و نقل ساده شده
                </ Paragraph>
-              <SingUpForm signUp={handleSignUp} />
               <RegisterCustomerForm registerCustomer={handleRegisterCustomer} />
             </Card>
           </Spin>
